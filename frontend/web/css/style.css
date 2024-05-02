@@ -1,0 +1,91 @@
+
+.category-wrap {
+  background: #fff; }
+  @media (min-width: 992px) {
+    .category-wrap {
+      #margin-top: -70px;
+      -webkit-box-shadow: 0px 3px 14px -4px rgba(0, 0, 0, 0.1);
+      -moz-box-shadow: 0px 3px 14px -4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 3px 14px -4px rgba(0, 0, 0, 0.1); } }
+
+.top-category {
+  padding: 20px;
+  background: #fff;
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease; }
+  .top-category.no-border-left {
+    border-left: none; }
+  .top-category h3 {
+    font-size: 20px; }
+    .top-category h3 a {
+      color: #000000; }
+  .top-category .icon {
+    font-size: 40px;
+    color: #206dfb; }
+  .top-category p {
+    color: rgba(0, 0, 0, 0.7); }
+  .top-category.active, .top-category:hover {
+    background: #fdab44;
+    border-left: none; }
+    .top-category.active h3 a, .top-category:hover h3 a {
+      color: #fff; }
+    .top-category.active .icon, .top-category:hover .icon {
+      color: #fff; }
+    .top-category.active p, .top-category:hover p {
+      color: rgba(255, 255, 255, 0.9); }
+  .top-category:hover {
+    background: #206dfb; }
+
+.category {
+  padding: 0; }
+  .category li {
+    list-style: none;
+    margin-bottom: 0px;
+    font-size: 22px;
+    font-weight: 400; }
+    .category li a {
+      display: block;
+      color: #1a1a1a;
+      border-bottom: 1px solid #ffefdb;
+      padding: 10px 15px 10px 0;
+      position: relative; }
+      .category li a i {
+        position: absolute;
+        top: 50%;
+        right: 30px;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        color: #fdab44;
+        opacity: 0;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        transition: all 0.3s ease; }
+      .category li a span {
+        color: rgba(0, 0, 0, 0.3);
+        font-size: 15px; }
+      .category li a span.number {
+        font-size: 16px;
+        background: #fffaf5;
+        color: #fdab44;
+        padding: 2px 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        border-radius: 5px; }
+      .category li a:hover, .category li a:focus {
+        color: #206dfb;
+        background: #ffefdb; }
+        .category li a:hover i, .category li a:focus i {
+          right: 15px;
+          opacity: 1; }
+        .category li a:hover span, .category li a:focus span {
+          color: rgba(0, 0, 0, 0.8); }
+        .category li a:hover .number, .category li a:focus .number {
+          color: #fdab44; }

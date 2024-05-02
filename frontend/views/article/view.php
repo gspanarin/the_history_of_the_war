@@ -1,0 +1,90 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\DetailView;
+use common\models\User;
+use common\models\section;
+
+
+/** @var yii\web\View $this */
+/** @var common\models\Article $model */
+
+$this->title = $model->getTitle() . ' (id: ' . $model->id . ')';
+$this->params['breadcrumbs'][] = ['label' => 'Статті', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
+\yii\web\YiiAsset::register($this);
+?>
+<div class="article-view">
+
+    <p>
+        <?= Html::a('Оновити', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Видалити', ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Ви впевнені що хочете видалити цю статтю?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
+
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            //'id',
+            [
+                'attribute' => 'user',
+                'filter' => User::getUsersList(),
+                'value' => function($model){
+                    return $model->getUserFullName();
+                }
+            ],
+            [
+                'attribute' => 'section_id',
+                'value' => function($model){
+                    $section = Section::findOne(['id' => $model->section_id]);
+                    return $section != null ? $section->title : ' - ';
+                }
+            ],
+            [
+                'attribute' => 'status',
+                'value' => function($model){
+                    return $model->getStatusTitle();
+                }
+            ],
+            'created_at:dateTime',
+            'updated_at:dateTime',
+            [
+                'attribute' => 'metadata',
+                'format' => 'RAW',
+                'value' => function($model){
+                    $metadata_str = '<ul>';
+                    $metadata = json_decode($model->metadata, true);
+                    foreach ($metadata as $tag => $values){
+                        $metadata_str .= '<li>' . $tag . '<ul>'; 
+                        foreach ($values as $value)
+                            $metadata_str .= '<li>' . $value . '</li>'; 
+                        $metadata_str .= '</ul></li>'; 
+                    }
+                    $metadata_str .= '</ul>';
+                
+                    //$metadata_str = '';
+                    return $metadata_str;
+                }
+            ], 
+            [
+                'attribute' => 'files',
+                'label' => 'Приєднані файли',
+                'format' => 'raw',
+                'value' => function($model){
+                    $file_tml = '';
+                    foreach ($model->files as $file)
+                        $file_tml .= Html::a($file->file_name, ['article/download-file', 'id' => $file->id], ['class' => 'profile-link'])  . '<br>';
+                
+    
+                    return $file_tml;
+                }
+            ]
+        ],
+    ]) ?>
+
+</div>
