@@ -76,7 +76,7 @@ class SiteController extends Controller
      * @return mixed
      */
     public function actionIndex(){
-        
+
         $sections = Section::find()->where(['pid' => 1])->all();
         
         return $this->render('index', 

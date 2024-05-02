@@ -21,7 +21,8 @@
         "hail812/yii2-adminlte3": "~1.1",
         "dixonstarter/yii2-toggle-column": "*",
         "wbraganca/yii2-dynamicform": "*",
-        "2amigos/yii2-tinymce-widget" : "*"
+        "2amigos/yii2-tinymce-widget" : "*",
+        "yiithings/yii2-dotenv" : "*"
         
     },
     "require-dev": {

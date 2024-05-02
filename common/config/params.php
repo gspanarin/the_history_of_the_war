@@ -9,6 +9,6 @@ return [
     
     
     
-    'storage_path' => 'c://www//warhistory_storage//',
-    
+    'storage_path' => env('STORAGE'),
+    'storages' => json_decode(env('STORAGES'), true),
 ];
