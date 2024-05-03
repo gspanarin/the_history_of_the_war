@@ -2,20 +2,11 @@
 
 /** @var yii\web\View $this */
 
-$this->title = 'My Yii Application';
+$this->title = 'Проект: історія війни';
 ?>
 <div class="site-index">
     <div class="body-content">
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
     <section class="ftco-section ftco-no-pt ftco-no-pb">
     <div class="container">
         <div class="row justify-content-center mb-5">
@@ -53,7 +44,7 @@ $this->title = 'My Yii Application';
         
         
         
-        
+        <!--
         
         
         
@@ -110,6 +101,6 @@ $this->title = 'My Yii Application';
         </div>
     	</div>
     </section>
-        
+        -->
     </div>
 </div>

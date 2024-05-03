@@ -22,7 +22,7 @@ class Dictionary extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'dictionary';
+        return '{{%dictionary}}';
     }
 
     /**

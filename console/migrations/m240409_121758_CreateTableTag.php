@@ -6,7 +6,7 @@ use yii\db\Migration;
 class m240409_121758_CreateTableTag extends Migration{
 
     public function safeUp(){
-        $this->createTable('tag', [
+        $this->createTable('{{%tag}}', [
             'id' => $this->primaryKey()->comment('Ідентификатор поля'),
             'term_name' => $this->string()->notNull()->comment('Назва поля'),
             'label' => $this->string()->notNull()->comment('Підпис поля'),
@@ -23,7 +23,7 @@ class m240409_121758_CreateTableTag extends Migration{
     }   
 
     public function safeDown(){
-        $this->dropTable('tag');
+        $this->dropTable('{{%tag}}');
 
         return true;
     }

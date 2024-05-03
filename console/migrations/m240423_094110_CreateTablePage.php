@@ -5,7 +5,7 @@ use yii\db\Migration;
 class m240423_094110_CreateTablePage extends Migration{
 
     public function safeUp(){
-        $this->createTable('page', [
+        $this->createTable('{{%page}}', [
             'id' => $this->primaryKey()->comment('Ідентифікатор сторінки'),
             'status' => $this->integer()->defaultValue(0)->comment('Статус сторінки'),
             'type' => $this->string()->comment('Тип'),
@@ -20,7 +20,7 @@ class m240423_094110_CreateTablePage extends Migration{
     }
 
     public function safeDown(){
-        $this->dropTable('page');
+        $this->dropTable('{{%page}}');
 
         return true;
     }

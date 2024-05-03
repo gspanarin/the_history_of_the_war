@@ -5,7 +5,7 @@ use yii\db\Migration;
 class m240421_130327_CreateTableFile extends Migration{
 
     public function safeUp(){
-        $this->createTable('file', [
+        $this->createTable('{{%file}}', [
             'id' => $this->primaryKey()->comment('Ідентифікатор файлу'),
             'status' => $this->integer(1)->defaultValue(0)->comment('Статус'),
             'user_id' => $this->integer()->notNull()->comment('Ідентифікатор користувача'),
@@ -30,7 +30,7 @@ class m240421_130327_CreateTableFile extends Migration{
     }
 
     public function safeDown(){
-        $this->dropTable('file');
+        $this->dropTable('{{%file}}');
         $this->dropForeignKey('fk-file-article_id', 'file');
 
         return true;

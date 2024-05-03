@@ -58,3 +58,35 @@ frontend
 vendor/                  contains dependent 3rd-party packages
 environments/            contains environment-based overrides
 ```
+
+
+
+
+apache2
+    apt-get install apache2
+
+php 7.4
+    apt-get install php7.4 libapache2-mod-php7.4 php7.4-common php7.4-gd php7.4-mysql php7.4-curl php7.4-intl php7.4-xsl php7.4-mbstring php7.4-zip php7.4-bcmath php7.4-soap php-xdebug php-imagick php7.4-mysql
+
+mysql
+    install
+    
+    CREATE DATABASE warhistory;
+    USE warhistory;
+    CREATE USER 'warhistory_user'@'%' IDENTIFIED BY 'PASSWORD';
+    GRANT ALL PRIVILEGES ON warhistory.* TO 'warhistory_user'@'%';
+    GRANT ALL PRIVILEGES ON warhistory.* TO 'warhistory_user'@'localhost';
+    FLUSH PRIVILEGES;
+
+composer
+
+    composer config --global
+
+    composer update
+
+
+setup .env file
+
+php init - production
+php yii migrate
+php yii project/init

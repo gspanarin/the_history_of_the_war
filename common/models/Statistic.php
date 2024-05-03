@@ -22,7 +22,7 @@ class Statistic extends \yii\db\ActiveRecord{
 
 
     public static function tableName(){
-        return 'statistic';
+        return '{{%statistic}}';
     }
 
 }

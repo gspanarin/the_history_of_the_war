@@ -155,7 +155,7 @@ class ProjectController extends Controller{
         // Створюємо дозвл на доступ до КРУД RBAC
         $permissionDevelop = Yii::$app->authManager->createPermission('develop');
         $permissionDevelop->description = 'Розширення та проектування системи';
-        Yii::$app->authManager->add($permissionManageRbac);
+        Yii::$app->authManager->add($permissionDevelop);
         Yii::$app->authManager->addChild($role_supper_admin, $permissionDevelop);
         
         

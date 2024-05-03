@@ -20,7 +20,7 @@ class Loger extends \yii\db\ActiveRecord{
     }
     
     public static function tableName(){
-        return 'statistic';
+        return '{{%statistic}}';
     }
 
     public function attributeLabels(){

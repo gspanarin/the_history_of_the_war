@@ -5,7 +5,7 @@ use yii\db\Migration;
 class m240419_041337_CreateTableStatistic extends Migration{
 
     public function safeUp(){
-        $this->createTable('statistic', [
+        $this->createTable('{{%statistic}}', [
             'id' => $this->primaryKey()->comment('Ідентифікатор запису'),
             'user_id' => $this->integer()->comment('Ідентифікатор користувача'),
             'module' => $this->string(40)->comment('Модуль'),
@@ -23,7 +23,7 @@ class m240419_041337_CreateTableStatistic extends Migration{
     }
 
     public function safeDown(){
-        $this->dropTable('statistic');
+        $this->dropTable('{{%statistic}}');
         $this->dropIndex('ids-module', 'statistic');
         $this->dropIndex('ids-module-controller', 'statistic');
         $this->dropIndex('ids-module-controller-action', 'statistic');

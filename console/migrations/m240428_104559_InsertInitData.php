@@ -6,13 +6,13 @@ class m240428_104559_InsertInitData extends Migration{
     
     public function safeUp(){
         $this->batchInsert(
-                'section', 
+                '{{%section}}', 
                 ['id', 'alias', 'title', 'status', 'pid', 'sort'], 
                 [
                     [1, 's0', 'Корньова рубрика тематичного рубрикатору', 1, null, 1],
                     [2, 's1', 'Державна політика', 1, 1, 1],
                     [3, 's1.1', 'Заяви та звернення українських політиків, держслужбовців', 1, 2, 1],
-                    [4, 's1.2', 'Відновлення міст, сіл, містечок', 2, 1, 2],
+                    [4, 's1.2', 'Відновлення міст, сіл, містечок', 1, 2, 2],
                     [5, 's1.3', 'Декомунізація, деколонізація', 1, 2, 3],
                     [6, 's1.4', 'Державна допомога населенню', 1, 2, 4],
                     
@@ -53,7 +53,7 @@ class m240428_104559_InsertInitData extends Migration{
     }
 
     public function safeDown(){
-        $this->dropTable('section');
+        $this->dropTable('{{%section}}');
         
         return false;
     }

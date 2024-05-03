@@ -38,9 +38,6 @@
         "symfony/var-dumper": "^5.4"
     },
     "config": {
-        "platform": {
-            "php": "7.4.21"
-         },
         "process-timeout": 1800,
         "fxp-asset": {
             "enabled": false

@@ -36,7 +36,7 @@ class Organization extends \yii\db\ActiveRecord{
      */
     public static function tableName()
     {
-        return 'organization';
+        return '{{%organization}}';
     }
 
     /**

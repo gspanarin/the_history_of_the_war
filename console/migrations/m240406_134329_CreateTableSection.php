@@ -4,7 +4,7 @@ use yii\db\Migration;
 
 class m240406_134329_CreateTableSection extends Migration{
     public function safeUp(){
-        $this->createTable('section', [
+        $this->createTable('{{%section}}', [
             'id' => $this->primaryKey()->comment('Ідентифікатор розділу'),
             'alias' => $this->string()->comment('Аліас розділу')->notNull(),
             'status' => $this->integer()->defaultValue(0)->comment('Статус розділу'),
@@ -23,7 +23,7 @@ class m240406_134329_CreateTableSection extends Migration{
     }
 
     public function safeDown(){
-        $this->dropTable('section');
+        $this->dropTable('{{%section}}');
         $this->dropIndex('idx-section-alias', 'section');
         
         return true;

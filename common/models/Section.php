@@ -54,7 +54,7 @@ class Section extends \yii\db\ActiveRecord implements \dixonstarter\togglecolumn
      */
     public static function tableName()
     {
-        return 'section';
+        return '{{%section}}';
     }
 
     /**

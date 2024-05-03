@@ -86,6 +86,7 @@ class ArticleController extends BaseController{
         $tags = Tag::Find()->all();
         $icon = $model->getIcon(); 
         
+        $fields = [];
         foreach ($tags as $tag)
             $fields[$tag->term_name][] = '';
         

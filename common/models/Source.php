@@ -22,7 +22,7 @@ class Source extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'source';
+        return '{{%source}}';
     }
 
     /**
