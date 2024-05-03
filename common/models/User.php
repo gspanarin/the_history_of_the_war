@@ -255,4 +255,5 @@ class User extends ActiveRecord implements IdentityInterface
     public function getRole(){
         return array_values(Yii::$app->authManager->getRolesByUser($this->id))[0];
     }
+
 }

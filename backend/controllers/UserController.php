@@ -89,13 +89,25 @@ class UserController extends BaseController{
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $roles = [];
+        $user_roles = \Yii::$app->authManager->getRolesByUser($model->id);
+        foreach (Yii::$app->authManager->getRoles() as $role)
+            $roles[$role->name] = [
+                'item' => $role,
+                'value' => in_array($role, $user_roles)
+            ];
 
+                
+                
+                
+        
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'roles' => $roles,
         ]);
     }
 
@@ -127,5 +139,18 @@ class UserController extends BaseController{
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    
+    public function actionUserRoleToggle($user_id, $role_name, $status){
+        $current_role = Yii::$app->authManager->getRole($role_name);
+        $auth = Yii::$app->authManager;
+
+        if ($status == 'off'){
+            $auth->assign($current_role ,$user_id);    
+        }else{
+            $auth->revoke($current_role, $user_id);  
+        }
+        
+        return $this->redirect(['user/update', 'id' => $user_id]);        
     }
 }
