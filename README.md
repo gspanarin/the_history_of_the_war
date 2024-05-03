@@ -68,6 +68,26 @@ apache2
 php 7.4
     apt-get install php7.4 libapache2-mod-php7.4 php7.4-common php7.4-gd php7.4-mysql php7.4-curl php7.4-intl php7.4-xsl php7.4-mbstring php7.4-zip php7.4-bcmath php7.4-soap php-xdebug php-imagick php7.4-mysql
 
+install ImageMagick:
+#wget https://gist.githubusercontent.com/danielstgt/dc1068e577bbd8b6e9a6050a6db1f9c3/raw/4687280a25513ce825f3ffcd31661b67f5896850/imagick3.4.4-PHP7.4-forge.sh
+#   
+#    sudo bash imagick3.4.4-PHP7.4-forge.sh
+
+sudo apt-get install php7.4-imagick
+nano /etc/ImageMagick-6/policy.xml
+remove or comment this whole following section:
+<!-- disable ghostscript format types -->
+<policy domain="coder" rights="none" pattern="PS" />
+<policy domain="coder" rights="none" pattern="PS2" />
+<policy domain="coder" rights="none" pattern="PS3" />
+<policy domain="coder" rights="none" pattern="EPS" />
+<policy domain="coder" rights="none" pattern="PDF" />
+<policy domain="coder" rights="none" pattern="XPS" />
+
+
+(https://stackoverflow.com/questions/52998331/imagemagick-security-policy-pdf-blocking-conversion)
+
+
 mysql
     install
     

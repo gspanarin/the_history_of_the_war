@@ -9,6 +9,6 @@ return [
     
     
     
-    'storage_path' => env('STORAGE'),
+    'storage_path' => env('STORAGE_PATH'),
     'storages' => json_decode(env('STORAGES'), true),
 ];

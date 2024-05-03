@@ -37,8 +37,7 @@ class m240501_183713_CreateTableDictionary extends Migration{
         $this->dropIndex('idx-tag_id', '{{%dictionary}}');
         $this->dropIndex('idx-value', '{{%dictionary}}');
         
-        $this->delete('{{%dictionary}}');
-        
+        $this->dropTable('{{%dictionary}}');
         
         return true;
     }

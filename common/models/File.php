@@ -30,10 +30,10 @@ class File extends \yii\db\ActiveRecord{
             case 'pdf':
                 $imagick = new \Imagick();
                 $imagick->readImage($this->file_path .'[0]');
-                $imagick->writeImages(dirname($this->file_path) . '\icon.jpg', false);
+                $imagick->writeImages(dirname($this->file_path) . '/icon.jpg', false);
                 break;
             case 'jpg':
-                copy($this->file_path, dirname($this->file_path) . '\icon.jpg');
+                copy($this->file_path, dirname($this->file_path) . '/icon.jpg');
                 break;
             default:
                 break;
