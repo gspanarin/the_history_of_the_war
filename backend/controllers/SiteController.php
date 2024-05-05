@@ -90,10 +90,10 @@ class SiteController extends Controller{
         */        
         
         $data = [];
-        //$date_from = strtotime("now");
-        //$date_to = strtotime("-1 week");
-        $date_from = strtotime("-2 week");
+        $date_from = strtotime("now");
         $date_to = strtotime("-1 week");
+        //$date_from = strtotime("-2 week");
+        //$date_to = strtotime("-1 week");
    
         $articles = Article::find()
         ->select([
