@@ -11,7 +11,7 @@ use yii\web\Response;
 use common\components\statistic\Loger;
 //use common\models\Statistic;
 use backend\controllers\StatisticController;
-
+use common\models\Article;
 /**
  * Site controller
  */
@@ -68,13 +68,61 @@ class SiteController extends Controller{
      * @return string
      */
     public function actionIndex(){
-        
+        $chartData = $this->getDataForChart(); 
 
         $oStatistic = StatisticController::getDataForChart();
         
-        return $this->render('index');
+        return $this->render('index', [
+            'chartData' => $chartData
+        ]);
     }
 
+    
+    private function getDataForChart(){
+        /*
+        SELECT
+                from_unixtime(created_at, '%Y-%m-%d') as year_and_month, 
+           count(id) as c_article
+        FROM article
+        WHERE 
+                created_at BETWEEN UNIX_TIMESTAMP('2024-04-01') AND UNIX_TIMESTAMP('2024-04-29')
+        GROUP BY year_and_month         
+        */        
+        
+        $data = [];
+        //$date_from = strtotime("now");
+        //$date_to = strtotime("-1 week");
+        $date_from = strtotime("-2 week");
+        $date_to = strtotime("-1 week");
+   
+        $articles = Article::find()
+        ->select([
+            'from_unixtime(created_at, "%Y-%m-%d") as date',
+            'count(id) as c_article'
+        ])
+        ->where(['between', 'created_at', $date_from, $date_to ])
+        ->groupBy('date') // group the result to ensure aggregation function works
+        ->asArray()->all();
+        
+        $date_count = [];
+        foreach ($articles as $item)
+            $date_count[$item['date']] = $item['c_article']; 
+        
+        for($i = 0; $i < 7; $i++){
+            $current_date = date('Y-m-d', strtotime(" +$i day", $date_from));
+            $labels[] = "'$current_date'";
+            $data[] = (isset($date_count[$current_date]) ? $date_count[$current_date] : 0);
+            //$data[] = [
+            //    'date' => $current_date,
+            //    'value' => (isset($date_count[$current_date]) ? $date_count[$current_date] : 0)
+            //];
+        }
+        
+        return [
+            'labels_str' => implode(',', $labels),
+            'value_str' => implode(',', $data),
+        ];
+    }
     
     
     

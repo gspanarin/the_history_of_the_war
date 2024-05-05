@@ -15,7 +15,7 @@ use yii\helpers\Html;
         </li>
         
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="http://warhistory/" target="_blanck" class="nav-link">Перейти на зовнішній сайт</a>
+            <a href="<?= Yii::$app->urlManagerFrontEnd->createUrl('/') ?>" target="_blanck" class="nav-link">Перейти на зовнішній сайт</a>
         </li>
         
         <li class="nav-item dropdown">
