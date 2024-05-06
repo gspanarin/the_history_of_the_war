@@ -112,15 +112,59 @@ class SiteController extends Controller{
             $current_date = date('Y-m-d', strtotime(" +$i day", $date_from));
             $labels[] = "'$current_date'";
             $data[] = (isset($date_count[$current_date]) ? $date_count[$current_date] : 0);
-            //$data[] = [
-            //    'date' => $current_date,
-            //    'value' => (isset($date_count[$current_date]) ? $date_count[$current_date] : 0)
-            //];
         }
         
+        //=========================================================================
+        $lng = \common\models\Dictionary::find()
+                ->select([
+                    'value',
+                    'count(id) as count'])
+                ->where(['tag_id' => 15])
+                ->groupBy('value') 
+                ->asArray()->all();
+        
+        $type = \common\models\Dictionary::find()
+                ->select([
+                    'value',
+                    'count(id) as count'])
+                ->where(['tag_id' => 4])
+                ->groupBy('value') 
+                ->asArray()->all();
+        
+        $source = \common\models\Dictionary::find()
+                ->select([
+                    'value',
+                    'count(id) as count'])
+                ->where(['tag_id' => 5])
+                ->groupBy('value') 
+                ->asArray()->all();
+        
+        $format = \common\models\Dictionary::find()
+                ->select([
+                    'value',
+                    'count(id) as count'])
+                ->where(['tag_id' => 13])
+                ->groupBy('value') 
+                ->asArray()->all();
+        
+        $creators = \common\models\Dictionary::find()
+                ->select([
+                    'value',
+                    'count(id) as count'])
+                ->where(['tag_id' => 8])
+                ->groupBy('value') 
+                ->asArray()->all();
+
         return [
             'labels_str' => implode(',', $labels),
             'value_str' => implode(',', $data),
+            'tags' => [
+                    'lng' => $lng,
+                    'type' => $type,
+                    'source' => $source,
+                    'format' => $format,
+                    'creators' => $creators
+                ]
         ];
     }
     

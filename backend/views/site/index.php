@@ -1,5 +1,5 @@
 <?php
-$this->title = 'Starter Page';
+$this->title = 'Dashboard';
 $this->params['breadcrumbs'] = [['label' => $this->title]];
 ?>
 <div class="container-fluid">
@@ -64,6 +64,139 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
     </div>
 
 -->
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                <h3 class="card-title">Статистика за тегом lng</h3>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Tag</th>
+                        <th style="width: 40px">Count</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                    $num =1;
+                    foreach ($chartData['tags']['lng'] as $tag):?>
+                        <tr>
+                            <td><?= $num++ ?>.</td>
+                            <td><?= $tag['value'] ?></td>
+                            <td><?= $tag['count'] ?></td>
+                        </tr>
+                    <?php endforeach;?>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                <h3 class="card-title">Статистика за тегом format</h3>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Tag</th>
+                        <th style="width: 40px">Count</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                    $num =1;
+                    foreach ($chartData['tags']['format'] as $tag):?>
+                        <tr>
+                            <td><?= $num++ ?>.</td>
+                            <td><?= $tag['value'] ?></td>
+                            <td><?= $tag['count'] ?></td>
+                        </tr>
+                    <?php endforeach;?>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                <h3 class="card-title">Статистика за тегом source</h3>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Tag</th>
+                        <th style="width: 40px">Count</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                    $num =1;
+                    foreach ($chartData['tags']['source'] as $tag):?>
+                        <tr>
+                            <td><?= $num++ ?>.</td>
+                            <td><?= $tag['value'] ?></td>
+                            <td><?= $tag['count'] ?></td>
+                        </tr>
+                    <?php endforeach;?>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                <h3 class="card-title">Статистика за тегом creators</h3>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Tag</th>
+                        <th style="width: 40px">Count</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                    $num =1;
+                    foreach ($chartData['tags']['creators'] as $tag):?>
+                        <tr>
+                            <td><?= $num++ ?>.</td>
+                            <td><?= $tag['value'] ?></td>
+                            <td><?= $tag['count'] ?></td>
+                        </tr>
+                    <?php endforeach;?>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
 
 </div>
 
