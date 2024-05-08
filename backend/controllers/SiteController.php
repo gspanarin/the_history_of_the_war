@@ -173,7 +173,7 @@ class SiteController extends Controller{
                     'user.full_name as full_name',
                     'count(article.id) as count'])
                 ->groupBy('user_id') 
-                ->leftJoin('user', '`user`.`id` = `Article`.`user_id`')
+                ->leftJoin('user', '`user`.`id` = `article`.`user_id`')
                 ->orderBy('count DESC')
                 ->asArray()->all();
         
