@@ -159,6 +159,13 @@ class Section extends \yii\db\ActiveRecord implements \dixonstarter\togglecolumn
     }
     
     public function getArticle_count(){
+        //!!!!!!!   переробити цим методом: !!!!!!!!!!!
+        // возвращает всех покупателей массивом, индексированным их идентификаторами
+        // SELECT * FROM `customer`
+        //$customers = Customer::find()
+        //    ->indexBy('id')
+        //    ->all();
+
         $sections = section::find()->select(['id'])->where(['like', 'alias',  $this->alias . '%', false])->all();
         $ids = [];
         foreach ($sections as $section)

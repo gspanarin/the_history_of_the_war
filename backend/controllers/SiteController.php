@@ -81,6 +81,10 @@ class SiteController extends Controller{
 
     
     private function getDataForChart(){
+        
+        //=========================================================================
+        //          Статистика створення записів за останній тиждень
+        //=========================================================================
         /*
         SELECT
                 from_unixtime(created_at, '%Y-%m-%d') as year_and_month, 
@@ -116,6 +120,8 @@ class SiteController extends Controller{
             $data[] = (isset($date_count[$current_date]) ? $date_count[$current_date] : 0);
         }
         
+        //=========================================================================
+        //          Статистика використання полів/тегів
         //=========================================================================
         $lng = \common\models\Dictionary::find()
                 ->select([
@@ -157,6 +163,20 @@ class SiteController extends Controller{
                 ->groupBy('value') 
                 ->asArray()->all();
 
+        //=========================================================================
+        //          Статистика створення записів за операторами
+        //=========================================================================
+        
+        $users = \common\models\Article::find()
+                ->select([
+                    'user.username as username',
+                    'user.full_name as full_name',
+                    'count(article.id) as count'])
+                ->groupBy('user_id') 
+                ->leftJoin('user', '`user`.`id` = `Article`.`user_id`')
+                ->orderBy('count DESC')
+                ->asArray()->all();
+        
         return [
             'labels_str' => implode(',', $labels),
             'value_str' => implode(',', $data),
@@ -166,7 +186,8 @@ class SiteController extends Controller{
                     'source' => $source,
                     'format' => $format,
                     'creators' => $creators
-                ]
+                ],
+            'users' => $users,
         ];
     }
     

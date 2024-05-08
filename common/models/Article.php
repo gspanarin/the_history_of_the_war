@@ -73,6 +73,7 @@ class Article extends \yii\db\ActiveRecord{
             'average_score' => 'Середня оцінка',
             'created_at' => 'Дата створення',
             'updated_at' => 'Дата корегування',
+            'current_icon' => 'Поточна іконка',
         ];
     }
     
