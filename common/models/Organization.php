@@ -19,6 +19,11 @@ use yii\behaviors\TimestampBehavior;
  */
 class Organization extends \yii\db\ActiveRecord{
     
+    Private $status_list = [
+        '0' => 'Не активна',
+        '1' => 'Активна',
+    ];
+    
     public function behaviors(){
         return [
             'timestamp' => [
@@ -34,8 +39,7 @@ class Organization extends \yii\db\ActiveRecord{
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
+    public static function tableName(){
         return '{{%organization}}';
     }
 
@@ -66,4 +70,20 @@ class Organization extends \yii\db\ActiveRecord{
             'updated_at' => 'Дата корегування',
         ];
     }
+    
+    public function getStatusName(){
+        return $this->status_list[$this->status];
+    }
+    
+    public static function getList($name = ''){
+        $list = [];
+        $organizations = Self::find()->select(['id', 'name'])->asArray()->all();
+        for($i = 0; $i < count($organizations); $i++)
+            $list[$organizations[$i]['id']] = $organizations[$i]['name'];
+        
+        return $list;
+    }
+    
+   
+    
 }

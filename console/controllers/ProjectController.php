@@ -109,6 +109,12 @@ class ProjectController extends Controller{
         
         echo "Create permissions\r\n";
         echo "\r\n";
+        // Створюємо дозвіл для входу в адмінку
+        $permissionBackend = Yii::$app->authManager->createPermission('backend');
+        $permissionBackend->description = 'Доступ до службової частини сайту';
+        Yii::$app->authManager->add($permissionBackend);
+        Yii::$app->authManager->addChild($role_supper_admin, $permissionBackend);
+        
         // Створюємо дозвл на доступ до КРУД Статтями.
         $permissionManageArticle = Yii::$app->authManager->createPermission('article_*');
         $permissionManageArticle->description = 'Керування Статтями';
@@ -192,6 +198,5 @@ class ProjectController extends Controller{
         
         //return $actions;
     }
-    
-    
+
 }

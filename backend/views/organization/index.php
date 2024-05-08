@@ -30,7 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'short_name',
             //'id',
             'url:url',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => function($model){
+                    return $model->getStatusName();
+                }
+            ],
             
             //'created_at',
             //'updated_at',

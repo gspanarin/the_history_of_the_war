@@ -14,7 +14,6 @@ class m240406_134307_CreateTableOrganization extends Migration{
             '{{%organization}}', 
             [
                 'id' => $this->primaryKey()->comment('Ідентифікатор організації'),
-                'alias' => $this->string()->comment('Alias для організації')->notNull(),
                 'status' => $this->integer()->defaultValue(0)->comment('Статус'),
                 'name' => $this->string()->comment('Повна назва')->notNull(),
                 'short_name' => $this->string()->comment('Скорочена назва')->notNull(),

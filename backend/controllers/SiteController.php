@@ -12,6 +12,8 @@ use common\components\statistic\Loger;
 //use common\models\Statistic;
 use backend\controllers\StatisticController;
 use common\models\Article;
+use backend\controllers\BaseController;
+
 /**
  * Site controller
  */

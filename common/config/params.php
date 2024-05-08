@@ -8,7 +8,11 @@ return [
     'user.passwordMinLength' => 8,
     
     
+    'frontend_url' => env('FRONTEND_URL'),
+    'backend_url' => env('BACKEND_URL'),
     
     'storage_path' => env('STORAGE_PATH'),
     'storages' => json_decode(env('STORAGES'), true),
+    
+    
 ];

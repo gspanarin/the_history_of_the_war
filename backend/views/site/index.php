@@ -69,7 +69,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                <h3 class="card-title">Статистика за тегом lng</h3>
+                <h3 class="card-title">Статистика за мовою матеріалаlng</h3>
                 </div>
 
                 <div class="card-body p-0">
@@ -101,7 +101,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                <h3 class="card-title">Статистика за тегом format</h3>
+                <h3 class="card-title">Статистика за форматом</h3>
                 </div>
 
                 <div class="card-body p-0">
@@ -136,7 +136,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                <h3 class="card-title">Статистика за тегом source</h3>
+                <h3 class="card-title">Статистика за джерелом матеріалу</h3>
                 </div>
 
                 <div class="card-body p-0">
@@ -168,7 +168,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                <h3 class="card-title">Статистика за тегом creators</h3>
+                <h3 class="card-title">Статистика за авторством матеріалу</h3>
                 </div>
 
                 <div class="card-body p-0">

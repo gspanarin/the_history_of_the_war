@@ -12,15 +12,20 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <div class="form-group">
+        <?= Html::submitButton('Зберегти', ['class' => 'btn btn-success']) ?>
+    </div>
+    
     <?= $form->field($model, 'status')->textInput()->dropDownList(
             [0 => 'Видалений', 9 => 'Вимкнений', 10 => 'Активний'], ['prompt' => 'Оберіть вірний статус'])  ?>
     
     <?= $form->field($model, 'full_name')->textInput() ?>
     
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
 
+    <?= $form->field($model, 'organization_id')->textInput()->dropDownList(
+            $organizations, ['prompt' => 'Оберіть організацію'])  ?>
+    
+    
     <?php ActiveForm::end(); ?>
 
     

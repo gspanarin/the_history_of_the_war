@@ -229,18 +229,19 @@ class User extends ActiveRecord implements IdentityInterface
     }
     
     public function getOrganizationTitle(){
-        
         $organization = Organization::findOne($this->organization_id);
-        
         if ($organization)
-            return $organization->title;
+            return $organization->name;
         else
             return '';
     }
     
     public static function getFullName($user_id){
         $user = User::findOne(['id' => $user_id]);
-        return ( $user->full_name != '' ? $user->full_name : $user->username);
+        if ($user)
+            return ($user->full_name != '' ? $user->full_name : $user->username);
+        else 
+            return '---';
     }
     
     public static function getUsersList(){
@@ -256,4 +257,16 @@ class User extends ActiveRecord implements IdentityInterface
         return array_values(Yii::$app->authManager->getRolesByUser($this->id))[0];
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'Ідентификатор читача',
+            'full_name' => "Повне ім'я",
+            'email' => 'E-mail',
+            'organization_id' => 'Працює в ',
+            
+            'created_at' => 'Дата створення',
+            'updated_at' => 'Дата корегування',
+        ];
+    }
 }

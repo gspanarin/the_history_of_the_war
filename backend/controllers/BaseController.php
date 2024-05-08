@@ -15,7 +15,17 @@ class BaseController extends Controller {
 
     public function beforeAction($action){
         if (parent::beforeAction($action)) { 
-            if (!\Yii::$app->user->can(Yii::$app->controller->id . '_' . $action->id) && !\Yii::$app->user->can(Yii::$app->controller->id . '_*') && $action != 'logout') {
+            //Викидаємо з бекенду користувачів, які не мають до нього доступу
+            /*if (!\Yii::$app->user->can('backend')){
+                return parent::redirect(Yii::$app->params['frontend_url']);
+            }
+            if (\Yii::$app->user->isGuest){
+                return parent::redirect(Yii::$app->params['bacendend_url'] . 'site/login');
+            }*/
+            
+            if (!\Yii::$app->user->can(Yii::$app->controller->id . '_' . $action->id) && 
+                    !\Yii::$app->user->can(Yii::$app->controller->id . '_*') && 
+                    $action != 'logout' ) {
                 Yii::$app->session->setFlash('error', "Ваш обліковий запис не має доступу до цього розділу/функціоналу", false);
                 return $this->goHome();
             }
