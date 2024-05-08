@@ -10,6 +10,8 @@ use common\models\Section;
 
 use yii\data\ArrayDataProvider;
 use yii\web\Controller;
+use common\models\Tag;
+use common\models\File;
 
 
 class ArticleController extends Controller{

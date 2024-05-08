@@ -58,6 +58,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'title',
+                'format' => 'html',
+                'value' => function($model){
+                    return Html::a( Html::encode($model->title), ['view', 'id' => $model->id]);
+                }
             ],
             [
                 'attribute' => 'section_id',

@@ -16,28 +16,17 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="article-view">
 
-    <p>
-        <?= Html::a('Оновити', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Видалити', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Ви впевнені що хочете видалити цю статтю?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             //'id',
-            [
-                'attribute' => 'user',
+            /*[
+                'attribute' => 'user_id',
                 'filter' => User::getUsersList(),
                 'value' => function($model){
-                    return $model->getUserFullName();
+                    return User::getFullName( $model->user_id );
                 }
-            ],
+            ],*/
             [
                 'attribute' => 'section_id',
                 'value' => function($model){
@@ -51,8 +40,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->getStatusTitle();
                 }
             ],
-            'created_at:dateTime',
-            'updated_at:dateTime',
+            /*'created_at:dateTime',
+            'updated_at:dateTime',*/
             [
                 'attribute' => 'metadata',
                 'format' => 'RAW',
