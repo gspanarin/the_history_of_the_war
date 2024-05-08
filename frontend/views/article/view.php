@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use common\models\User;
-use common\models\section;
+use common\models\Section;
 
 
 /** @var yii\web\View $this */
