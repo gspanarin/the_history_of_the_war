@@ -54,6 +54,7 @@ use common\models\User;
                         ['label' => 'Користувачі', 'url' => ['/user']],
                         ['label' => 'Сторінки/інструкції', 'url' => ['/page']],
                         ['label' => 'Налаштування полів', 'url' => ['/tag']],
+                        ['label' => 'Налаштування значень полів', 'url' => ['/authority']],
                         ['label' => 'Розділи', 'url' => ['/section']]  ,
                         ['label' => 'Джерела статей', 'url' => ['/source']]  ,
                         ['label' => 'Статті', 'url' => ['/article']]]);

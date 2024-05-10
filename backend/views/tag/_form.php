@@ -3,7 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use dosamigos\tinymce\TinyMce;
-
+use common\models\TagInputType;
+use common\models\AuthorityType;
 /** @var yii\web\View $this */
 /** @var common\models\Field $model */
 /** @var yii\widgets\ActiveForm $form */
@@ -39,9 +40,26 @@ use dosamigos\tinymce\TinyMce;
 
     <?= $form->field($model, 'default_value')->textInput(['maxlength' => true]) ?>
 
+    
+    
+    
+    
+    
+    
+    
+    <?= $form->field($model, 'input_type')->dropDownList(
+        TagInputType::getList(),
+        ['prompt' => ' ... Оберіть метод вводу ... ']);    ?>
+
+    <?= $form->field($model, 'input_source')->dropDownList(
+        AuthorityType::getListIdsName(),
+        ['prompt' => ' ... Оберіть метод вводу ... ']); ?>
+
+    
+  
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Зберегти', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -22,7 +22,9 @@
         "dixonstarter/yii2-toggle-column": "*",
         "wbraganca/yii2-dynamicform": "*",
         "2amigos/yii2-tinymce-widget" : "*",
-        "yiithings/yii2-dotenv" : "*"
+        "yiithings/yii2-dotenv" : "*",
+        "kartik-v/yii2-widget-datepicker": "dev-master",
+        "yiisoft/yii2-jui": "~2.0.0"
         
     },
     "require-dev": {

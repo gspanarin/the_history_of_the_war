@@ -172,12 +172,12 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                 </div>
 
                 <div class="card-body p-0">
-                    <table class="table table-striped">
+                    <table class="table table-striped text-break">
                     <thead>
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>Tag</th>
-                        <th style="width: 40px">Count</th>
+                        <th style="width: 80px">Count</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -186,7 +186,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     foreach ($chartData['tags']['source'] as $tag):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-                            <td><?= $tag['value'] ?></td>
+                            <td><a href="<?= $tag['value'] ?>" target="_blanck"><?= $tag['value'] ?></a></td>
                             <td><?= $tag['count'] ?></td>
                         </tr>
                     <?php endforeach;?>

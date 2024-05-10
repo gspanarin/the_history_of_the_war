@@ -2,16 +2,19 @@
 
 namespace backend\controllers;
 
-use common\models\Dictionary;
-use common\models\DictionarySearch;
+use common\models\Authority;
+use common\models\AuthoritySearch;
+use common\models\AuthorityType;
+use common\models\AuthorityTypeSearch;
+
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DictionaryController implements the CRUD actions for Dictionary model.
+ * AuthorityController implements the CRUD actions for Authority model.
  */
-class DictionaryController extends Controller
+class AuthorityController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,24 +35,29 @@ class DictionaryController extends Controller
     }
 
     /**
-     * Lists all Dictionary models.
+     * Lists all Authority models.
      *
      * @return string
      */
-    public function actionIndex()
-    {
-        $searchModel = new DictionarySearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+    public function actionIndex(){
+        $AuthoritySearchModel = new AuthoritySearch();
+        $AuthorityDataProvider = $AuthoritySearchModel->search($this->request->queryParams);
 
+        $AuthorityTypeSearchModel = new AuthorityTypeSearch();
+        $AuthorityTypeDataProvider = $AuthorityTypeSearchModel->search($this->request->queryParams);
+        
+        
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'AuthoritySearchModel' => $AuthoritySearchModel,
+            'AuthorityDataProvider' => $AuthorityDataProvider,
+            'AuthorityTypeSearchModel' => $AuthorityTypeSearchModel,
+            'AuthorityTypeDataProvider' => $AuthorityTypeDataProvider,
         ]);
     }
 
     /**
-     * Displays a single Dictionary model.
-     * @param int $id ID
+     * Displays a single Authority model.
+     * @param int $id Ідентифікатор авторитетного значення
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -61,13 +69,13 @@ class DictionaryController extends Controller
     }
 
     /**
-     * Creates a new Dictionary model.
+     * Creates a new Authority model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Dictionary();
+        $model = new Authority();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -83,9 +91,9 @@ class DictionaryController extends Controller
     }
 
     /**
-     * Updates an existing Dictionary model.
+     * Updates an existing Authority model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id ID
+     * @param int $id Ідентифікатор авторитетного значення
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -103,9 +111,9 @@ class DictionaryController extends Controller
     }
 
     /**
-     * Deletes an existing Dictionary model.
+     * Deletes an existing Authority model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id ID
+     * @param int $id Ідентифікатор авторитетного значення
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -117,15 +125,15 @@ class DictionaryController extends Controller
     }
 
     /**
-     * Finds the Dictionary model based on its primary key value.
+     * Finds the Authority model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id ID
-     * @return Dictionary the loaded model
+     * @param int $id Ідентифікатор авторитетного значення
+     * @return Authority the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Dictionary::findOne(['id' => $id])) !== null) {
+        if (($model = Authority::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
@@ -134,21 +142,51 @@ class DictionaryController extends Controller
     
     
     
-    public function actionSearch($term){
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        
-        
-        return [$term, 'sss', 'ddd', 'fff', '444'];
-        
-        $rs = Cure::find()->where(['like', 'name_uz', $term])->all();
-        if($rs !=null){
-            $row_set = [];
-            foreach ($rs as $row){
-                $row_set[] = $row->name_uz; //build an array
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public function actionCreateAuthorityType(){
+        $model = new AuthorityType();
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
             }
-            return $row_set;
-        }else{
-            false;
+        } else {
+            $model->loadDefaultValues();
         }
+
+        return $this->render('create-authority-type', [
+            'model' => $model,
+        ]);
+    }
+    
+    public function actionCreateAuthorityValue(){
+        $model = new Authority();
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
+        return $this->render('create-authority-value', [
+            'model' => $model,
+        ]);
     }
 }

@@ -15,4 +15,5 @@ return [
     'storages' => json_decode(env('STORAGES'), true),
     
     
+    'bsVersion' => '4.x',
 ];

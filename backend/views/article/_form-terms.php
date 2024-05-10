@@ -1,6 +1,13 @@
 <?php
 
 use yii\helpers\Html;
+use common\models\Article;
+use kartik\date\DatePicker; 
+use yii\jui\AutoComplete;
+use yii\helpers\Url;
+use yii\web\JsExpression;
+
+
 $i = 0;
 ?>
 
@@ -9,7 +16,73 @@ $i = 0;
     <?php foreach ($fields[$tag->term_name] as $field => $value): ?>
         <tr class="tag-value-item tr-tag-<?= $tag->term_name ?>">
             <td class="vcenter">
-                <?= Html::input('text', "Article[tags_$tag->term_name][]", $value,['class' => "form-control"]) ?>
+                <?php
+
+                    switch ($tag->inputTypeMethod):
+                        //==========================================================
+                        //==========================================================
+                        case 'TextArea':
+                            echo Html::textArea("Article[tags_$tag->term_name][]", $value, ['class' => "form-control"]);
+                            break;
+                        //==========================================================
+                        //==========================================================
+                        case 'StandartValue':
+                            echo Html::dropDownList(
+                                "Article[tags_$tag->term_name][]",
+                                $value,
+                                $tag->inputTypeStandartValue,
+                                [
+                                    'prompt' => [
+                                        'text' => ' ... Оберіть потрібний варіант ...',
+                                        'options' => []
+                                    ],
+                                    'class' => "form-control",
+                                ]
+                            );
+                            break;
+                        //==========================================================
+                        //==========================================================
+                        case 'Dictionary':
+                            echo Html::input('text', "Article[tags_$tag->term_name][]", $value,['class' => "form-control"]);
+                            /*echo AutoComplete::widget([
+                                'name' => "Article[tags_$tag->term_name][]",    
+                                'options' => [
+                                    'class' => 'form-control',
+                                    'data-term_name' => $tag->term_name],
+                                'clientOptions' => [
+                                    'source' => Url::to(['dictionary/search']),
+                                    'minLength'=>'2',
+                                    'delay' => 0,
+                                ],
+                            ]);*/
+                            break;
+                        //==========================================================
+                        //==========================================================
+                        case 'DatePicker':
+                            echo DatePicker::widget([
+                                    'name'  => "Article[tags_$tag->term_name][]",
+                                    'value'  => $value,
+                                    'language' => 'uk',
+                                    'pluginOptions' => [
+                                        //  'autoclose' => true,
+                                        'format' => 'yyyy-mm-dd',
+                                        'todayHighlight' => true
+                                    ],
+                                
+                                    'class' => "form-control"
+                                ]);
+
+                            break;
+                        //==========================================================
+                        //==========================================================
+                        case 'SimpleText':
+                        default :
+                            echo Html::input('text', "Article[tags_$tag->term_name][]", $value,['class' => "form-control"]);
+                    endswitch;
+                      
+                
+                
+                ?>
             </td>
             <td class="text-center vcenter" style="width: 90px;">
                 <?php if ($i == 0) {?>
@@ -27,4 +100,22 @@ $i = 0;
     <?php endforeach; ?>
     </tbody>
 </table>
+
+
+
+
+
+
+
+<?php 
+
+$script = <<< JS
+
+//$( ".dictionary" ).autocomplete({
+//    source: "/official/dictionary/search"
+//});
+
+JS;
+
+$this->registerJs($script, yii\web\View::POS_END);
 
