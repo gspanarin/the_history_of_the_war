@@ -13,7 +13,7 @@ use common\models\File;
 use yii\web\UploadedFile;
 use yii\data\ArrayDataProvider;
 use backend\controllers\BaseController;
-
+use yii\data\Pagination;
 
 class ArticleController extends BaseController{
 
@@ -47,10 +47,17 @@ class ArticleController extends BaseController{
     {
         $searchModel = new ArticleSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $dataProvider->pagination->pageSize = 3;
+
+        $pages = new Pagination([
+            'totalCount' => $dataProvider->getTotalCount(),
+            'defaultPageSize' => $dataProvider->pagination->pageSize,
+                ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'pages' => $pages,
         ]);
     }
 
