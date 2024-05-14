@@ -7,6 +7,7 @@ use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use common\models\Section;
 use common\models\User;
+use yii\bootstrap4\LinkPager;
 /** @var yii\web\View $this */
 /** @var common\models\ArticleSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
@@ -83,5 +84,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
-
+    <?= LinkPager::widget(['pagination' => $pages,]);?>
+    
 </div>
