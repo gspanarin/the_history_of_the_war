@@ -109,7 +109,10 @@ class ArticleController extends BaseController{
                 $uploadForm = new UploadForm();
                 $uploadForm->files = UploadedFile::getInstances($model, 'files');            
                 if ($uploadForm->upload($model)) {
-                    //Обробка ситуації, коли не завантажилися файли
+                    // ToDo:
+                    // Обробка ситуації, коли не завантажилися файли
+                    // Скоріш за все треба робити запис повідомлення у Flash
+                    // Yii::$app->session->setFlash('error', "Ваш обліковий запис не має доступу до цього розділу/функціоналу", false);
                 }
                 
                 return $this->redirect(['update', 'id' => $model->id]);
@@ -160,6 +163,8 @@ class ArticleController extends BaseController{
                 // file is uploaded successfully
                 //return;
             }
+            
+            
             $metadata = [];
             $fields = $this->request->post();
             
