@@ -47,7 +47,7 @@ class ArticleController extends BaseController{
     {
         $searchModel = new ArticleSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-        $dataProvider->pagination->pageSize = 3;
+        $dataProvider->pagination->pageSize = 20;
 
         $pages = new Pagination([
             'totalCount' => $dataProvider->getTotalCount(),
