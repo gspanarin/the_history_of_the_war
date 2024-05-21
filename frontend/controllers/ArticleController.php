@@ -13,6 +13,7 @@ use yii\web\Controller;
 use common\models\Tag;
 use common\models\File;
 
+use yii\data\Pagination;
 
 class ArticleController extends Controller{
 
@@ -32,6 +33,10 @@ class ArticleController extends Controller{
             $queryParams = array_merge($queryParams, ['ArticleSearch' => ['section_array' => $sections_ids]]);
         $current_section = Section::findOne(['id' => $section_id]);
         $dataProvider = $searchModel->search($section_id ? $queryParams : null);
+        $dataProvider->pagination = new Pagination([
+            'totalCount' => $dataProvider->getTotalCount(),
+            'defaultPageSize' => Yii::$app->params['frontend.article.pagination_pagesize']
+                ]);
         
         return $this->render('index', [
             'searchModel' => $searchModel,
