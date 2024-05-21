@@ -22,9 +22,10 @@ return [
     // Налаштування окремих частин
     // BACKEND
     // Контролер ARTICLE
-    'backend.article.pagination_pagesize' => env('BACKEND_ARTICLE_PAGINATION_PAGESIZE'),
+    'backend.article.pagination_pagesize' => env('BACKEND.ARTICLE.PAGINATION_PAGESIZE'),
+    'backend.article.upload_file_extensions' => env('BACKEND.ARTICLE.UPLOAD_FILE_EXTENSIONS'),
     
     // FRONTEND
     // Контролер ARTICLE
-    'frontend.article.pagination_pagesize' => env('FRONTEND_ARTICLE_PAGINATION_PAGESIZE'),
+    'frontend.article.pagination_pagesize' => env('FRONTEND.ARTICLE.PAGINATION_PAGESIZE'),
 ];
