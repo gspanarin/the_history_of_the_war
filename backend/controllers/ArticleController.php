@@ -47,17 +47,14 @@ class ArticleController extends BaseController{
     {
         $searchModel = new ArticleSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-        $dataProvider->pagination->pageSize = 20;
-
-        $pages = new Pagination([
+        $dataProvider->pagination = new Pagination([
             'totalCount' => $dataProvider->getTotalCount(),
-            'defaultPageSize' => $dataProvider->pagination->pageSize,
+            'defaultPageSize' => Yii::$app->params['backend.article.pagination_pagesize']
                 ]);
-
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'pages' => $pages,
         ]);
     }
 
