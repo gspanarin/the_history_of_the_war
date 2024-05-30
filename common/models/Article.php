@@ -96,6 +96,15 @@ class Article extends \yii\db\ActiveRecord{
         return parent::beforeSave($insert);
     }
     
+    
+    public function beforeDelete(){
+        //Видаляємо сформовані у словнику терміни
+        foreach ($this->dictionaries as $child) {
+            $child->delete();
+        }
+        return parent::beforeDelete();
+    }
+    
     public function getTitle(){
         $metadata = json_decode($this->metadata);
         return (isset($metadata->title[0]) ? $metadata->title[0] : '');
