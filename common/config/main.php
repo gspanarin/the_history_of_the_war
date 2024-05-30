@@ -5,6 +5,11 @@ return [
         '@npm'   => '@vendor/npm-asset',
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
+    'modules'=>[
+        'pdfjs' => [
+            'class' => '\yii2assets\pdfjs\Module',
+        ],
+    ],
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',

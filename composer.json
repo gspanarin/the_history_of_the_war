@@ -24,7 +24,9 @@
         "2amigos/yii2-tinymce-widget" : "*",
         "yiithings/yii2-dotenv" : "*",
         "kartik-v/yii2-widget-datepicker": "dev-master",
-        "yiisoft/yii2-jui": "~2.0.0"
+        "yiisoft/yii2-jui": "~2.0.0",
+        "yii2assets/yii2-pdfjs": ">=1.0",
+        "wbraganca/yii2-videojs-widget": "~1.0"
         
     },
     "require-dev": {

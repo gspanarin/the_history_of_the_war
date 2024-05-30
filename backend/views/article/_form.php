@@ -5,7 +5,7 @@ use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Tabs;
 use wbraganca\dynamicform\DynamicFormWidget;
 use yii\bootstrap4\Modal;
-
+use yii\helpers\Url;
 ?>
 
 <div class="person-form">
@@ -64,8 +64,7 @@ use yii\bootstrap4\Modal;
     
     
     ActiveForm::end(); ?>
-
-    
+   
 </div>
 
 

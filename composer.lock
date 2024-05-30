@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a0561a2b28a4519297bc147982a128f",
+    "content-hash": "fa576eb37942235eade606f60b85e561",
     "packages": [
         {
             "name": "2amigos/yii2-tinymce-widget",
@@ -119,7 +119,7 @@
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "git@github.com:RobinHerbots/Inputmask.git",
+                "url": "https://github.com/RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -186,6 +186,21 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/mathiasbynens/punycode.js/zipball/38c8d3131a82567bfef18da09f7f4db68c84f8a3",
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
+            },
+            "type": "bower-asset"
+        },
+        {
+            "name": "bower-asset/video.js",
+            "version": "v5.1.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:videojs/video.js.git",
+                "reference": "19ee5100eaed903862203e169b1567f84c093548"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/videojs/video.js/zipball/19ee5100eaed903862203e169b1567f84c093548",
+                "reference": "19ee5100eaed903862203e169b1567f84c093548"
             },
             "type": "bower-asset"
         },
@@ -1534,16 +1549,16 @@
         },
         {
             "name": "tinymce/tinymce",
-            "version": "7.1.0",
+            "version": "7.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tinymce/tinymce-dist.git",
-                "reference": "05a2ae86f455231d1734f2442664b6891ec4d8dd"
+                "reference": "f671e05aca24ac73298ae4922b34607b634d59f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/05a2ae86f455231d1734f2442664b6891ec4d8dd",
-                "reference": "05a2ae86f455231d1734f2442664b6891ec4d8dd",
+                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/f671e05aca24ac73298ae4922b34607b634d59f4",
+                "reference": "f671e05aca24ac73298ae4922b34607b634d59f4",
                 "shasum": ""
             },
             "type": "component",
@@ -1587,9 +1602,9 @@
                 "wysiwyg"
             ],
             "support": {
-                "source": "https://github.com/tinymce/tinymce-dist/tree/7.1.0"
+                "source": "https://github.com/tinymce/tinymce-dist/tree/7.1.1"
             },
-            "time": "2024-05-08T05:24:56+00:00"
+            "time": "2024-05-22T08:18:50+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -1719,6 +1734,116 @@
                 "wiki": "https://github.com/wbraganca/yii2-dynamicform/wiki/"
             },
             "time": "2020-05-18T18:07:00+00:00"
+        },
+        {
+            "name": "wbraganca/yii2-videojs-widget",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wbraganca/yii2-videojs-widget.git",
+                "reference": "e8d0f161af6a5cc47e3c74edee680879d94818a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wbraganca/yii2-videojs-widget/zipball/e8d0f161af6a5cc47e3c74edee680879d94818a8",
+                "reference": "e8d0f161af6a5cc47e3c74edee680879d94818a8",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/video.js": "~5.1.0",
+                "yiisoft/yii2": "~2.0"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                },
+                "asset-ignore-files": {
+                    "bower-asset/video.js": [
+                        "*/**",
+                        "!dist/*"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "wbraganca\\videojs\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Wanderson Bragança",
+                    "email": "wanderson.wbc@gmail.com",
+                    "homepage": "http://wbraganca.com"
+                }
+            ],
+            "description": "The yii2-videojs-widget is a Yii 2 wrapper for the [video.js](http://www.videojs.com/). A JavaScript and CSS library that makes it easier to work with and build on HTML5 video. This is also known as an HTML5 Video Player.",
+            "keywords": [
+                "html5 video",
+                "videojs",
+                "yii2",
+                "yii2-extension",
+                "yii2-videojs",
+                "yii2-videojs-widget"
+            ],
+            "support": {
+                "issues": "https://github.com/wbraganca/yii2-videojs-widget/issues",
+                "source": "https://github.com/wbraganca/yii2-videojs-widget",
+                "wiki": "https://github.com/wbraganca/yii2-videojs-widget/wiki/"
+            },
+            "time": "2015-11-05T18:39:32+00:00"
+        },
+        {
+            "name": "yii2assets/yii2-pdfjs",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Yii2Assets/yii2-pdfjs.git",
+                "reference": "50fd65f3d9cc8bc4ed1936bd8379569c8c14af17"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Yii2Assets/yii2-pdfjs/zipball/50fd65f3d9cc8bc4ed1936bd8379569c8c14af17",
+                "reference": "50fd65f3d9cc8bc4ed1936bd8379569c8c14af17",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "yii2assets\\pdfjs\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sathit Seethaphon",
+                    "email": "dixonsatit@gmail.com"
+                }
+            ],
+            "description": "Yii2 Extension  pdf.js Portable Document Format (PDF) viewer ",
+            "keywords": [
+                "PDF Reader",
+                "extension",
+                "pdf",
+                "pdfjs",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/Yii2Assets/yii2-pdfjs/issues",
+                "source": "https://github.com/Yii2Assets/yii2-pdfjs/tree/develop"
+            },
+            "time": "2016-07-21T15:55:55+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -3753,20 +3878,20 @@
         },
         {
             "name": "psr/http-factory",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-factory.git",
-                "reference": "e616d01114759c4c489f93b099585439f795fe35"
+                "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/e616d01114759c4c489f93b099585439f795fe35",
-                "reference": "e616d01114759c4c489f93b099585439f795fe35",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
+                "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0.0",
+                "php": ">=7.1",
                 "psr/http-message": "^1.0 || ^2.0"
             },
             "type": "library",
@@ -3790,7 +3915,7 @@
                     "homepage": "https://www.php-fig.org/"
                 }
             ],
-            "description": "Common interfaces for PSR-7 HTTP message factories",
+            "description": "PSR-17: Common interfaces for PSR-7 HTTP message factories",
             "keywords": [
                 "factory",
                 "http",
@@ -3802,9 +3927,9 @@
                 "response"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-factory/tree/1.0.2"
+                "source": "https://github.com/php-fig/http-factory"
             },
-            "time": "2023-04-10T20:10:41+00:00"
+            "time": "2024-04-15T12:06:14+00:00"
         },
         {
             "name": "psr/http-message",

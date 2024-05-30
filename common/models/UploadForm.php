@@ -14,7 +14,7 @@ class UploadForm extends Model{
 
     public function rules(){
         return [
-            [['files'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, avi, mp3, pdf, txt, doc', 'maxFiles' => 10],
+            [['files'], 'file', 'skipOnEmpty' => false, 'extensions' => Yii::$app->params['backend.article.upload_file_extensions'], 'maxFiles' => 10],
         ];
     }
     

@@ -1,6 +1,8 @@
 <?php
 use yii\grid\GridView;
 use yii\helpers\Html;
+use yii\bootstrap4\Modal;
+use yii\helpers\Url;
 
 echo GridView::widget([
     'dataProvider' => $files,
@@ -17,7 +19,7 @@ echo GridView::widget([
         [
             
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{create-icon} {delete-file}',
+            'template' => '{create-icon} {view-file} {download-file} {delete-file}',
             'buttons'=> [
                 'create-icon' => function ($url, $files){
                     return Html::a(
@@ -42,7 +44,45 @@ echo GridView::widget([
                                 ],
                             ]
                         );
-                }
+                },
+                'view-file' => function ($url, $files){
+                    //dd($files);
+                    switch ($files->extension) {
+                    case 'pdf':
+                        return Html::a(
+                            "Переглянути файл", 
+                            'view-pdf?' . 'id=' . $files->id, 
+                            [
+                                'title' => "Переглянути файл",
+                                'class' => 'btn btn-block btn-primary',
+                                'target' => '_blanck',
+                            ]
+                        );                
+                    case 'mp4':
+                        return Html::a(
+                            "Переглянути відео", 
+                            'view-video?' . 'id=' . $files->id, 
+                            [
+                                'title' => "Переглянути відео",
+                                'class' => 'btn btn-block btn-primary',
+                                'target' => '_blanck',
+                            ]
+                        );
+                    default:
+                        break;
+
+                    }
+                },
+                'download-file' => function ($url, $files) {
+                    return Html::a(
+                            "Завантажити файл", 
+                            'download-file?id=' .$files->id, 
+                            [
+                                'title' => "Завантажити файл",
+                                'class' => 'btn btn-block btn-warning',
+                            ]
+                    );
+                },
             ],
         ],
     ],
@@ -50,4 +90,12 @@ echo GridView::widget([
             
 echo $form->field($model, 'files[]')->fileInput(['multiple' => true,]);
 
+/*
+ echo \yii2assets\pdfjs\PdfJs::widget([
+                            //'url' => Url::base().'/downloads/manualStart_up.pdf'
+                            //'url' => 'C:\www\warhistory_storage\2024\04\1\66621__2014.pdf',
+                            'url' => Url::base() . 'article/download-file?id=1'
 
+                       ]);
+
+ */

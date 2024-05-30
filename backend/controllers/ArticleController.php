@@ -255,5 +255,20 @@ class ArticleController extends BaseController{
     
     
     
+     public function actionViewPdf($id){
+        $file = File::FindOne($id);
+        
+        return $this->render('view-file/pdf', [
+            'file' => $file,
+        ]);
+    }
+    
+    public function actionViewVideo($id){
+        $file = File::FindOne($id);
+        
+        return $this->render('view-file/video', [
+            'file' => $file,
+        ]);
+    }
     
 }
