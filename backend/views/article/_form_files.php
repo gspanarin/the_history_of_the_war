@@ -19,7 +19,7 @@ echo GridView::widget([
         [
             
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{create-icon} {view-files} {delete-file}',
+            'template' => '{create-icon} {view-file} {download-file} {delete-file}',
             'buttons'=> [
                 'create-icon' => function ($url, $files){
                     return Html::a(
@@ -45,7 +45,7 @@ echo GridView::widget([
                             ]
                         );
                 },
-                'view-files' => function ($url, $files){
+                'view-file' => function ($url, $files){
                     //dd($files);
                     switch ($files->extension) {
                     case 'pdf':
@@ -72,7 +72,17 @@ echo GridView::widget([
                         break;
 
                     }
-                }
+                },
+                'download-file' => function ($url, $files) {
+                    return Html::a(
+                            "Завантажити файл", 
+                            'download-file?id=' .$files->id, 
+                            [
+                                'title' => "Завантажити файл",
+                                'class' => 'btn btn-block btn-warning',
+                            ]
+                    );
+                },
             ],
         ],
     ],
