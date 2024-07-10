@@ -10,6 +10,7 @@ return [
         ],
         'request' => [
             'cookieValidationKey' => 'test',
+            'baseUrl' => '/official',
         ],
     ],
 ];

@@ -18,12 +18,26 @@ class ProjectController extends Controller{
     
     
     public function actionInit(){
-        $this->createAdmin();
-        $this->CreateRBACData();
+        //$this->createAdmin();
+        //$this->CreateRBACData();
         
         
     }
     
+    public function actionResetAdminPassword(){
+
+
+        /*$admin = User::findOne(1);
+        if ($admin){
+            $admin->setPassword('admin');
+            $admin->generateAuthKey();
+            $admin->save();
+            print 'Password reseted';
+        }else{
+            print 'User not found';
+        }
+        return 'ok';*/
+    }
     
     private function CreateAdmin(){
         echo "=====================================\r\n";

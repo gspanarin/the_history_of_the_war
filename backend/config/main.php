@@ -35,14 +35,16 @@ return [
                 ],
             ],
         ],
-        'errorHandler' => [
+        /*'errorHandler' => [
             'errorAction' => 'site/error',
-        ],
+        ],*/
         
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                 
+                 'page/<alias:\w+>.html'=>'page/view-by-alias',
             ],
         ],
         'urlManagerFrontEnd' => [

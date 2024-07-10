@@ -17,10 +17,23 @@ namespace backend\tests;
  *
  * @SuppressWarnings(PHPMD)
  */
+
+use Tests\Support\Helper\Functional;
+
 class FunctionalTester extends \Codeception\Actor
 {
     use _generated\FunctionalTesterActions;
    /**
     * Define custom actions here
     */
+    
+    public function sendPostRequest($uri, $parameters, $files = [], $server = [], $content = null) {
+        return $this->getScenario()->runStep(new \Codeception\Step\Action('sendPostRequest', func_get_args()));
+    }
+
+    
+    public function test($text = '5555'){
+        return $this->getScenario()->runStep(new \Codeception\Step\Action('dd', func_get_args()));
+        
+    }
 }

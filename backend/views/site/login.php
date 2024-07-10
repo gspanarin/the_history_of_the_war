@@ -1,6 +1,8 @@
 <?php
 use yii\helpers\Html;
+use common\widgets\Alert;
 ?>
+<?= Alert::widget() ?>
 <div class="card">
     <div class="card-body login-card-body">
         <p class="login-box-msg">Sign in to start your session</p>
@@ -41,13 +43,14 @@ use yii\helpers\Html;
         </div>
 
         <?php \yii\bootstrap4\ActiveForm::end(); ?>
-
+        <!--
         <p class="mb-1">
             <a href="#">I forgot my password</a>
         </p>
         <p class="mb-0">
             <a href="register.html" class="text-center">Register a new membership</a>
         </p>
+        -->
     </div>
     <!-- /.login-card-body -->
 </div>

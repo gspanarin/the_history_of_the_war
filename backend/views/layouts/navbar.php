@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 ?>
 <!-- Navbar -->
@@ -11,7 +12,7 @@ use yii\helpers\Html;
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?=\yii\helpers\Url::home()?>" class="nav-link">Home</a>
+            <a href="<?=\yii\helpers\Url::home()?>" class="nav-link">На початок</a>
         </li>
         
         <li class="nav-item d-none d-sm-inline-block">
@@ -21,7 +22,7 @@ use yii\helpers\Html;
         <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Інструкції та документи</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                <li><a href="#" class="dropdown-item">Some action </a></li>
+                <li><a href="<?= Url::home() . 'page/add_article.html' ?>" class="dropdown-item">Додавання матеріалів у Архів</a></li>
                 <li><a href="#" class="dropdown-item">Some other action</a></li>
                 
                 
@@ -184,7 +185,7 @@ use yii\helpers\Html;
             </div>
         </li>
         <li class="nav-item">
-            <?= Html::a('<i class="fas fa-sign-out-alt"></i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link']) ?>
+            <?= Html::a('<i class="fas fa-sign-out-alt"></i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link logout']) ?>
         </li>
         <!--
         <li class="nav-item">

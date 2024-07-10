@@ -23,6 +23,33 @@ class Article extends \yii\db\ActiveRecord{
         10 => 'Опублікована',
     ];
 
+    /*
+     * Перевизначаємо функцію load
+     * додаємо обробку массиву елементів тегів
+     * @param array $data асоціативний масив клю поля => значення поля
+     * @param string|null $formName назва форми, з якої завантажуються данні
+     * @param int $id Ідентифікатор статті
+     * @return type boolean
+     */
+    public function load($data, $formName = null){
+        if (!empty($data['Article'] )){
+            $metadata = [];
+            foreach($data['Article'] as $key => $values)
+                if (substr($key, 0, 4) == 'tags')
+                    foreach ($values as $value)
+                        if (trim($value) != '')
+                            $metadata[substr($key, 5)][] = $value;
+            $this->metadata = json_encode($metadata, JSON_UNESCAPED_UNICODE);
+        }
+        
+        return parent::load($data, $formName);
+    }
+            
+    
+    /**
+     * 
+     * @return type
+     */
     public function behaviors(){
         return [
             'timestamp' => [
@@ -79,10 +106,20 @@ class Article extends \yii\db\ActiveRecord{
     
     
     public function beforeSave($insert) {
-        if (!$insert){
+        $metadata = json_decode($this->metadata);
+        $tag = 'date:archived';
+        if (!isset($metadata->$tag)){
+            $metadata->$tag = [date('Y-m-d', \time())];
+            $this->metadata = json_encode($metadata);
+        }
+
+        if ($insert){
+            //$metadata
+        }else{
             Dictionary::deleteAll(['article_id' => $this->id]);
         }
-        $metadata = json_decode($this->metadata);
+        
+        
         foreach($metadata as $tag => $values){
             foreach ($values as $value){
                 $term = new Dictionary();
@@ -96,14 +133,26 @@ class Article extends \yii\db\ActiveRecord{
         return parent::beforeSave($insert);
     }
     
+    
+    public function beforeDelete(){
+        //Видаляємо сформовані у словнику терміни
+        foreach ($this->dictionaries as $child) {
+            $child->delete();
+        }
+        
+        return parent::beforeDelete();
+    }
+    
     public function getTitle(){
         $metadata = json_decode($this->metadata);
+        
         return (isset($metadata->title[0]) ? $metadata->title[0] : '');
     }
     
     public function getText_preview(){
         $metadata = json_decode($this->metadata);
         $text = (isset($metadata->description[0]) ? $metadata->description[0] : '');
+        
         return (strlen($text) > 200 ? mb_substr($text, 0, 200) . '...' : $text);
     }
     
@@ -112,7 +161,14 @@ class Article extends \yii\db\ActiveRecord{
         return (isset($metadata->source[0]) ? $metadata->source[0] : '');
     }*/
     
-    public function tag_value($tag, $number = 0){
+    
+    /**
+     * Отримуємо значення тегу за його назвою та номером
+     * @param type string $tag
+     * @param type int $number
+     * @return type string
+     */
+    public function tag_value(string $tag, int $number = 0){
         $metadata = json_decode($this->metadata);
         
         return (isset($metadata->$tag[$number]) ? $metadata->$tag[$number] : '' );

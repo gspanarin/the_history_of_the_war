@@ -205,10 +205,15 @@ class SiteController extends Controller{
         }
 
         $this->layout = 'blank';
-//dump($this);
-//die();
+
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            if (!\Yii::$app->user->can('backend')) {
+                \Yii::$app->user->logout(true);
+                \Yii::$app->session->setFlash('error', "Ваш обліковий запис не має доступу до цього розділу/функціоналу", false);
+                //return parent::redirect(Yii::$app->params['frontend_url']);
+                return parent::redirect('login');
+            }
             return $this->goBack();
         }
 

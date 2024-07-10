@@ -1,5 +1,6 @@
 <?php
 
+//use Yii;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -12,30 +13,20 @@ $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="page-view">
-    
+
+    <?php if (\Yii::$app->user->can('page_edit')){ ?>
     <p>
-        <?= Html::a('Оновити', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Відредагувати', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Видалити', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Ви впевнені, що хочете видалити цю сторінку?',
+                'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
     </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            //'id',
-            'status',
-            'type',
-            'alias',
-            'title',
-            'body:raw',
-            'created_at:dateTime',
-            'updated_at:dateTime',
-        ],
-    ]) ?>
+    <?php } ?>
+    
+    <?= $model->body ?>
 
 </div>

@@ -102,10 +102,10 @@ class OrganizationController extends BaseController{
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id){
         $this->findModel($id)->delete();
-
+        Yii::$app->session->setFlash('success', 'Організація із ідентифікатором ' . $id . ' видалена');
+        
         return $this->redirect(['index']);
     }
 

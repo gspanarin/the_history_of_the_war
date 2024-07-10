@@ -14,16 +14,20 @@ class UploadForm extends Model{
 
     public function rules(){
         return [
-            [['files'], 'file', 'skipOnEmpty' => false, 'extensions' => Yii::$app->params['backend.article.upload_file_extensions'], 'maxFiles' => 10],
+            [['files'], 'file', 'skipOnEmpty' => false,  'extensions' => Yii::$app->params['backend.article.upload_file_extensions'], 'maxFiles' => 5],            
         ];
     }
     
+    /*
+     * ToDo:
+     * валідацію типів перенести у окрему функцію і прибрати із rules()
+     * На поточний момент при обранні декількох файлів і наявності одного файлу недозволеного формату, не завантажуються усі файли
+     */
     public function upload($article){
         if ($this->validate()) { 
             foreach ($this->files as $file) {
                 $path = $this->createPath($article) . '/' . $file->baseName . '.' . $file->extension;
                 $file->saveAs($path);
-                
                 $fileDB = new File();
                 $fileDB->user_id = Yii::$app->user->getId();
                 $fileDB->extension = $file->extension;
@@ -32,9 +36,6 @@ class UploadForm extends Model{
                 $fileDB->file_path = $path;
                 $fileDB->article_id = $article->id;
                 $fileDB->save();
-                
-                
-                
             }
             return true;
         } else {
