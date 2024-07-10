@@ -14,14 +14,14 @@ use yii\web\UploadedFile;
 use yii\data\ArrayDataProvider;
 use backend\controllers\BaseController;
 use yii\data\Pagination;
+use yii\web\NotFoundHttpException;
 
 class ArticleController extends BaseController{
 
+    
     public static function permissions_list(){
         return array_merge(['delete-file'], parent::permissions_list());
     }
-    
-    
     
     
     public function behaviors(){
@@ -99,21 +99,17 @@ class ArticleController extends BaseController{
         ]);
         
         if ($this->request->isPost) {
-            
             $fields = $this->request->post();
-            foreach($fields['Article'] as $key => $values)
-                if (substr($key, 0, 4) == 'tags')
-                    foreach ($values as $value)
-                        if (trim($value) != '')
-                            $metadata[substr($key, 5)][] = $value;
-
-            $model->metadata = json_encode($metadata, JSON_UNESCAPED_UNICODE);
+            //$model->metadata = json_encode($metadata, JSON_UNESCAPED_UNICODE);
             $model->user_id = Yii::$app->user->getId();
             if ($model->load($this->request->post()) && $model->save()) {
                 $uploadForm = new UploadForm();
                 $uploadForm->files = UploadedFile::getInstances($model, 'files');            
                 if ($uploadForm->upload($model)) {
+                    //dd($uploadForm);
                     //Обробка ситуації, коли не завантажилися файли
+                } else {
+                    Yii::$app->session->setFlash('error', "При завантаженні файлу виникла проблема", false);
                 }
                 
                 return $this->redirect(['update', 'id' => $model->id]);
@@ -152,7 +148,6 @@ class ArticleController extends BaseController{
                     $fields[$tag->term_name][] = $value;
             else 
                 $fields[$tag->term_name][] = '';
-        
         $files = new ArrayDataProvider([
             'allModels' => $model->files,
         ]);
@@ -161,18 +156,12 @@ class ArticleController extends BaseController{
             $uploadForm = new UploadForm();
             $uploadForm->files = UploadedFile::getInstances($model, 'files');            
             if ($uploadForm->upload($model)) {
-                // file is uploaded successfully
-                //return;
+            } else {
+                Yii::$app->session->setFlash('error', "При завантаженні файлу виникла проблема", false);
             }
             $metadata = [];
             $fields = $this->request->post();
             
-            foreach($fields['Article'] as $key => $values)
-                if (substr($key, 0, 4) == 'tags')
-                    foreach ($values as $value)
-                        if (trim($value) != '')
-                            $metadata[substr($key, 5)][] = $value;
-
             $model->metadata = json_encode($metadata, JSON_UNESCAPED_UNICODE);
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['update', 'id' => $model->id]);
@@ -196,10 +185,10 @@ class ArticleController extends BaseController{
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id){
         $this->findModel($id)->delete();
-
+        Yii::$app->session->setFlash('success', 'Стаття із ідентифікатором ' . $id . ' видалена');
+        
         return $this->redirect(['index']);
     }
 
