@@ -88,7 +88,7 @@ echo GridView::widget([
     ],
 ]);
             
-echo $form->field($model, 'files[]')->fileInput(['multiple' => true,]);
+echo $form->field($model, 'files[]')->fileInput(['multiple' => true]);
 
 /*
  echo \yii2assets\pdfjs\PdfJs::widget([

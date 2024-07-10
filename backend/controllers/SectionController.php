@@ -122,9 +122,9 @@ class SectionController extends BaseController{
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id){
         $this->findModel($id)->delete();
+        Yii::$app->session->setFlash('success', 'Розділ із ідентифікатором ' . $id . ' видалений');
 
         return $this->redirect(['index']);
     }

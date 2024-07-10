@@ -40,7 +40,7 @@ return [
         ],
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=' . env('DB_HOST') . ';dbname=' . env('DB_NAME'),
+            'dsn' => 'mysql:host=' . env('DB_HOST') . ';dbname=' . env('DB_NAME') .'.test',
             'username' => env('DB_USER'),
             'password' => env('DB_PASS'),
             'charset' => 'utf8mb4',

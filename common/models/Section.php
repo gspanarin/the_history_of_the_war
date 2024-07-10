@@ -23,6 +23,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $description Детальний опис
  * @property string|null $icon Іконка
  * @property int|null $pid Батьківський розділ
+ * @property int|null $sort Порядок сортування
  * @property int|null $created_at Дата створення
  * @property int|null $updated_at Дата корегування
  */
@@ -52,8 +53,7 @@ class Section extends \yii\db\ActiveRecord implements \dixonstarter\togglecolumn
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
+    public static function tableName(){
         return '{{%section}}';
     }
 
@@ -64,7 +64,7 @@ class Section extends \yii\db\ActiveRecord implements \dixonstarter\togglecolumn
     {
         return [
             [['alias', 'title'], 'required'],
-            [['status', 'pid', 'created_at', 'updated_at'], 'integer'],
+            [['status', 'pid', 'created_at', 'updated_at', 'sort'], 'integer'],
             [['description'], 'string'],
             [['alias', 'title', 'icon'], 'string', 'max' => 255],
         ];
@@ -141,7 +141,7 @@ class Section extends \yii\db\ActiveRecord implements \dixonstarter\togglecolumn
     public function getLastSortValue(){
         $next = Section::find()->where(['pid' => $this->pid])->orderBy([ 'sort' => SORT_DESC])->one();
 
-        return $next->sort;
+        return empty($next->sort) ? 0 : $next->sort;
     }
     
     use \dixonstarter\togglecolumn\ToggleActionTrait;
