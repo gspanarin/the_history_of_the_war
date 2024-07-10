@@ -1,6 +1,8 @@
 <?php
 use yii\helpers\Html;
+use common\widgets\Alert;
 ?>
+<?= Alert::widget() ?>
 <div class="card">
     <div class="card-body login-card-body">
         <p class="login-box-msg">Sign in to start your session</p>

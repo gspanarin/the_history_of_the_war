@@ -10,13 +10,15 @@ use Yii;
 use Codeception\Attribute\Skip;
 use backend\tests\FunctionalTester;
 use backend\tests\Helper\Functional;
+use common\models\User;
 
 class ArticleCest{
    
     
     public function Index(FunctionalTester $I){      
         $I->amGoingTo("Перевірити стартову сторінку списку усіх статей");
-        $I->amLoggedInAs(1);
+        $admin = User::findByUsername('admin');
+        $I->amLoggedInAs($admin);
         $I->amOnPage('official/article/index/');
         $I->see("Статті");
         $I->makeHtmlSnapshot('ArticleCest.Index');
