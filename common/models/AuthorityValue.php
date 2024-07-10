@@ -13,7 +13,7 @@ use Yii;
  *
  * @property AuthorityType $authorityType
  */
-class Authority extends \yii\db\ActiveRecord
+class AuthorityValue extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
