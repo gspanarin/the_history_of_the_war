@@ -106,9 +106,20 @@ class Article extends \yii\db\ActiveRecord{
     
     
     public function beforeSave($insert) {
-        if (!$insert)
-            Dictionary::deleteAll(['article_id' => $this->id]);
         $metadata = json_decode($this->metadata);
+        $tag = 'date:archived';
+        if (!isset($metadata->$tag)){
+            $metadata->$tag = [date('Y-m-d', \time())];
+            $this->metadata = json_encode($metadata);
+        }
+
+        if ($insert){
+            //$metadata
+        }else{
+            Dictionary::deleteAll(['article_id' => $this->id]);
+        }
+        
+        
         foreach($metadata as $tag => $values){
             foreach ($values as $value){
                 $term = new Dictionary();

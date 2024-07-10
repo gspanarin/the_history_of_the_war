@@ -192,7 +192,7 @@ class RbacController extends BaseController{
     }
     
 
-    public function actionPermisionDelete($id){
+    public function actionPermissionDelete($id){
         $this->findModelByAttr('Permission', 'name', $id)->delete();
         return $this->redirect(['rbac/role-index']);
     }

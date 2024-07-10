@@ -12,9 +12,9 @@ use dosamigos\tinymce\TinyMce;
 <div class="page-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
-
+    
+    <?= $form->field($model, 'status')->textInput()->dropDownList([0 => 'Не опублікована', 1 => 'Опублікована']); ?>
+    
     <?= $form->field($model, 'type')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'alias')->textInput(['maxlength' => true]) ?>
