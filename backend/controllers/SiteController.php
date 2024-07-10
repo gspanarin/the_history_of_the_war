@@ -128,6 +128,7 @@ class SiteController extends Controller{
                     'value',
                     'count(id) as count'])
                 ->where(['tag_id' => 15])
+                ->orderBy('count DESC')
                 ->groupBy('value') 
                 ->asArray()->all();
         
@@ -136,6 +137,7 @@ class SiteController extends Controller{
                     'value',
                     'count(id) as count'])
                 ->where(['tag_id' => 4])
+                ->orderBy('count DESC')
                 ->groupBy('value') 
                 ->asArray()->all();
         
@@ -144,6 +146,7 @@ class SiteController extends Controller{
                     'value',
                     'count(id) as count'])
                 ->where(['tag_id' => 5])
+                ->orderBy('count DESC')
                 ->groupBy('value') 
                 ->asArray()->all();
         
@@ -152,6 +155,7 @@ class SiteController extends Controller{
                     'value',
                     'count(id) as count'])
                 ->where(['tag_id' => 13])
+                ->orderBy('count DESC')
                 ->groupBy('value') 
                 ->asArray()->all();
         
@@ -160,6 +164,7 @@ class SiteController extends Controller{
                     'value',
                     'count(id) as count'])
                 ->where(['tag_id' => 8])
+                ->orderBy('count DESC')
                 ->groupBy('value') 
                 ->asArray()->all();
 
