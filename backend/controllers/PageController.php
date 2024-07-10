@@ -56,6 +56,13 @@ class PageController extends BaseController
         ]);
     }
 
+    public function actionViewByAlias($alias)
+    {
+        return $this->render('view', [
+            'model' => Page::find()->where(['alias' => $alias])->one()//$this->findModel($id),
+        ]);
+    }
+    
     /**
      * Creates a new Page model.
      * If creation is successful, the browser will be redirected to the 'view' page.

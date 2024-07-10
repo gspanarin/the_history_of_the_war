@@ -28,9 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-            'status',
-            'type',
+            //'status',
+            //'type',
             'alias',
+            [
+                'attribute' => 'alias',
+                'format' => 'raw',
+                'value' => function($model){
+                    return Html::a($model->alias, Url::to($model->alias . '.html'));
+                }
+            ],
             'title',
             //'body:ntext',
             //'created_at',
