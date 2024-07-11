@@ -141,7 +141,7 @@ class SiteController extends Controller{
                 ->groupBy('value') 
                 ->asArray()->all();
         
-        $source = \common\models\Dictionary::find()
+        /*$source = \common\models\Dictionary::find()
                 ->select([
                     'value',
                     'count(id) as count'])
@@ -149,7 +149,19 @@ class SiteController extends Controller{
                 ->orderBy('count DESC')
                 ->groupBy('value') 
                 ->limit(20)
+                ->asArray()->all();*/
+        
+        $source = \common\models\Source::find()
+                ->select([
+                    'source.title as value',
+                    'count(article.id) as count'])
+                ->joinwith('article')
+                ->where('source.id = article.source_id')
+                ->orderBy('count DESC')
+                ->groupBy('value') 
+                ->limit(20)
                 ->asArray()->all();
+        
         
         $format = \common\models\Dictionary::find()
                 ->select([
