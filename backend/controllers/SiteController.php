@@ -148,6 +148,7 @@ class SiteController extends Controller{
                 ->where(['tag_id' => 5])
                 ->orderBy('count DESC')
                 ->groupBy('value') 
+                ->limit(20)
                 ->asArray()->all();
         
         $format = \common\models\Dictionary::find()
@@ -166,6 +167,7 @@ class SiteController extends Controller{
                 ->where(['tag_id' => 8])
                 ->orderBy('count DESC')
                 ->groupBy('value') 
+                ->limit(20)
                 ->asArray()->all();
 
         //=========================================================================
@@ -180,6 +182,7 @@ class SiteController extends Controller{
                 ->groupBy('user_id') 
                 ->leftJoin('user', '`user`.`id` = `article`.`user_id`')
                 ->orderBy('count DESC')
+                ->limit(20)
                 ->asArray()->all();
         
         return [
