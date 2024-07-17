@@ -44,7 +44,8 @@ use common\models\User;
                         ['label' => 'Login', 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],
                         ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
                         ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank'],
-                        ['label' => 'RBAC', 'url' => ['/rbac']]];
+                        ['label' => 'RBAC', 'url' => ['/rbac']],
+                        ['label' => 'Файли до статей', 'url' => ['/file']]];
                 }
                 $menu_items = array_merge(
                     $menu_items, 

@@ -4,12 +4,12 @@ namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\User;
+use common\models\File;
 
 /**
- * UserSearch represents the model behind the search form of `common\models\User`.
+ * FileSearch represents the model behind the search form of `common\models\File`.
  */
-class UserSearch extends User
+class FileSearch extends File
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['id', 'status', 'created_at', 'updated_at', 'organization_id'], 'integer'],
-            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'verification_token', 'full_name'], 'safe'],
+            [['id', 'status', 'user_id', 'article_id', 'uploaded_at'], 'integer'],
+            [['type', 'extension', 'file_name', 'file_path'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class UserSearch extends User
      */
     public function search($params)
     {
-        $query = User::find();
+        $query = File::find();
 
         // add conditions that should always apply here
 
@@ -60,19 +60,15 @@ class UserSearch extends User
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
-            'full_name' => $this->full_name,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'organization_id' => $this->organization_id,
+            'user_id' => $this->user_id,
+            'article_id' => $this->article_id,
+            'uploaded_at' => $this->uploaded_at,
         ]);
 
-        $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
-            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
-            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'verification_token', $this->verification_token])
-                ;
+        $query->andFilterWhere(['like', 'type', $this->type])
+            ->andFilterWhere(['like', 'extension', $this->extension])
+            ->andFilterWhere(['like', 'file_name', $this->file_name])
+            ->andFilterWhere(['like', 'file_path', $this->file_path]);
 
         return $dataProvider;
     }

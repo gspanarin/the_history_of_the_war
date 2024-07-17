@@ -62,7 +62,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
-            [['full_name',],'safe'],
+            [['full_name', 'role'],'safe'],
             [['organization_id',],'integer'],
         ];
     }
@@ -228,6 +228,10 @@ class User extends ActiveRecord implements IdentityInterface
         return self::$status_title;
     }
     
+    public function getOrganization(){
+        return $this->hasOne(Organization::class, ['id' => 'Organization_id']);
+    }
+    
     public function getOrganizationTitle(){
         $organization = Organization::findOne($this->organization_id);
         if ($organization)
@@ -253,8 +257,15 @@ class User extends ActiveRecord implements IdentityInterface
         return $user_list;
     }
     
-    public function getRole(){
+    /*public function getRole(){
         return array_values(Yii::$app->authManager->getRolesByUser($this->id))[0];
+    }*/
+    
+    public function getRoles(){
+        $result = [];
+        foreach (\Yii::$app->authManager->getRolesByUser($this->id) as $role_name => $link)
+            $result[] = $role_name;
+        return $result;
     }
 
     public function attributeLabels()

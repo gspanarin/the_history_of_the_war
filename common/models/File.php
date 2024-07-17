@@ -6,8 +6,23 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 
+/**
+ * This is the model class for table "file".
+ *
+ * @property int $id Ідентифікатор файлу
+ * @property int|null $status Статус
+ * @property int $user_id Ідентифікатор користувача
+ * @property int $article_id Ідентифікатор сттті
+ * @property string|null $type Тип об'єкту
+ * @property string|null $extension Розширення файлу
+ * @property string $file_name Назва файлу
+ * @property string $file_path Шлях до файлу
+ * @property int|null $uploaded_at Дата завантаження
+ *
+ * @property Article $article
+ */
 class File extends \yii\db\ActiveRecord{
-
+    
     public function behaviors(){
         return [
             'timestamp' => [
@@ -19,10 +34,15 @@ class File extends \yii\db\ActiveRecord{
         ];
     }
     
-    public static function tableName(){
-        return '{{%file}}';
-    }
     
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return 'file';
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -43,18 +63,23 @@ class File extends \yii\db\ActiveRecord{
     public function attributeLabels()
     {
         return [
-            'id' => 'Ідентифікатор файлу',
-            'status' => 'Статус',
-            'user_id' => 'Ідентифікатор користувача',
-            'article_id' => 'Ідентифікатор сттті',
-            'type' => 'Тип об\'єкту',
-            'extension' => 'Розширення файлу',
-            'file_name' => 'Назва файлу',
-            'file_path' => 'Шлях до файлу',
-            'uploaded_at' => 'Дата завантаження',
+            'id' => 'ID',
+            'status' => 'Status',
+            'user_id' => 'User ID',
+            'article_id' => 'Article ID',
+            'type' => 'Type',
+            'extension' => 'Extension',
+            'file_name' => 'File Name',
+            'file_path' => 'File Path',
+            'uploaded_at' => 'Uploaded At',
         ];
     }
-    
+
+    /**
+     * Gets query for [[Article]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
     public function getArticle()
     {
         return $this->hasOne(Article::class, ['id' => 'article_id']);
@@ -78,4 +103,5 @@ class File extends \yii\db\ActiveRecord{
 
         return true;
     }
+    
 }

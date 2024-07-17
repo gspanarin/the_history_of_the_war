@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
-
+use common\models\Organization;
 /** @var yii\web\View $this */
 /** @var common\models\UserSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
@@ -27,10 +27,32 @@ $this->params['breadcrumbs'][] = $this->title;
             'username',
             'full_name',
             [
+                'attribute' => 'organization_id',
+                'filter' => Organization::getList(),
+                'label' => 'Organization',
+                'value' => function($model){
+                    return $model->getOrganizationTitle();
+                }
+            ],
+            [
                 'attribute' => 'status',
                 'filter' => User::getStatusList(),
                 'value' => function ($model) {
                     return $model->getStatusTitle();
+                }
+            ],
+            [
+                'attribute' => 'roles',
+                'label' => 'Ролі',
+                'format' => 'raw',
+                'filter' => \common\models\rbac\Role::getRolesList(),
+                //'filter' => User::getUsersList(),
+                'value' => function($model){
+
+                    $result = '';
+                    foreach (\Yii::$app->authManager->getRolesByUser($model->id) as $role_name => $link)
+                        $result .= $role_name . '<br>';
+                    return $result;
                 }
             ],
             //'auth_key',

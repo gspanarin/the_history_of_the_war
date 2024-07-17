@@ -57,4 +57,12 @@ class Role extends \yii\db\ActiveRecord{
         return '!!!!!' . $foo . '!!!!!';
     }
 
+    
+    public static function getRolesList(){
+        return self::find()
+                ->where(['type' => 1])
+                ->select(['description', 'name'])
+                ->indexBy('name')
+                ->column();
+    }
 }

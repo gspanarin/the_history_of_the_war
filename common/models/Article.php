@@ -111,15 +111,17 @@ class Article extends \yii\db\ActiveRecord{
         if (!isset($metadata->$tag)){
             $metadata->$tag = [date('Y-m-d', \time())];
             $this->metadata = json_encode($metadata);
+        }else{
+            
         }
 
+        $this->created_at = strtotime($metadata->$tag[0]);
         if ($insert){
             //$metadata
         }else{
             Dictionary::deleteAll(['article_id' => $this->id]);
         }
-        
-        
+                
         foreach($metadata as $tag => $values){
             foreach ($values as $value){
                 $term = new Dictionary();
