@@ -4,22 +4,21 @@ namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Article;
+use common\models\File;
 
 /**
- * ArticleSearch represents the model behind the search form of `common\models\Article`.
+ * FileSearch represents the model behind the search form of `common\models\File`.
  */
-class ArticleSearch extends Article{
-    
-    public $section_array = [];
+class FileSearch extends File
+{
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'user_id', 'section_id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['metadata', 'section_array'], 'safe'],
+            [['id', 'status', 'user_id', 'article_id', 'uploaded_at'], 'integer'],
+            [['type', 'extension', 'file_name', 'file_path'], 'safe'],
         ];
     }
 
@@ -41,15 +40,14 @@ class ArticleSearch extends Article{
      */
     public function search($params)
     {
-        $query = Article::find();
+        $query = File::find();
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => ['defaultOrder' => ['created_at' => SORT_DESC]]
         ]);
-        
+
         $this->load($params);
 
         if (!$this->validate()) {
@@ -61,26 +59,17 @@ class ArticleSearch extends Article{
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => $this->user_id,
-            'section_id' => $this->section_id,
             'status' => $this->status,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'user_id' => $this->user_id,
+            'article_id' => $this->article_id,
+            'uploaded_at' => $this->uploaded_at,
         ]);
 
-        $query->andFilterWhere(['like', 'metadata', $this->metadata]);
-        if (count($this->section_array) > 0)
-            $query->andFilterWhere(['IN', 'section_id', $this->section_array]);
-                
-        $tags = [];
-        foreach($params['ArticleSearch'] as $key => $value)
-            if (strpos($key, 'tag_') !== false)
-                $tags[] = [
-                    'key' => substr($key,4),
-                    'value' => $value
-                ];
-            
-        dd($tags);
+        $query->andFilterWhere(['like', 'type', $this->type])
+            ->andFilterWhere(['like', 'extension', $this->extension])
+            ->andFilterWhere(['like', 'file_name', $this->file_name])
+            ->andFilterWhere(['like', 'file_path', $this->file_path]);
+
         return $dataProvider;
     }
 }

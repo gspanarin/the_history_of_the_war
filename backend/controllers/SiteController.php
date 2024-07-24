@@ -128,6 +128,7 @@ class SiteController extends Controller{
                     'value',
                     'count(id) as count'])
                 ->where(['tag_id' => 15])
+                ->orderBy('count DESC')
                 ->groupBy('value') 
                 ->asArray()->all();
         
@@ -136,22 +137,38 @@ class SiteController extends Controller{
                     'value',
                     'count(id) as count'])
                 ->where(['tag_id' => 4])
+                ->orderBy('count DESC')
                 ->groupBy('value') 
                 ->asArray()->all();
         
-        $source = \common\models\Dictionary::find()
+        /*$source = \common\models\Dictionary::find()
                 ->select([
                     'value',
                     'count(id) as count'])
                 ->where(['tag_id' => 5])
+                ->orderBy('count DESC')
                 ->groupBy('value') 
+                ->limit(20)
+                ->asArray()->all();*/
+        
+        $source = \common\models\Source::find()
+                ->select([
+                    'source.title as value',
+                    'count(article.id) as count'])
+                ->joinwith('article')
+                ->where('source.id = article.source_id')
+                ->orderBy('count DESC')
+                ->groupBy('value') 
+                ->limit(20)
                 ->asArray()->all();
+        
         
         $format = \common\models\Dictionary::find()
                 ->select([
                     'value',
                     'count(id) as count'])
                 ->where(['tag_id' => 13])
+                ->orderBy('count DESC')
                 ->groupBy('value') 
                 ->asArray()->all();
         
@@ -160,7 +177,9 @@ class SiteController extends Controller{
                     'value',
                     'count(id) as count'])
                 ->where(['tag_id' => 8])
+                ->orderBy('count DESC')
                 ->groupBy('value') 
+                ->limit(20)
                 ->asArray()->all();
 
         //=========================================================================
@@ -175,6 +194,7 @@ class SiteController extends Controller{
                 ->groupBy('user_id') 
                 ->leftJoin('user', '`user`.`id` = `article`.`user_id`')
                 ->orderBy('count DESC')
+                ->limit(20)
                 ->asArray()->all();
         
         return [

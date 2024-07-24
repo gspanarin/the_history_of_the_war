@@ -23,7 +23,7 @@ use yii\helpers\Url;
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Інструкції та документи</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
                 <li><a href="<?= Url::home() . 'page/add_article.html' ?>" class="dropdown-item">Додавання матеріалів у Архів</a></li>
-                <li><a href="#" class="dropdown-item">Some other action</a></li>
+                <li><a href="<?= Url::home() . 'page/useful_links.html' ?>" class="dropdown-item">Корисні посилання </a></li>
                 
                 
                 

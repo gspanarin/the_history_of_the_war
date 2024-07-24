@@ -30,7 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             //'status',
             //'type',
-            'alias',
             [
                 'attribute' => 'alias',
                 'format' => 'raw',

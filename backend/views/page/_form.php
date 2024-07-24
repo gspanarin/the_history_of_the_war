@@ -23,19 +23,24 @@ use dosamigos\tinymce\TinyMce;
 
     <?= $form->field($model, 'body')->widget(TinyMce::className(), [
         'options' => ['rows' => 6],
-        'language' => 'es',
+        'language' => 'uk',
         'clientOptions' => [
             'plugins' => [
                 "advlist autolink lists link charmap print preview anchor",
                 "searchreplace visualblocks code fullscreen",
-                "insertdatetime media table contextmenu paste"
+                "insertdatetime media table contextmenu paste",
+                "image",
+                "link"
             ],
-            'toolbar' => "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+            'toolbar' => "undo redo | styles | fontsize | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            'a11y_advanced_options' => true,
+            'automatic_uploads' => true,
+            'file_picker_types' => 'file image media',
         ]
     ]);?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Зберегти', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
