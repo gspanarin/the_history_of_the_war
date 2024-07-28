@@ -73,14 +73,15 @@ class ArticleSearch extends Article{
             $query->andFilterWhere(['IN', 'section_id', $this->section_array]);
                 
         $tags = [];
-        foreach($params['ArticleSearch'] as $key => $value)
+		if (isset($params['ArticleSearch'])){
+		foreach($params['ArticleSearch'] as $key => $value)
             if (strpos($key, 'tag_') !== false)
                 $tags[] = [
                     'key' => substr($key,4),
                     'value' => $value
                 ];
-            
-        dd($tags);
+		}
+        
         return $dataProvider;
     }
 }

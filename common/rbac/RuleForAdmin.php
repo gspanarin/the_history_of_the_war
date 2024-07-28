@@ -8,8 +8,8 @@ class RuleForAdmin extends BaseRule {
     public function execute($user_id, $role, $params){
         
         return true;
-        dump([$user_id, $role, $params]);
-        die();
+        //dump([$user_id, $role, $params]);
+        //die();
         
         $parent = parent::execute($user_id, $role, $params);
         if($parent === 1) 
