@@ -17,7 +17,8 @@ use yii\widgets\ActiveForm;
     </div>
     
     <?= $form->field($model, 'username')->textInput(['readonly' => true]) ?>
-    
+	
+    <?= $form->field($model, 'email')->textInput(['readonly' => true]) ?>
     
     <?= $form->field($model, 'status')->textInput()->dropDownList(
             [0 => 'Видалений', 9 => 'Вимкнений', 10 => 'Активний'], ['prompt' => 'Оберіть вірний статус'])  ?>
