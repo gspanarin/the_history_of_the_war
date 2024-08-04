@@ -12,7 +12,11 @@ echo GridView::widget([
             'attribute' => 'file_name',
             'format' => 'RAW',
             'value' => function($model){
-                return Html::a($model->file_name, ['article/download-file', 'id' => $model->id], ['class' => 'profile-link']);
+                return 
+					Html::a($model->file_name, ['article/download-file', 'id' => $model->id], ['class' => 'profile-link'])
+						. '<br><span class="text-secondary">' . $model->file_path . '</span>'
+					
+						;
             }
         ],
         'extension',
