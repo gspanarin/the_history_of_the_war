@@ -115,7 +115,7 @@ class Article extends \yii\db\ActiveRecord{
             
         }
 
-        $this->created_at = strtotime($metadata->$tag[0]);
+        //$this->created_at = strtotime($metadata->$tag[0]);
         if ($insert){
             //$metadata
         }else{
@@ -214,7 +214,7 @@ class Article extends \yii\db\ActiveRecord{
     
     public function getIcon(){
         $path = str_replace("//", "/", Yii::$app->params['storage_path'] . date('Y', $this->created_at) . '/' . date('m', $this->created_at) . '/' . $this->id . '/icon.jpg');
-        print_r($path );
+        //print_r($path );
         if(file_exists($path)){
             $imagedata = file_get_contents($path);
             return base64_encode($imagedata);
