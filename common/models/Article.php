@@ -214,9 +214,9 @@ class Article extends \yii\db\ActiveRecord{
     
     public function getIcon(){
         $path = Yii::$app->params['storage_path'] . date('Y', $this->created_at) . '/' . date('m', $this->created_at) . '/' . $this->id . '/icon.jpg';
-        
-        if(file_exists($path)){
-            $imagedata = file_get_contents($path);
+        //print_r(str_replace("//", "/", $path) );
+        if(file_exists(str_replace("//", "/", $path))){
+            $imagedata = file_get_contents(str_replace("//", "/", $path));
             return base64_encode($imagedata);
         }else{
             return false;
