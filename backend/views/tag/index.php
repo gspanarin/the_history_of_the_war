@@ -30,11 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             'term_name',
             'label',
-            'uri',
+            //'uri',
             'definition',
             //'comment',
             //'note',
             //'default_value',
+			'ord',
             //'created_at',
             //'updated_at',
             [

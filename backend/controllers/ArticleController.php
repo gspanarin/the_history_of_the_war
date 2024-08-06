@@ -68,7 +68,7 @@ class ArticleController extends BaseController{
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id){
-        $tags = Tag::Find()->all();
+        $tags = Tag::Find()->orderBy('ord')->all();
         
         foreach ($tags as $tag)
             $fields[$tag->term_name] = [
@@ -90,7 +90,7 @@ class ArticleController extends BaseController{
     public function actionCreate(){
         $model = new Article();
         $sections_list = Section::getSectionsList();
-        $tags = Tag::Find()->all();
+        $tags = Tag::Find()->orderBy('ord')->all();
         $icon = $model->getIcon(); 
         
         $fields = [];
@@ -142,7 +142,7 @@ class ArticleController extends BaseController{
         $model = $this->findModel($id);
         $sections_list = Section::getSectionsList();
         $metadata = json_decode($model->metadata);
-        $tags = Tag::Find()->all();
+        $tags = Tag::Find()->orderBy('ord')->all();
         $icon = $model->getIcon(); 
         
         foreach ($tags as $tag)

@@ -17,6 +17,7 @@ use common\models\TagInputType;
  * @property string|null $comment Комментар для застосування
  * @property string|null $note Примітка
  * @property string|null $default_value Значення за замовчуванням
+ * @property int $ord Порядок сортування полів
  * @property int|null $created_at Дата створення
  * @property int|null $updated_at Дата корегування
  */
@@ -46,7 +47,7 @@ class Tag extends \yii\db\ActiveRecord{
     {
         return [
             [['term_name', 'label', 'uri', 'definition'], 'required'],
-            [['created_at', 'updated_at'], 'integer'],
+            [['created_at', 'updated_at', 'ord'], 'integer'],
             [['term_name', 'label', 'uri', 'definition', 'note', 'default_value', 'input_type', 'input_source'], 'string', 'max' => 255],
             [['comment'], 'string'],
             [['input_type'], 'exist', 'skipOnError' => true, 'targetClass' => TagInputType::class, 'targetAttribute' => ['input_type' => 'id']],
@@ -69,6 +70,7 @@ class Tag extends \yii\db\ActiveRecord{
             'default_value' => 'Значення за замовчуванням',
             'input_type' => 'Тип методу вводу',
             'input_source' => 'Джерело вводу',
+			'ord' => 'Порядок сортування полів',
             'created_at' => 'Дата створення',
             'updated_at' => 'Дата корегування',
         ];

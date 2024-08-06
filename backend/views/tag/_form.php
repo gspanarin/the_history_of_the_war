@@ -55,7 +55,7 @@ use common\models\AuthorityType;
         AuthorityType::getListIdsName(),
         ['prompt' => ' ... Оберіть метод вводу ... ']); ?>
 
-    
+    <?= $form->field($model, 'ord')->textInput(['maxlength' => true]) ?>
   
 
     <div class="form-group">
