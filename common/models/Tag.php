@@ -110,6 +110,6 @@ class Tag extends \yii\db\ActiveRecord{
     public static function getTagIdByName($tag){
         $result = Tag::find()->where(['term_name' => $tag])->select('id')->one();
         
-        return $result->id;
+        return ($result !== null ? $result->id : null );
     }
 }

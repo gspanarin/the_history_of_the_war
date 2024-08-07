@@ -9,6 +9,18 @@ echo $form->field($model, 'section_id')->dropDownList(
         Section::getSectionsList(),
         ['prompt' => ' ... Оберіть розділ ... ',
         ]);
+
+echo $form->field($model, 'section_id_2')->dropDownList(
+        Section::getSectionsList(),
+        ['prompt' => ' ... Оберіть розділ ... ',
+        ]);
+
+echo $form->field($model, 'section_id_3')->dropDownList(
+        Section::getSectionsList(),
+        ['prompt' => ' ... Оберіть розділ ... ',
+        ]);
+
+
 echo $form->field($model, 'status')->dropDownList(
         Article::getStatusList(),
         ['prompt' => ' ... Оберіть статус ... ']);

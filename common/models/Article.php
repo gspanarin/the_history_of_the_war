@@ -12,6 +12,8 @@ use \yii\behaviors\TimestampBehavior;
  * @property int $user Оператор
  * @property string $metadata Метаданні
  * @property int $section_id Розділ/тематика
+ * @property int $section_id_2 Другий Розділ/тематика
+ * @property int $section_id_3 Третій Розділ/тематика
  * @property int|null $status Статус
  * @property int|null $created_at Дата створення
  * @property int|null $updated_at Дата корегування
@@ -73,10 +75,10 @@ class Article extends \yii\db\ActiveRecord{
     {
         return [
             [['user_id', 'metadata', 'section_id'], 'required'],
-            [['user_id', 'source_id', 'section_id', 'status', 'view', 'share', 'average_score', 'created_at', 'updated_at'], 'integer'],
+            [['user_id', 'source_id', 'section_id', 'section_id_2', 'section_id_3', 'status', 'view', 'share', 'average_score', 'created_at', 'updated_at'], 'integer'],
             [['metadata'], 'string'],
             [['icon'], 'string', 'max' => 50],
-            [['section_id'], 'exist', 'skipOnError' => true, 'targetClass' => Section::class, 'targetAttribute' => ['section_id' => 'id']],
+            [['section_id', 'section_id_2', 'section_id_3'], 'exist', 'skipOnError' => true, 'targetClass' => Section::class, 'targetAttribute' => ['section_id' => 'id']],
             [['source_id'], 'exist', 'skipOnError' => true, 'targetClass' => Source::class, 'targetAttribute' => ['source_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
@@ -94,6 +96,8 @@ class Article extends \yii\db\ActiveRecord{
             'source_id' => 'Ідентифікатор джерела статті',
             'icon' => 'Посилання на іконку для статті',
             'section_id' => 'Розділ/тематика',
+			'section_id_2' => 'Другий Розділ/тематика',
+			'section_id_3' => 'Третій Розділ/тематика',
             'status' => 'Статус',
             'view' => 'Кількість переглядів',
             'share' => 'Кількість перепостів',

@@ -2,7 +2,13 @@ $( document ).ready(function() {
     
     $(document).on('click', '.add-tag-value', function (e) {
         var tag = this.dataset.tag;
+        
+
+        alert('.container-tag-value.tag-' + tag);
         var container = $('.container-tag-value.tag-' + tag).first();
+        
+        
+        
         var new_element = container.find('.tag-value-item').first().clone();
         //new_element.find('input').val('');
         new_element.find('.form-control').val('');

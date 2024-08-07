@@ -69,8 +69,11 @@ class ArticleSearch extends Article{
         ]);
 
         $query->andFilterWhere(['like', 'metadata', $this->metadata]);
-        if (count($this->section_array) > 0)
-            $query->andFilterWhere(['IN', 'section_id', $this->section_array]);
+        if (count($this->section_array) > 0){
+            $query->OrFilterWhere(['IN', 'section_id', $this->section_array]);
+			$query->OrFilterWhere(['IN', 'section_id_2', $this->section_array]);
+			$query->OrFilterWhere(['IN', 'section_id_3', $this->section_array]);
+		}
                 
         $tags = [];
 		if (isset($params['ArticleSearch'])){

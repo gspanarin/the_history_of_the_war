@@ -171,7 +171,7 @@ class Section extends \yii\db\ActiveRecord implements \dixonstarter\togglecolumn
         foreach ($sections as $section)
             $ids[] = $section['id'];
         
-        return Article::find()->where(['in', 'section_id', $ids])->count();
+        return Article::find()->Where(['in', 'section_id', $ids])->orWhere(['in', 'section_id_2', $ids])->orWhere(['in', 'section_id_2', $ids])->count();
     }
     
     
