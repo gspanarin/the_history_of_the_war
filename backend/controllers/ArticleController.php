@@ -68,15 +68,18 @@ class ArticleController extends BaseController{
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id){
+		$model = $this->findModel($id);
         $tags = Tag::Find()->orderBy('ord')->all();
-        
+		
+		$model->refreshTag();
+				
         foreach ($tags as $tag)
             $fields[$tag->term_name] = [
                 'value' => '',
             ];
         
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
             'fields' => $fields,
             'tags' => $tags,
         ]);

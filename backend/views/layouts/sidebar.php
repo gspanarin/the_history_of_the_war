@@ -45,7 +45,12 @@ use common\models\User;
                         ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
                         ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank'],
                         ['label' => 'RBAC', 'url' => ['/rbac']],
-                        ['label' => 'Файли до статей', 'url' => ['/file']]];
+                        ['label' => 'Файли до статей', 'url' => ['/file']],
+						['label' => 'Терміни опису', 'url' => ['/dictionary']],
+						
+						];
+					
+					
                 }
                 $menu_items = array_merge(
                     $menu_items, 

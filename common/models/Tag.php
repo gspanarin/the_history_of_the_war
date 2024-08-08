@@ -99,7 +99,7 @@ class Tag extends \yii\db\ActiveRecord{
     
     public function getInputTypeStandartValue(){        
         $list = AuthorityValue::find()
-                ->select(['value', 'id'])
+                ->select(['value', 'value'])
                 ->where(['authority_type_id' => $this->input_source])
                 ->indexBy('value')
                 ->column(); 

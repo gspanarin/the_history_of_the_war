@@ -29,9 +29,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'article_id',
-            'tag_id',
+			[
+				'attribute' => 'term_name',
+				'filter' => Dictionary::getAllTermNames(),
+				
+			],
+			
             'value',
             [
                 'class' => ActionColumn::className(),

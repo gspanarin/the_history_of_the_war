@@ -31,11 +31,11 @@ class Dictionary extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['article_id', 'tag_id', 'value'], 'required'],
-            [['article_id', 'tag_id'], 'integer'],
-            [['value'], 'string', 'max' => 255],
+            [['article_id', 'term_name', 'value'], 'required'],
+            [['article_id'], 'integer'],
+            [['value', 'term_name'], 'string', 'max' => 255],
             [['article_id'], 'exist', 'skipOnError' => true, 'targetClass' => Article::class, 'targetAttribute' => ['article_id' => 'id']],
-            [['tag_id'], 'exist', 'skipOnError' => true, 'targetClass' => Tag::class, 'targetAttribute' => ['tag_id' => 'id']],
+            [['term_name'], 'exist', 'skipOnError' => true, 'targetClass' => Tag::class, 'targetAttribute' => ['term_name' => 'term_name']],
         ];
     }
 
@@ -47,7 +47,7 @@ class Dictionary extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'article_id' => 'Article ID',
-            'tag_id' => 'Tag ID',
+            'term_name' => 'Term name',
             'value' => 'Value',
         ];
     }
@@ -69,6 +69,12 @@ class Dictionary extends \yii\db\ActiveRecord
      */
     public function getTag()
     {
-        return $this->hasOne(Tag::class, ['id' => 'tag_id']);
+        return $this->hasOne(Tag::class, ['term_name' => 'term_name']);
     }
+	
+	
+	public static function getAllTermNames(){
+	
+		return Dictionary::find()->select('term_name')->indexBy('term_name')->distinct()->column();
+	}
 }

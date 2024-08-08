@@ -109,6 +109,50 @@ class Article extends \yii\db\ActiveRecord{
     }
     
     
+	public function refreshTag(){
+		return ;
+		$metadata = json_decode($this->metadata);
+		$new_metadata = new \stdClass();
+		//dd($metadata);
+		foreach($metadata as $tag => $values){
+			foreach ($values as $value){
+		
+				if ($tag == 'language' && $value == '6'){
+					$new_metadata->$tag = ['Українська'];
+				}elseif ($tag == 'language' && $value == '7'){
+					$new_metadata->$tag = ['Англійська'];
+				}elseif ($tag == 'language' && $value == '8'){
+					$new_metadata->$tag = ['Російська'];
+					
+					
+				}elseif ($tag == 'date:event'){
+					$new_metadata->date_event = [$value];
+				}elseif ($tag == 'date:archived'){
+					$new_metadata->date_event = [$value];
+					
+				
+				}elseif ($tag == 'type' && $value == '1'){
+					$new_metadata->$tag = ['Текст'];
+				}elseif ($tag == 'type' && $value == '2'){
+					$new_metadata->$tag = ['Аудіоматеріал'];
+				}elseif ($tag == 'type' && $value == '3'){
+					$new_metadata->$tag = ['Відеоматеріал'];
+				}elseif ($tag == 'type' && $value == '4'){
+					$new_metadata->$tag = ['Зображення'];
+				}elseif ($tag == 'type' && $value == '5'){
+					$new_metadata->$tag = ['Комбінований матеріал'];
+					
+				}else{
+					$new_metadata->$tag = [$value];
+				}
+			}
+		}
+		
+		dd($new_metadata);
+		
+		$this->metadata = json_encode($metadata);
+	}
+	
     public function beforeSave($insert) {
         $metadata = json_decode($this->metadata);
         $tag = 'date:archived';
@@ -130,7 +174,7 @@ class Article extends \yii\db\ActiveRecord{
             foreach ($values as $value){
                 $term = new Dictionary();
                 $term->article_id = $this->id;
-                $term->tag_id = Tag::getTagIdByName($tag);
+                $term->term_name = $tag; //Tag::getTagIdByName($tag);
                 $term->value = $value;
                 $term->save();
             }

@@ -12,6 +12,9 @@ use common\models\Article;
 class ArticleSearch extends Article{
     
     public $section_array = [];
+	public $term_name = '';
+	public $term_value = '';
+	
     /**
      * {@inheritdoc}
      */
@@ -19,7 +22,7 @@ class ArticleSearch extends Article{
     {
         return [
             [['id', 'user_id', 'section_id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['metadata', 'section_array'], 'safe'],
+            [['metadata', 'section_array', 'term_name', 'term_value'], 'safe'],
         ];
     }
 
@@ -52,6 +55,9 @@ class ArticleSearch extends Article{
         
         $this->load($params);
 
+		
+		
+		
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
@@ -75,7 +81,13 @@ class ArticleSearch extends Article{
 			$query->OrFilterWhere(['IN', 'section_id_3', $this->section_array]);
 		}
                 
-        $tags = [];
+		if ($this->term_name != '' && $this->term_value != ''){
+			$query->leftJoin ('dictionary', 'dictionary.article_id = article.id');
+			$query->andWhere(['dictionary.term_name' => $this->term_name]);
+			$query->andWhere(['dictionary.value' => $this->term_value]);
+		}
+		
+        /*$tags = [];
 		if (isset($params['ArticleSearch'])){
 		foreach($params['ArticleSearch'] as $key => $value)
             if (strpos($key, 'tag_') !== false)
@@ -83,8 +95,8 @@ class ArticleSearch extends Article{
                     'key' => substr($key,4),
                     'value' => $value
                 ];
-		}
-        
+		}*/
+        //dd($query);
         return $dataProvider;
     }
 }

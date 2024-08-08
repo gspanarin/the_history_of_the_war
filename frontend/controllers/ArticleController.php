@@ -21,18 +21,26 @@ class ArticleController extends Controller{
     public function actionIndex($section_id = null){
         $searchModel = new ArticleSearch();
         $queryParams = $this->request->queryParams;
+		$search_params = [];
         $sections = [];
         $sections_ids[] = $section_id;
-        if ($section_id){
+        if (isset($queryParams['section_id'])){
             $sections = Section::find()->where(['pid' => $section_id])->all();
-            foreach ($sections as $section)
-                $sections_ids[] = $section->id;
-        }
+			foreach ($sections as $section)
+				$sections_ids[] = $section->id;
+			$search_params['ArticleSearch']['section_array'] = $sections_ids;
+			unset($queryParams['section_id']);
+		}
+		foreach ($queryParams as $key => $value){
+			$search_params['ArticleSearch'][$key] = $value;
+		}
+
         
-        if (count($sections_ids) > 0)
-            $queryParams = array_merge($queryParams, ['ArticleSearch' => ['section_array' => $sections_ids]]);
+        //if (count($sections_ids) > 0){
+        //    $queryParams = array_merge($queryParams, ['ArticleSearch' => ['section_array' => $sections_ids]]);
+		//}
         $current_section = Section::findOne(['id' => $section_id]);
-        $dataProvider = $searchModel->search($section_id ? $queryParams : null);
+        $dataProvider = $searchModel->search($search_params);
         $dataProvider->pagination = new Pagination([
             'totalCount' => $dataProvider->getTotalCount(),
             'defaultPageSize' => Yii::$app->params['frontend.article.pagination_pagesize']

@@ -1,4 +1,7 @@
 <?php
+
+use yii\helpers\Html;
+
 $this->title = 'Dashboard';
 $this->params['breadcrumbs'] = [['label' => $this->title]];
 ?>
@@ -119,7 +122,8 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     foreach ($chartData['tags']['lng'] as $tag):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-                            <td><?= $tag['value'] ?></td>
+                            <td><a href="http://warhistory/article?term_name=language&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
+							</td>
                             <td><?= $tag['count'] ?></td>
                         </tr>
                     <?php endforeach;?>
@@ -151,7 +155,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     foreach ($chartData['tags']['format'] as $tag):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-                            <td><?= $tag['value'] ?></td>
+                            <td><a href="http://warhistory/article?term_name=format&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
                             <td><?= $tag['count'] ?></td>
                         </tr>
                     <?php endforeach;?>
@@ -218,7 +222,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     foreach ($chartData['tags']['creators'] as $tag):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-                            <td><?= $tag['value'] ?></td>
+                            <td><a href="http://warhistory/article?term_name=creator&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
                             <td><?= $tag['count'] ?></td>
                         </tr>
                     <?php endforeach;?>

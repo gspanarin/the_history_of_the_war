@@ -96,7 +96,7 @@ class SiteController extends Controller{
         */        
         
         $data = [];
-        $date_from = strtotime("-1 week");
+        $date_from = strtotime("-2 week");
         $date_to = strtotime("now");
         //$date_from = strtotime("-2 week");
         //$date_to = strtotime("-1 week");
@@ -114,7 +114,7 @@ class SiteController extends Controller{
         foreach ($articles as $item)
             $date_count[$item['date']] = $item['c_article']; 
         
-        for($i = 0; $i < 7; $i++){
+        for($i = 0; $i < 14; $i++){
             $current_date = date('Y-m-d', strtotime(" +$i day", $date_from));
             $labels[] = "'$current_date'";
             $data[] = (isset($date_count[$current_date]) ? $date_count[$current_date] : 0);
@@ -127,7 +127,7 @@ class SiteController extends Controller{
                 ->select([
                     'value',
                     'count(id) as count'])
-                ->where(['tag_id' => 15])
+                ->where(['term_name' => 'language'])
                 ->orderBy('count DESC')
                 ->groupBy('value') 
                 ->asArray()->all();
@@ -136,7 +136,7 @@ class SiteController extends Controller{
                 ->select([
                     'value',
                     'count(id) as count'])
-                ->where(['tag_id' => 4])
+                ->where(['term_name' => 'type'])
                 ->orderBy('count DESC')
                 ->groupBy('value') 
                 ->asArray()->all();
@@ -145,7 +145,7 @@ class SiteController extends Controller{
                 ->select([
                     'value',
                     'count(id) as count'])
-                ->where(['tag_id' => 5])
+                ->where(['term_name' => 'source'])
                 ->orderBy('count DESC')
                 ->groupBy('value') 
                 ->limit(20)
@@ -167,7 +167,7 @@ class SiteController extends Controller{
                 ->select([
                     'value',
                     'count(id) as count'])
-                ->where(['tag_id' => 13])
+                ->where(['term_name' => 'format'])
                 ->orderBy('count DESC')
                 ->groupBy('value') 
                 ->asArray()->all();
@@ -176,7 +176,7 @@ class SiteController extends Controller{
                 ->select([
                     'value',
                     'count(id) as count'])
-                ->where(['tag_id' => 8])
+                ->where(['term_name' => 'creator'])
                 ->orderBy('count DESC')
                 ->groupBy('value') 
                 ->limit(20)

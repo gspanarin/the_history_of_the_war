@@ -17,8 +17,8 @@ class DictionarySearch extends Dictionary
     public function rules()
     {
         return [
-            [['id', 'article_id', 'tag_id'], 'integer'],
-            [['value'], 'safe'],
+            [['id', 'article_id'], 'integer'],
+            [['value', 'term_name'], 'safe'],
         ];
     }
 
@@ -60,7 +60,7 @@ class DictionarySearch extends Dictionary
         $query->andFilterWhere([
             'id' => $this->id,
             'article_id' => $this->article_id,
-            'tag_id' => $this->tag_id,
+            'term_name' => $this->term_name,
         ]);
 
         $query->andFilterWhere(['like', 'value', $this->value]);

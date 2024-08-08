@@ -6,7 +6,8 @@ use kartik\date\DatePicker;
 use yii\jui\AutoComplete;
 use yii\helpers\Url;
 use yii\web\JsExpression;
-
+use yii\helpers\ArrayHelper;
+use common\models\Dictionary;
 
 $i = 0;
 ?>
@@ -44,14 +45,17 @@ $i = 0;
                         //==========================================================
                         case 'Dictionary':
                             echo Html::input('text', "Article[tags_$tag->term_name][]", $value,['class' => "form-control"]);
+							
                             /*echo AutoComplete::widget([
                                 'name' => "Article[tags_$tag->term_name][]",    
                                 'options' => [
                                     'class' => 'form-control',
                                     'data-term_name' => $tag->term_name],
                                 'clientOptions' => [
-                                    'source' => Url::to(['dictionary/search']),
-                                    'minLength'=>'2',
+                                    //'source' => common\models\Dictionary::find()->select('value')->where(['term_name' => $tag->term_name])->distinct()->column('value'),
+									//'source' => ArrayHelper::map(Dictionary::find()->select(['value', 'value'])->all(), 'name', 'name'),
+									'source' => ['dd' => 'dfdf'],
+                                    'minLength' => '2',
                                     'delay' => 0,
                                 ],
                             ]);*/
