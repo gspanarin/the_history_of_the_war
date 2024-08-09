@@ -5,6 +5,9 @@ namespace common\models;
 use Yii;
 use yii\db\ActiveRecord;
 use \yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
+
+
 /**
  * This is the model class for table "article".
  *
@@ -110,13 +113,12 @@ class Article extends \yii\db\ActiveRecord{
     
     
 	public function refreshTag(){
-		return ;
+		
 		$metadata = json_decode($this->metadata);
 		$new_metadata = new \stdClass();
-		//dd($metadata);
 		foreach($metadata as $tag => $values){
 			foreach ($values as $value){
-		
+				
 				if ($tag == 'language' && $value == '6'){
 					$new_metadata->$tag = ['Українська'];
 				}elseif ($tag == 'language' && $value == '7'){
@@ -128,9 +130,32 @@ class Article extends \yii\db\ActiveRecord{
 				}elseif ($tag == 'date:event'){
 					$new_metadata->date_event = [$value];
 				}elseif ($tag == 'date:archived'){
-					$new_metadata->date_event = [$value];
+					$new_metadata->date_archived = [$value];
 					
 				
+				}elseif ($tag == 'subject:name'){
+					$new_metadata->subject_name = [$value];
+				}elseif ($tag == 'subject:organization'){
+					$new_metadata->subject_organization = [$value];
+				}elseif ($tag == 'subject:PlaceName'){
+					$new_metadata->subject_PlaceName = [$value];
+				}elseif ($tag == 'date:publication'){
+					$new_metadata->date_publication = [$value];
+				}elseif ($tag == 'subject:military_unit'){
+					$new_metadata->subject_military_unit = [$value];
+				}elseif ($tag == 'subject:spatial'){
+					$new_metadata->subject_spatial = [$value];
+				}elseif ($tag == 'rightsHolder'){
+					$new_metadata->provenance = [$value];
+				}elseif ($tag == 'creator:phоto'){
+					$new_metadata->creator_phоto = [$value];	
+				}elseif ($tag == 'coverage'){
+					$new_metadata->subject_PlaceName = [$value];			
+				}elseif ($tag == 'date'){
+					$new_metadata->date_event = [$value];			
+						
+				
+					
 				}elseif ($tag == 'type' && $value == '1'){
 					$new_metadata->$tag = ['Текст'];
 				}elseif ($tag == 'type' && $value == '2'){
@@ -148,21 +173,22 @@ class Article extends \yii\db\ActiveRecord{
 			}
 		}
 		
-		dd($new_metadata);
 		
-		$this->metadata = json_encode($metadata);
+		
+		$this->metadata = json_encode($new_metadata, JSON_UNESCAPED_UNICODE);
+		
+		//dd($new_metadata);
 	}
 	
     public function beforeSave($insert) {
         $metadata = json_decode($this->metadata);
-        $tag = 'date:archived';
+        $tag = 'date_archived';
         if (!isset($metadata->$tag)){
-            $metadata->$tag = [date('Y-m-d', \time())];
-            $this->metadata = json_encode($metadata);
-        }else{
-            
+            $metadata->$tag = [$this->created_at ? date('Y-m-d', $this->created_at) : date('Y-m-d', \time())];
+            $this->metadata = json_encode($metadata, JSON_UNESCAPED_UNICODE);  
         }
-
+		
+		//dd($this->metadata);
         //$this->created_at = strtotime($metadata->$tag[0]);
         if ($insert){
             //$metadata
@@ -172,23 +198,26 @@ class Article extends \yii\db\ActiveRecord{
                 
         foreach($metadata as $tag => $values){
             foreach ($values as $value){
-                $term = new Dictionary();
-                $term->article_id = $this->id;
-                $term->term_name = $tag; //Tag::getTagIdByName($tag);
-                $term->value = $value;
-                $term->save();
+				if (trim($value) != ''){
+					$term = new Dictionary();
+					$term->article_id = $this->id;
+					$term->term_name = $tag; 
+					$term->value = $value;
+					$term->save();
+				}
             }
         }
-
+		
         return parent::beforeSave($insert);
     }
     
     
     public function beforeDelete(){
         //Видаляємо сформовані у словнику терміни
-        foreach ($this->dictionaries as $child) {
+        /*foreach ($this->dictionaries as $child) {
             $child->delete();
-        }
+        }*/
+		Dictionary::deleteAll(['article_id' => $this->id]);
         
         return parent::beforeDelete();
     }
@@ -273,5 +302,30 @@ class Article extends \yii\db\ActiveRecord{
     
     public function DeleteIcon(){
         unlink(Yii::$app->params['storage_path'] . date('Y', $this->created_at) . '/' . date('m', $this->created_at) . '/' . $this->id . '/icon.jpg');        
+    }
+	
+	
+	
+	public function processCountViewPost(){
+        $session = Yii::$app->session;
+		//$session->remove('article_view');
+		
+		
+        if (!isset($session['article_view'])) {
+            $session->set('article_view', [$this->id]);
+			
+            $this->updateCounters(['view' => 1]);
+        } else {
+            if (!ArrayHelper::isIn($this->id, $session['article_view'])) {
+                $array = $session['article_view'];
+                array_push($array, $this->id);
+                $session->remove('article_view');
+                $session->set('article_view', $array);
+                $this->updateCounters(['view' => 1]);
+            }
+        }
+		
+		
+        return true;
     }
 }

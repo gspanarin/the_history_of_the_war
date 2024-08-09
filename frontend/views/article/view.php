@@ -16,6 +16,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="article-view">
 
+	<div>
+		<div class='float-right font-weight-light'>
+			Всього переглядів: <?= $model->view ?>
+		</div>
+	</div>
+		
+	
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [

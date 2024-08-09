@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return User::getFullName($model->user_id);
                 }
             ],
-            'article_id',
+            //'article_id',
             [
                 //'attribute' =>  'user_id',
                 'label' => 'Стаття',

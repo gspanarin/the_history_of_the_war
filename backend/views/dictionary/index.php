@@ -38,12 +38,20 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 			
             'value',
-            [
+			[
+                //'attribute' =>  'user_id',
+                'label' => 'Стаття',
+                'format' => 'raw',
+                'value' => function($model){
+                    return Html::a('Перейти до статті', Url::to(['/article/view/', 'id' => $model->article_id]), ['target' => '_blank']);
+                }
+            ],
+            /*[
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Dictionary $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
-            ],
+            ],*/
         ],
     ]); ?>
 

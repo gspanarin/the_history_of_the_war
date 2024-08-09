@@ -48,7 +48,7 @@ class Tag extends \yii\db\ActiveRecord{
         return [
             [['term_name', 'label', 'uri', 'definition'], 'required'],
             [['created_at', 'updated_at', 'ord'], 'integer'],
-            [['term_name', 'label', 'uri', 'definition', 'note', 'default_value', 'input_type', 'input_source'], 'string', 'max' => 255],
+            [['term_name', 'label', 'uri', 'definition', 'note', 'default_value', 'input_source'], 'string', 'max' => 255],
             [['comment'], 'string'],
             [['input_type'], 'exist', 'skipOnError' => true, 'targetClass' => TagInputType::class, 'targetAttribute' => ['input_type' => 'id']],
         ];

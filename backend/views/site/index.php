@@ -39,9 +39,9 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th style="width: 10px">#</th>
+                        <th style="width: 90px">#</th>
                         <th>Оператор</th>
-                        <th style="width: 40px">Кількість статей</th>
+                        <th style="width: 90px">Кількість статей</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -111,9 +111,9 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th style="width: 10px">#</th>
+                        <th style="width: 80px">#</th>
                         <th>Tag</th>
-                        <th style="width: 40px">Count</th>
+                        <th style="width: 80px">Count</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -144,9 +144,9 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th style="width: 10px">#</th>
+                        <th style="width: 80px">#</th>
                         <th>Tag</th>
-                        <th style="width: 40px">Count</th>
+                        <th style="width: 80px">Count</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -179,7 +179,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     <table class="table table-striped text-break">
                     <thead>
                     <tr>
-                        <th style="width: 10px">#</th>
+                        <th style="width: 80px">#</th>
                         <th>Tag</th>
                         <th style="width: 80px">Count</th>
                     </tr>
@@ -190,7 +190,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     foreach ($chartData['tags']['source'] as $tag):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-                            <td><a href="<?= $tag['value'] ?>" target="_blanck"><?= $tag['value'] ?></a></td>
+                            <td><?= $tag['value'] ?></td>
                             <td><?= $tag['count'] ?></td>
                         </tr>
                     <?php endforeach;?>
@@ -211,9 +211,9 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th style="width: 10px">#</th>
+                        <th style="width: 80px">#</th>
                         <th>Tag</th>
-                        <th style="width: 40px">Count</th>
+                        <th style="width: 80px">Count</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -233,6 +233,178 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
         </div>
         
     </div>
+
+	 <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                <h3 class="card-title">Статистика за організацією, що архівувала матеріал</h3>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table table-striped text-break">
+                    <thead>
+                    <tr>
+                        <th style="width: 80px">#</th>
+                        <th>Tag</th>
+                        <th style="width: 80px">Count</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                    $num =1;
+                    foreach ($chartData['tags']['organization'] as $tag):?>
+                        <tr>
+                            <td><?= $num++ ?>.</td>
+							<td><a href="http://warhistory/article?term_name=provenance&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
+                            <td><?= $tag['count'] ?></td>
+                        </tr>
+                    <?php endforeach;?>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        
+		<div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                <h3 class="card-title">Статистика за Адміністартивними одиницями</h3>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table table-striped text-break">
+                    <thead>
+                    <tr>
+                        <th style="width: 80px">#</th>
+                        <th>Tag</th>
+                        <th style="width: 80px">Count</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                    $num =1;
+                    foreach ($chartData['tags']['administrative_unit'] as $tag):?>
+                        <tr>
+                            <td><?= $num++ ?>.</td>
+							<td><a href="http://warhistory/article?term_name=subject_PlaceName&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
+                            <td><?= $tag['count'] ?></td>
+                        </tr>
+                    <?php endforeach;?>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+	<div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                <h3 class="card-title">Статистика за географічними об'єктами</h3>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table table-striped text-break">
+                    <thead>
+                    <tr>
+                        <th style="width: 80px">#</th>
+                        <th>Tag</th>
+                        <th style="width: 80px">Count</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                    $num =1;
+                    foreach ($chartData['tags']['geo'] as $tag):?>
+                        <tr>
+                            <td><?= $num++ ?>.</td>
+							<td><a href="http://warhistory/article?term_name=provenance&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
+                            <td><?= $tag['count'] ?></td>
+                        </tr>
+                    <?php endforeach;?>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        
+		<div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                <h3 class="card-title">Статистика за військовими підрозділами</h3>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table table-striped text-break">
+                    <thead>
+                    <tr>
+                        <th style="width: 80px">#</th>
+                        <th>Tag</th>
+                        <th style="width: 80px">Count</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                    $num =1;
+                    foreach ($chartData['tags']['military_unit'] as $tag):?>
+                        <tr>
+                            <td><?= $num++ ?>.</td>
+							<td><a href="http://warhistory/article?term_name=subject_PlaceName&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
+                            <td><?= $tag['count'] ?></td>
+                        </tr>
+                    <?php endforeach;?>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+
+
+	<div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                <h3 class="card-title">Найпопулярніші статті</h3>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table table-striped text-break">
+                    <thead>
+                    <tr>
+                        <th style="width: 80px">#</th>
+                        <th>Tag</th>
+                        <th style="width: 80px">Count</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                    $num =1;
+                    foreach ($chartData['popular_articles'] as $article):?>
+                        <tr>
+                            <td><?= $num++ ?>.</td>
+							<td><a href="http://warhistory/article/view?id=<?= $article->id ?>"><?= $article->title ?> </a>
+                            <td><?= $article->view ?></td>
+                        </tr>
+                    <?php endforeach;?>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+
 
 </div>
 

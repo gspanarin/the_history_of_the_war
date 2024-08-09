@@ -82,6 +82,8 @@ class SiteController extends Controller{
     
     private function getDataForChart(){
         
+		$popular_articles = Article::find()->where(['>', 'view', 0])->orderBy('view DESC')->limit(20)->all();
+		
         //=========================================================================
         //          Статистика створення записів за останній тиждень
         //=========================================================================
@@ -182,6 +184,46 @@ class SiteController extends Controller{
                 ->limit(20)
                 ->asArray()->all();
 
+		$organization = \common\models\Dictionary::find()
+                ->select([
+                    'value',
+                    'count(id) as count'])
+                ->where(['term_name' => 'provenance'])
+                ->orderBy('count DESC')
+                ->groupBy('value') 
+                ->limit(20)
+                ->asArray()->all();
+		
+		$administrative_unit = \common\models\Dictionary::find()
+                ->select([
+                    'value',
+                    'count(id) as count'])
+                ->where(['term_name' => 'subject_PlaceName'])
+                ->orderBy('count DESC')
+                ->groupBy('value') 
+                ->limit(20)
+                ->asArray()->all();
+		
+		$geo = \common\models\Dictionary::find()
+                ->select([
+                    'value',
+                    'count(id) as count'])
+                ->where(['term_name' => 'subject_spatial'])
+                ->orderBy('count DESC')
+                ->groupBy('value') 
+                ->limit(20)
+                ->asArray()->all();
+		
+		$military_unit = \common\models\Dictionary::find()
+                ->select([
+                    'value',
+                    'count(id) as count'])
+                ->where(['term_name' => 'subject_military_unit'])
+                ->orderBy('count DESC')
+                ->groupBy('value') 
+                ->limit(20)
+                ->asArray()->all();
+		
         //=========================================================================
         //          Статистика створення записів за операторами
         //=========================================================================
@@ -205,8 +247,15 @@ class SiteController extends Controller{
                     'type' => $type,
                     'source' => $source,
                     'format' => $format,
-                    'creators' => $creators
+                    'creators' => $creators,
+					'organization' => $organization,
+					'administrative_unit' => $administrative_unit,
+					'geo' => $geo,
+					'military_unit' => $military_unit,
+					
+					
                 ],
+			'popular_articles' => $popular_articles,
             'users' => $users,
         ];
     }
