@@ -71,8 +71,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'created_at',
+				'format' => 'raw',
                 'value' => function ($model, $key, $index, $grid) {
-                   return date('Y-m-d', $model->created_at);
+                   return date('Y-m-d', $model->created_at) . '<br><span class="text-secondary">' . date('H:i:s', $model->created_at) . '</span>';
                 },
             ],  
             //'updated_at',  
