@@ -35,7 +35,7 @@ class ArticleController extends Controller{
 			$search_params['ArticleSearch'][$key] = $value;
 		}
 
-        
+        //dd($search_params);
         //if (count($sections_ids) > 0){
         //    $queryParams = array_merge($queryParams, ['ArticleSearch' => ['section_array' => $sections_ids]]);
 		//}

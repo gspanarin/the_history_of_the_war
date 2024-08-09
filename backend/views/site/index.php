@@ -322,7 +322,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     foreach ($chartData['tags']['geo'] as $tag):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-							<td><a href="http://warhistory/article?term_name=provenance&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
+							<td><a href="http://warhistory/article?term_name=subject_spatial&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
                             <td><?= $tag['count'] ?></td>
                         </tr>
                     <?php endforeach;?>
@@ -353,7 +353,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     foreach ($chartData['tags']['military_unit'] as $tag):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-							<td><a href="http://warhistory/article?term_name=subject_PlaceName&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
+							<td><a href="http://warhistory/article?term_name=subject_military_unit&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
                             <td><?= $tag['count'] ?></td>
                         </tr>
                     <?php endforeach;?>
