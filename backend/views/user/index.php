@@ -35,6 +35,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
+				'label' => 'На сайті',
+				'format' => 'raw',
+				'value' => function($model){
+					return $model->session ? '<span class="bg-success">on-line</span>' : '<span class="bg-secondary">off-line</span>';
+				}
+			],
+			[
                 'attribute' => 'status',
                 'filter' => User::getStatusList(),
                 'value' => function ($model) {

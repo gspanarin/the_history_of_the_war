@@ -22,10 +22,10 @@ return [
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
-        'session' => [
+        /*'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',
-        ],
+        ],*/
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

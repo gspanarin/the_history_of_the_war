@@ -8,6 +8,7 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 use yii\helpers\ArrayHelper;
+use common\models\Session;
 
 /**
  * User model
@@ -279,5 +280,9 @@ class User extends ActiveRecord implements IdentityInterface
             'created_at' => 'Дата створення',
             'updated_at' => 'Дата корегування',
         ];
+    }
+	
+	public function getSession(){
+        return Session::findOne(['user_id' => $this->id]);
     }
 }
