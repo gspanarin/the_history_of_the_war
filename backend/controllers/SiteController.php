@@ -116,7 +116,7 @@ class SiteController extends Controller{
         foreach ($articles as $item)
             $date_count[$item['date']] = $item['c_article']; 
         
-        for($i = 0; $i < 14; $i++){
+        for($i = 0; $i < 15; $i++){
             $current_date = date('Y-m-d', strtotime(" +$i day", $date_from));
             $labels[] = "'$current_date'";
             $data[] = (isset($date_count[$current_date]) ? $date_count[$current_date] : 0);
