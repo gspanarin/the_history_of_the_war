@@ -122,7 +122,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     foreach ($chartData['tags']['lng'] as $tag):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-                            <td><a href="http://warhistory/article?term_name=language&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
+                            <td><a href="/article?term_name=language&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
 							</td>
                             <td><?= $tag['count'] ?></td>
                         </tr>
@@ -155,7 +155,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     foreach ($chartData['tags']['format'] as $tag):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-                            <td><a href="http://warhistory/article?term_name=format&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
+                            <td><a href="/article?term_name=format&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
                             <td><?= $tag['count'] ?></td>
                         </tr>
                     <?php endforeach;?>
@@ -222,7 +222,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     foreach ($chartData['tags']['creators'] as $tag):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-                            <td><a href="http://warhistory/article?term_name=creator&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
+                            <td><a href="/article?term_name=creator&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
                             <td><?= $tag['count'] ?></td>
                         </tr>
                     <?php endforeach;?>
@@ -256,7 +256,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     foreach ($chartData['tags']['organization'] as $tag):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-							<td><a href="http://warhistory/article?term_name=provenance&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
+							<td><a href="/article?term_name=provenance&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
                             <td><?= $tag['count'] ?></td>
                         </tr>
                     <?php endforeach;?>
@@ -287,7 +287,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     foreach ($chartData['tags']['administrative_unit'] as $tag):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-							<td><a href="http://warhistory/article?term_name=subject_PlaceName&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
+							<td><a href="/article?term_name=subject_PlaceName&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
                             <td><?= $tag['count'] ?></td>
                         </tr>
                     <?php endforeach;?>
@@ -322,7 +322,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     foreach ($chartData['tags']['geo'] as $tag):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-							<td><a href="http://warhistory/article?term_name=subject_spatial&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
+							<td><a href="/article?term_name=subject_spatial&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
                             <td><?= $tag['count'] ?></td>
                         </tr>
                     <?php endforeach;?>
@@ -353,7 +353,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     foreach ($chartData['tags']['military_unit'] as $tag):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-							<td><a href="http://warhistory/article?term_name=subject_military_unit&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
+							<td><a href="/article?term_name=subject_military_unit&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
                             <td><?= $tag['count'] ?></td>
                         </tr>
                     <?php endforeach;?>
@@ -391,7 +391,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                     foreach ($chartData['popular_articles'] as $article):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-							<td><a href="http://warhistory/article/view?id=<?= $article->id ?>"><?= $article->title ?> </a>
+							<td><a href="/article/view?id=<?= $article->id ?>"><?= $article->title ?> </a>
                             <td><?= $article->view ?></td>
                         </tr>
                     <?php endforeach;?>
