@@ -69,7 +69,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->getStatusTitle();
                 }
             ],
-            [
+            
+			[
+                'label' => 'Дата архівації',
+				'format' => 'raw',
+                'value' => function ($model) {
+                   return $model->date_archived;
+                },
+            ],  
+			[
                 'attribute' => 'created_at',
 				'format' => 'raw',
                 'value' => function ($model, $key, $index, $grid) {

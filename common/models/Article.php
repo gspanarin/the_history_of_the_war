@@ -118,57 +118,70 @@ class Article extends \yii\db\ActiveRecord{
 		$new_metadata = new \stdClass();
 		foreach($metadata as $tag => $values){
 			foreach ($values as $value){
+				$value = trim($value);
 				
 				if ($tag == 'language' && $value == '6'){
-					$new_metadata->$tag = ['Українська'];
+					$new_metadata->$tag[] = 'Українська';
 				}elseif ($tag == 'language' && $value == '7'){
-					$new_metadata->$tag = ['Англійська'];
+					$new_metadata->$tag[] = 'Англійська';
 				}elseif ($tag == 'language' && $value == '8'){
-					$new_metadata->$tag = ['Російська'];
+					$new_metadata->$tag[] = 'Російська';
 					
 					
 				}elseif ($tag == 'date:event'){
-					$new_metadata->date_event = [$value];
+					$new_metadata->date_event[] = $value;
 				}elseif ($tag == 'date:archived'){
-					$new_metadata->date_archived = [$value];
+					$new_metadata->date_archived[] = $value;
 					
 				
 				}elseif ($tag == 'subject:name'){
-					$new_metadata->subject_name = [$value];
+					$new_metadata->subject_name[] = $value;
 				}elseif ($tag == 'subject:organization'){
-					$new_metadata->subject_organization = [$value];
+					$new_metadata->subject_organization[] = $value;
 				}elseif ($tag == 'subject:PlaceName'){
-					$new_metadata->subject_PlaceName = [$value];
+					$new_metadata->subject_PlaceName[] = $value;
 				}elseif ($tag == 'date:publication'){
-					$new_metadata->date_publication = [$value];
+					$new_metadata->date_publication[] = $value;
 				}elseif ($tag == 'subject:military_unit'){
-					$new_metadata->subject_military_unit = [$value];
+					$new_metadata->subject_military_unit[] = $value;
 				}elseif ($tag == 'subject:spatial'){
-					$new_metadata->subject_spatial = [$value];
+					$new_metadata->subject_spatial[] = $value;
 				}elseif ($tag == 'rightsHolder'){
-					$new_metadata->provenance = [$value];
+					$new_metadata->provenance[] = $value;
 				}elseif ($tag == 'creator:phоto'){
-					$new_metadata->creator_phоto = [$value];	
+					$new_metadata->creator_phоto[] = $value;	
 				}elseif ($tag == 'coverage'){
-					$new_metadata->subject_PlaceName = [$value];			
+					$new_metadata->subject_PlaceName[] = $value;			
 				}elseif ($tag == 'date'){
-					$new_metadata->date_event = [$value];			
+					$new_metadata->date_event[] = $value;			
 						
 				
 					
 				}elseif ($tag == 'type' && $value == '1'){
-					$new_metadata->$tag = ['Текст'];
+					$new_metadata->$tag[] = 'Текст';
 				}elseif ($tag == 'type' && $value == '2'){
-					$new_metadata->$tag = ['Аудіоматеріал'];
+					$new_metadata->$tag[] = 'Аудіоматеріал';
 				}elseif ($tag == 'type' && $value == '3'){
-					$new_metadata->$tag = ['Відеоматеріал'];
+					$new_metadata->$tag[] = 'Відеоматеріал';
 				}elseif ($tag == 'type' && $value == '4'){
-					$new_metadata->$tag = ['Зображення'];
+					$new_metadata->$tag[] = 'Зображення';
 				}elseif ($tag == 'type' && $value == '5'){
-					$new_metadata->$tag = ['Комбінований матеріал'];
+					$new_metadata->$tag[] = 'Комбінований матеріал';
+					
+				
+				}elseif ($tag == 'subject'){
+					if (strpos($value, ',')){
+						$values_arr = explode(',', $value);
+						foreach ($values_arr as $item){
+							$new_metadata->$tag[] = trim($item);
+						}
+					}else{
+						$new_metadata->$tag[] = $value;
+					}
+
 					
 				}else{
-					$new_metadata->$tag = [$value];
+					$new_metadata->$tag[] = $value;
 				}
 			}
 		}
@@ -328,4 +341,21 @@ class Article extends \yii\db\ActiveRecord{
 		
         return true;
     }
+	
+	public function getDate_archived(){
+		//Заготовка. Треба доробити
+		//Повертає данні конкретного значення із поля з json
+		//у прикладі - дата архівування
+		
+		/*SELECT
+			json_extract(metadata, '$.date_archived[0]') AS title
+		FROM 
+			article
+		WHERE 
+			id < 400
+*/
+
+		$metadata = json_decode($this->metadata);
+        return (isset($metadata->date_archived[0]) ? $metadata->date_archived[0] : ''); 
+	}
 }

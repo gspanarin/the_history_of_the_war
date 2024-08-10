@@ -38,7 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
 				'label' => 'На сайті',
 				'format' => 'raw',
 				'value' => function($model){
-					return $model->session ? '<span class="bg-success">on-line</span>' : '<span class="bg-secondary">off-line</span>';
+					
+					return ($model->session && (time() - $model->session->last_write < 60*30) ? '<span class="bg-success">on-line</span>' : '<span class="bg-secondary">off-line</span>');
 				}
 			],
 			[
