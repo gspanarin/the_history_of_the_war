@@ -12,7 +12,7 @@ return [
     'backend_url' => env('BACKEND_URL'),
     
     'storage_path' => env('STORAGE_PATH'),
-    'storages' => json_decode(env('STORAGES'), true),
+    'storages' => json_decode(env('STORAGES')),
     
     //версія Bootstrup для віджетів kartik 
     'bsVersion' => '4.x',

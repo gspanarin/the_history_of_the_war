@@ -14,6 +14,7 @@ class ArticleSearch extends Article{
     public $section_array = [];
 	public $term_name = '';
 	public $term_value = '';
+	public $title = '';
 	
     /**
      * {@inheritdoc}
@@ -22,7 +23,7 @@ class ArticleSearch extends Article{
     {
         return [
             [['id', 'user_id', 'section_id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['metadata', 'section_array', 'term_name', 'term_value'], 'safe'],
+            [['metadata', 'section_array', 'term_name', 'term_value', 'title'], 'safe'],
         ];
     }
 
@@ -55,12 +56,11 @@ class ArticleSearch extends Article{
         
         $this->load($params);
 
-		
-		
-		
+
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
+			
             return $dataProvider;
         }
 
@@ -87,6 +87,12 @@ class ArticleSearch extends Article{
 			$query->andWhere(['dictionary.value' => $this->term_value]);
 		}
 		
+		if ($this->title != ''){
+			$query->leftJoin ('dictionary', 'dictionary.article_id = article.id');
+			$query->andWhere(['dictionary.term_name' => 'title']);
+			$query->andWhere(['LIKE', 'dictionary.value', $this->title ]);
+		}
+		
         /*$tags = [];
 		if (isset($params['ArticleSearch'])){
 		foreach($params['ArticleSearch'] as $key => $value)
@@ -97,6 +103,6 @@ class ArticleSearch extends Article{
                 ];
 		}*/
         //dd($query);
-        return $dataProvider;
+		return $dataProvider;
     }
 }

@@ -157,7 +157,7 @@ class ArticleController extends BaseController{
         $files = new ArrayDataProvider([
             'allModels' => $model->files,
         ]);
-        
+
         if ($this->request->isPost){
             $uploadForm = new UploadForm();
             $uploadForm->files = UploadedFile::getInstances($model, 'files');            
@@ -217,15 +217,22 @@ class ArticleController extends BaseController{
     
     public function actionDownloadFile($id){
         $file = File::FindOne($id);
-        if ($file)
-            return \Yii::$app->response->sendFile($file->file_path);
+        if ($file){
+			//if (file_exists(Yii::$app->params['storage_path'] . $file->file_path)){
+			if (file_exists($file->file_path)){
+				//return \Yii::$app->response->sendFile(Yii::$app->params['storage_path'] . $file->file_path);
+				return \Yii::$app->response->sendFile($file->file_path);
+			}
+		}
+		throw new NotFoundHttpException('Нажаль, не вдалось знайти цей файл');
     }
     
     public function actionDeleteFile($article_id, $file_id ){
         $file = File::FindOne($file_id);
         if ($file){
-            if (file_exists($file->file_path))
+            if (file_exists($file->file_path)){
                 unlink($file->file_path);
+			}
             $file->delete();
             
             return $this->redirect(['update', 'id' => $article_id]);

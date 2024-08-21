@@ -302,9 +302,9 @@ class Article extends \yii\db\ActiveRecord{
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
     
-    public function getIcon(){
-        $path = str_replace("//", "/", Yii::$app->params['storage_path'] . date('Y', $this->created_at) . '/' . date('m', $this->created_at) . '/' . $this->id . '/icon.jpg');
-        //print_r($path );
+    public function getIcon(){        
+		$path = str_replace("//", "/", Yii::$app->params['storage_path'] . date('Y', $this->created_at) . '/' . date('m', $this->created_at) . '/' . $this->id . '/icon.jpg');
+        
         if(file_exists($path)){
             $imagedata = file_get_contents($path);
             return base64_encode($imagedata);

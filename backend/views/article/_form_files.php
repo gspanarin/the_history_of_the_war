@@ -92,6 +92,7 @@ echo GridView::widget([
     ],
 ]);
             
+echo '<span>Доступні для завантаження формати файлів: <span class="font-weight-bold">' . Yii::$app->params['backend.article.upload_file_extensions'] . '</span></span>';
 echo $form->field($model, 'files[]')->fileInput(['multiple' => true]);
 
 /*

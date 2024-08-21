@@ -31,9 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'pager' => ['class' => \yii\bootstrap4\LinkPager::class],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            //'id',
+            'id',
             [
                 'attribute' => 'title',
+				
             ],
             [
                 'attribute' => 'current_icon',

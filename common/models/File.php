@@ -5,7 +5,7 @@ namespace common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
-
+use yii\web\NotFoundHttpException;
 /**
  * This is the model class for table "file".
  *
@@ -85,23 +85,53 @@ class File extends \yii\db\ActiveRecord{
         return $this->hasOne(Article::class, ['id' => 'article_id']);
     }
     
+	//
+	//Треба переналаштувати формування шляху і внести зміни у записи у базі
+	//
     public function createIcon(){
-        
-        switch ($this->extension) {
-            case 'pdf':
-                $imagick = new \Imagick();
-                $imagick->readImage($this->file_path .'[0]');
-                $imagick->writeImages(dirname($this->file_path) . '/icon.jpg', false);
-                break;
-            case 'jpg':
-                copy($this->file_path, dirname($this->file_path) . '/icon.jpg');
-                break;
-            default:
-                break;
-        }
-        
+        //if (file_exists(Yii::$app->params['storage_path'] . $this->file_path)){
+		if (file_exists($this->file_path)){
+			switch ($this->extension) {
+				case 'pdf':
+					$imagick = new \Imagick();
+					//$imagick->readImage(Yii::$app->params['storage_path'] . $this->file_path .'[0]');
+					$imagick->readImage( $this->file_path .'[0]' );
+					$imagick->setBackgroundColor('white');
+					$imagick->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
+					$imagick->setImageAlphaChannel(\Imagick::ALPHACHANNEL_REMOVE);
+
+					//$imagick->writeImages(dirname(Yii::$app->params['storage_path'] . $this->file_path) . '/icon.jpg', false);
+					$imagick->writeImages(dirname($this->file_path) . '/icon.jpg', false);
+					$imagick->clear(); 
+					$imagick->destroy();
+					break;
+				case 'jpg':
+					//copy($this->file_path, dirname(Yii::$app->params['storage_path'] . $this->file_path) . '/icon.jpg');
+					copy($this->file_path, dirname($this->file_path) . '/icon.jpg');
+					break;
+				default:
+					break;
+			}
+		}else{
+			throw new NotFoundHttpException('Нажаль, не вдалось знайти цей файл');
+		}
 
         return true;
     }
+	
+
+	/**
+	 * Функція повертає шлях до сховища для 
+	 * @return string:boolean - повертає або шлях до сховища, або false
+	 */
+	public function getBasicPath(){
+		foreach (Yii::$app->params['storages'] as $storage => $param){
+			if ($this->article_id >= $param->ids_start && ($this->article_id <= $param->ids_stop || $param->ids_stop == 0)){
+				return $param->path;
+			}
+		}
+		
+		return false;
+	}
     
 }
