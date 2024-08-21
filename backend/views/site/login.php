@@ -43,14 +43,14 @@ use common\widgets\Alert;
         </div>
 
         <?php \yii\bootstrap4\ActiveForm::end(); ?>
-        <!--
+        
         <p class="mb-1">
-            <a href="#">I forgot my password</a>
+            <a href="/site/request-password-reset">I forgot my password</a>
         </p>
         <p class="mb-0">
-            <a href="register.html" class="text-center">Register a new membership</a>
+            <a href="/site/signup" class="text-center">Register a new membership</a>
         </p>
-        -->
+        
     </div>
     <!-- /.login-card-body -->
 </div>

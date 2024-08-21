@@ -1,13 +1,21 @@
 <?php
 return [
-    'adminEmail' => 'admin@example.com',
-    'supportEmail' => 'support@example.com',
-    'senderEmail' => 'noreply@example.com',
-    'senderName' => 'Example.com mailer',
+    'adminEmail' => env('COMMON.EMAIL.ADMINENMAIL'),
+    'supportEmail' => env('COMMON.EMAIL.SUPPORTEMAIL'),
+    'senderEmail' => env('COMMON.EMAIL.SENDEREMAIL'),
+    'senderName' => 'Проєкт: Архів війни',
     'user.passwordResetTokenExpire' => 3600,
     'user.passwordMinLength' => 8,
     
     
+	
+	
+	
+	
+
+
+	
+	
     'frontend_url' => env('FRONTEND_URL'),
     'backend_url' => env('BACKEND_URL'),
     
