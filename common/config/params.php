@@ -12,8 +12,8 @@ return [
 	
 	
 	
-
-
+	//Код для збору статистика за допомогою сервісів Google Analytics
+	'google_analytics_code' => env('GOOGLE.ANALYTICS.CODE'),
 	
 	
     'frontend_url' => env('FRONTEND_URL'),

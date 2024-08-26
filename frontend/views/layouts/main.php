@@ -79,7 +79,16 @@ AppAsset::register($this);
     </div>
 </footer>
 
-<?php $this->endBody() ?>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?= Yii::$app->params['google_analytics_code'] ?>"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', '<?= Yii::$app->params['google_analytics_code'] ?>');
+</script>
+<?php $this->endBody() ?>	
 </body>
 </html>
 <?php $this->endPage();
