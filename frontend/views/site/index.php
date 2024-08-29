@@ -6,7 +6,7 @@ $this->title = 'Проект: історія війни';
 ?>
 <div class="site-index">
     <div class="body-content">
-
+<!--
     <section class="ftco-section ftco-no-pt ftco-no-pb">
     <div class="container">
         <div class="row justify-content-center mb-5">
@@ -35,10 +35,82 @@ $this->title = 'Проект: історія війни';
         </div>
     </div>
     </section>
+        -->
         
+		
         
-        
-        
+	<?php foreach ($sections as $section): ?>	
+	<section class="services-section ftco-section">
+      <div class="container">
+      	<div class="row justify-content-center pb-3">
+          <div class="col-md-10 heading-section text-center ftco-animate">
+          	<span class="subheading">Заголовок</span>
+            <h2 class="mb-4"><a href="/article?section_id=<?= $section->id ?>"><?= $section->title ?></h2></a>
+            <p>Проєкт започаткований Українською бібліотечною асоціацією у березні 2022 р. З липня 2023 р.  його координацію здійснюють фахівці Харківської державної наукової бібліотеки ім. В. Г. Короленка.</p>
+			<p><span>кількість статей у розділі: <span class="number"><?= $section->article_count?></span></span></p>
+          </div>
+        </div>
+      </div>
+    </section>	
+	<?php endforeach; ?>	
+		
+		
+		
+		
+		
+		
+		<!--
+   
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('assets_new/images/bg-1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate pb-5 text-center">
+            <h1 class="mb-0 bread">Архівування документів про війну</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="#">Історія війни <i class="ion-ios-arrow-round-forward"></i></a></span> <span>page <i class="ion-ios-arrow-round-forward"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section>-->
+    
+    <section class="services-section ftco-section">
+      <div class="container">
+      	<div class="row justify-content-center pb-3">
+          <div class="col-md-10 heading-section text-center ftco-animate">
+          	<span class="subheading">Заголовок</span>
+            <h2 class="mb-4">Заголовок</h2>
+            <p>Проєкт започаткований Українською бібліотечною асоціацією у березні 2022 р. З липня 2023 р.  його координацію здійснюють фахівці Харківської державної наукової бібліотеки ім. В. Г. Короленка.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section ftco-booking bg-light">
+    	<div class="container ftco-relative">
+    		<div class="row justify-content-center pb-3">
+          <div class="col-md-10 heading-section text-center ftco-animate">
+          	<span class="subheading">Заголовок</span>
+            <h2 class="mb-4">Заголовок</h2>
+            <p>Проєкт започаткований Українською бібліотечною асоціацією у березні 2022 р. З липня 2023 р.  його координацію здійснюють фахівці Харківської державної наукової бібліотеки ім. В. Г. Короленка.</p>
+          </div>
+        </div>
+ 
+ 
+    	</div>
+    </section>
+		
+	<section class="ftco-section ftco-pricing">
+		<div class="container">
+			<div class="row justify-content-center pb-3">
+	  <div class="col-md-10 heading-section text-center ftco-animate">
+		<span class="subheading">Заголовок</span>
+		<h2 class="mb-4">Заголовок</h2>
+		<p>Проєкт започаткований Українською бібліотечною асоціацією у березні 2022 р. З липня 2023 р.  його координацію здійснюють фахівці Харківської державної наукової бібліотеки ім. В. Г. Короленка.</p>
+	  </div>
+	</div>
+
+		</div>
+	</section>     
         
         
         
