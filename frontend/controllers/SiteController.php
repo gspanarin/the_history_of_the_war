@@ -76,7 +76,12 @@ class SiteController extends Controller
      * @return mixed
      */
     public function actionIndex(){
-
+		if (isset($_GET['template'])){
+			if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/frontend/views/layouts/main_' . $_GET['template'] . '.php')){
+				$this->layout = '@app/views/layouts/main_new';
+			}
+		}
+			
         $sections = Section::find()->where(['pid' => 1])->all();
         
         return $this->render('index', 
