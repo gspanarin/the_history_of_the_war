@@ -1,6 +1,7 @@
 <?php
 
 /** @var yii\web\View $this */
+$section_number = 0;
 
 $this->title = 'Проект: історія війни';
 ?>
@@ -40,7 +41,7 @@ $this->title = 'Проект: історія війни';
 		
         
 	<?php foreach ($sections as $section): ?>	
-	<section class="services-section ftco-section">
+	<section class="services-section ftco-section <?php echo ($section_number % 2 ? ' bg-light' : ''); $section_number++; ?>">
       <div class="container">
       	<div class="row justify-content-center pb-3">
           <div class="col-md-10 heading-section text-center ftco-animate">
