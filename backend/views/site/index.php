@@ -7,401 +7,77 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
 ?>
 <div class="container-fluid">
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card card-success">
-                <div class="card-header">
-                    <h3 class="card-title">Статті</h3>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="chart">
-                        <canvas id="barChartRecord" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                <h3 class="card-title">Статистика за операторами</h3>
-                </div>
-
-                <div class="card-body p-0">
-                    <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th style="width: 90px">#</th>
-                        <th>Оператор</th>
-                        <th style="width: 90px">Кількість статей</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php 
-                    $num =1;
-                    foreach ($chartData['users'] as $user):?>
-                        <tr>
-                            <td><?= $num++ ?>.</td>
-                            <td><?= $user['full_name'] ? $user['full_name']  : $user['username']  ?></td>
-                            <td><?= $user['count'] ?></td>
-                        </tr>
-                    <?php endforeach;?>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
-  </div>  
-  
-    <!--
-    <div class="row">
-        <div class="col-12 col-sm-6 col-md-3">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'CPU Traffic',
-                'number' => '10 <small>%</small>',
-                'icon' => 'fas fa-cog',
-            ]) ?>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Messages',
-                'number' => '1,410',
-                'icon' => 'far fa-envelope',
-            ]) ?>
-        </div>
-        <div class="col-md-4 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Bookmarks',
-                'number' => '410',
-                 'theme' => 'success',
-                'icon' => 'far fa-flag',
-            ]) ?>
-        </div>
-        <div class="col-md-4 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Uploads',
-                'number' => '13,648',
-                'theme' => 'gradient-warning',
-                'icon' => 'far fa-copy',
-            ]) ?>
-        </div>
-    </div>
-
--->
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                <h3 class="card-title">Статистика за мовою матеріала</h3>
-                </div>
-
-                <div class="card-body p-0">
-                    <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th style="width: 80px">#</th>
-                        <th>Tag</th>
-                        <th style="width: 80px">Count</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php 
-                    $num =1;
-                    foreach ($chartData['tags']['lng'] as $tag):?>
-                        <tr>
-                            <td><?= $num++ ?>.</td>
-                            <td><a href="/article?term_name=language&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
-							</td>
-                            <td><?= $tag['count'] ?></td>
-                        </tr>
-                    <?php endforeach;?>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
-        
-        
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                <h3 class="card-title">Статистика за форматом</h3>
-                </div>
-
-                <div class="card-body p-0">
-                    <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th style="width: 80px">#</th>
-                        <th>Tag</th>
-                        <th style="width: 80px">Count</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php 
-                    $num =1;
-                    foreach ($chartData['tags']['format'] as $tag):?>
-                        <tr>
-                            <td><?= $num++ ?>.</td>
-                            <td><a href="/article?term_name=format&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
-                            <td><?= $tag['count'] ?></td>
-                        </tr>
-                    <?php endforeach;?>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                <h3 class="card-title">Статистика за джерелом матеріалу</h3>
-                </div>
-
-                <div class="card-body p-0">
-                    <table class="table table-striped text-break">
-                    <thead>
-                    <tr>
-                        <th style="width: 80px">#</th>
-                        <th>Tag</th>
-                        <th style="width: 80px">Count</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php 
-                    $num =1;
-                    foreach ($chartData['tags']['source'] as $tag):?>
-                        <tr>
-                            <td><?= $num++ ?>.</td>
-                            <td><?= $tag['value'] ?></td>
-                            <td><?= $tag['count'] ?></td>
-                        </tr>
-                    <?php endforeach;?>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
-        
-        
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                <h3 class="card-title">Статистика за авторством матеріалу</h3>
-                </div>
-
-                <div class="card-body p-0">
-                    <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th style="width: 80px">#</th>
-                        <th>Tag</th>
-                        <th style="width: 80px">Count</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php 
-                    $num =1;
-                    foreach ($chartData['tags']['creators'] as $tag):?>
-                        <tr>
-                            <td><?= $num++ ?>.</td>
-                            <td><a href="/article?term_name=creator&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
-                            <td><?= $tag['count'] ?></td>
-                        </tr>
-                    <?php endforeach;?>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-
-	 <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                <h3 class="card-title">Статистика за організацією, що архівувала матеріал</h3>
-                </div>
-
-                <div class="card-body p-0">
-                    <table class="table table-striped text-break">
-                    <thead>
-                    <tr>
-                        <th style="width: 80px">#</th>
-                        <th>Tag</th>
-                        <th style="width: 80px">Count</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php 
-                    $num =1;
-                    foreach ($chartData['tags']['organization'] as $tag):?>
-                        <tr>
-                            <td><?= $num++ ?>.</td>
-							<td><a href="/article?term_name=provenance&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
-                            <td><?= $tag['count'] ?></td>
-                        </tr>
-                    <?php endforeach;?>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
-        
-		<div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                <h3 class="card-title">Статистика за Адміністартивними одиницями</h3>
-                </div>
-
-                <div class="card-body p-0">
-                    <table class="table table-striped text-break">
-                    <thead>
-                    <tr>
-                        <th style="width: 80px">#</th>
-                        <th>Tag</th>
-                        <th style="width: 80px">Count</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php 
-                    $num =1;
-                    foreach ($chartData['tags']['administrative_unit'] as $tag):?>
-                        <tr>
-                            <td><?= $num++ ?>.</td>
-							<td><a href="/article?term_name=subject_PlaceName&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
-                            <td><?= $tag['count'] ?></td>
-                        </tr>
-                    <?php endforeach;?>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-
-
+	
 	<div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                <h3 class="card-title">Статистика за географічними об'єктами</h3>
+		<div class="col-12">
+            <div class="card card-primary card-outline card-tabs">
+              <div class="card-header p-0 pt-1 border-bottom-0">
+                <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-page1" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Наповнення архіву</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-page2" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Мова та формат</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill" href="#custom-tabs-three-page3" role="tab" aria-controls="custom-tabs-three-messages" aria-selected="false">Джерела та авторство</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-three-settings-tab" data-toggle="pill" href="#custom-tabs-three-page4" role="tab" aria-controls="custom-tabs-three-settings" aria-selected="false">Адміністративні та географічні об'єкти</a>
+                  </li>
+				  
+				  
+				  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-three-settings-tab" data-toggle="pill" href="#custom-tabs-three-page5" role="tab" aria-controls="custom-tabs-three-settings" aria-selected="false">Організації та підрозділи</a>
+                  </li>
+				  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-three-settings-tab" data-toggle="pill" href="#custom-tabs-three-page6" role="tab" aria-controls="custom-tabs-three-settings" aria-selected="false">Рейтинг статей</a>
+                  </li>
+				  
+				  
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content" id="custom-tabs-three-tabContent">
+                  <div class="tab-pane fade show active" id="custom-tabs-three-page1" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
+					  <?= $this->render('dashboard/page1', compact('chartData')) ?>
+                  </div>
+                  <div class="tab-pane fade" id="custom-tabs-three-page2" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
+                     <?= $this->render('dashboard/page2', compact('chartData')) ?>
+                  </div>
+                  <div class="tab-pane fade" id="custom-tabs-three-page3" role="tabpanel" aria-labelledby="custom-tabs-three-messages-tab">
+                     <?= $this->render('dashboard/page3', compact('chartData')) ?>
+                  </div>
+                  <div class="tab-pane fade" id="custom-tabs-three-page4" role="tabpanel" aria-labelledby="custom-tabs-three-settings-tab">
+                     <?= $this->render('dashboard/page4', compact('chartData')) ?>
+                  </div>
+				  <div class="tab-pane fade" id="custom-tabs-three-page5" role="tabpanel" aria-labelledby="custom-tabs-three-settings-tab">
+                     <?= $this->render('dashboard/page5', compact('chartData')) ?>
+                  </div>
+				  <div class="tab-pane fade" id="custom-tabs-three-page6" role="tabpanel" aria-labelledby="custom-tabs-three-settings-tab">
+                     <?= $this->render('dashboard/page6', compact('chartData')) ?>
+                  </div>
+					
+					
                 </div>
-
-                <div class="card-body p-0">
-                    <table class="table table-striped text-break">
-                    <thead>
-                    <tr>
-                        <th style="width: 80px">#</th>
-                        <th>Tag</th>
-                        <th style="width: 80px">Count</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php 
-                    $num =1;
-                    foreach ($chartData['tags']['geo'] as $tag):?>
-                        <tr>
-                            <td><?= $num++ ?>.</td>
-							<td><a href="/article?term_name=subject_spatial&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
-                            <td><?= $tag['count'] ?></td>
-                        </tr>
-                    <?php endforeach;?>
-                    </tbody>
-                </table>
-                </div>
+              </div>
+              <!-- /.card -->
             </div>
-        </div>
-        
-		<div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                <h3 class="card-title">Статистика за військовими підрозділами</h3>
-                </div>
+          </div>
+	</div>
+	
 
-                <div class="card-body p-0">
-                    <table class="table table-striped text-break">
-                    <thead>
-                    <tr>
-                        <th style="width: 80px">#</th>
-                        <th>Tag</th>
-                        <th style="width: 80px">Count</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php 
-                    $num =1;
-                    foreach ($chartData['tags']['military_unit'] as $tag):?>
-                        <tr>
-                            <td><?= $num++ ?>.</td>
-							<td><a href="/article?term_name=subject_military_unit&term_value=<?= urlencode( $tag['value']) ?>"> <?= $tag['value'] ?> </a>
-                            <td><?= $tag['count'] ?></td>
-                        </tr>
-                    <?php endforeach;?>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
-        
-    </div>
+    
+
+
+    
+
+	 
 
 
 
 
-
-	<div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                <h3 class="card-title">Найпопулярніші статті</h3>
-                </div>
-
-                <div class="card-body p-0">
-                    <table class="table table-striped text-break">
-                    <thead>
-                    <tr>
-                        <th style="width: 80px">#</th>
-                        <th>Tag</th>
-                        <th style="width: 80px">Count</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php 
-                    $num =1;
-                    foreach ($chartData['popular_articles'] as $article):?>
-                        <tr>
-                            <td><?= $num++ ?>.</td>
-							<td><a href="/article/view?id=<?= $article->id ?>"><?= $article->title ?> </a>
-                            <td><?= $article->view ?></td>
-                        </tr>
-                    <?php endforeach;?>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
-        
-    </div>
+	
 
 
 
