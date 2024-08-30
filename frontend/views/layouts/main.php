@@ -73,7 +73,7 @@ use yii\bootstrap4\NavBar;
 	
 	<main role="main" class="flex-shrink-0">
 		<div class="container">
-			<section class="hero-wrap hero-wrap-2" style="background-image: url('assets_new/images/bg-1.png');" data-stellar-background-ratio="0.5">
+			<section class="hero-wrap hero-wrap-2" style="background-image: url('assets_new/images/bg-1.png'); background-size: cover; width:100%;" data-stellar-background-ratio="0.5">
 				<div class="overlay"></div>
 				<div class="container">
 					<div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
