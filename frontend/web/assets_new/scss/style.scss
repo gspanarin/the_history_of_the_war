@@ -8,7 +8,7 @@ $white: #fff;
 $black: #000000;
 $darken: #232931;
 
-$primary: #bf925b;
+$primary: #343a40;
 $secondary: #563b4c;
 
 
@@ -331,12 +331,12 @@ h1, h2, h3, h4, h5,
 		background: $black;
 	}
 	&.hero-wrap-2{
-		height: 780px;
+		height: 600px;
 		.overlay{
 			background: $black;
 			width: 100%;
 			opacity: .5;
-			height: 780px;
+			height: 600px;
 		}
 		.slider-text{
 			height: 780px !important;
@@ -714,7 +714,7 @@ h3.vr{
 			list-style: none;
 			padding: 10px 20px;
 			&:nth-child(odd){
-				background: #ebe8de;
+				background: #DDDDDD;
 			}
 		}
 	}
@@ -760,7 +760,7 @@ h3.vr{
 }
 
 .bg-light {
-	background: #ebe8de!important;
+	background: #DDDDDD!important;
 }
 
 .bg-primary{
