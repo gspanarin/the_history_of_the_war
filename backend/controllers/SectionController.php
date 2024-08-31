@@ -162,4 +162,15 @@ class SectionController extends BaseController{
              //}
         }
     }
+	
+	//http://warhistory/official/section/set-pid?id=1&pid=0
+	public function actionSetPid($id, $pid){
+		$model = Section::findOne([$id]);
+		if ($model){
+			$model->pid = $pid;
+			$model->sort = 0;
+			$model->save();
+		}
+		return $this->redirect(['view', 'id' => $id]);
+    }
 }
