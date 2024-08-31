@@ -71,8 +71,7 @@ use yii\bootstrap4\NavBar;
     <!-- END nav -->
 	
 	
-
-			<section class="hero-wrap hero-wrap-2" style="background-image: url('/assets_new/images/bg.png'); background-size: cover; max-width:100%;" data-stellar-background-ratio="0.5">
+	<section class="hero-wrap hero-wrap-2" style="background-image: url('/assets_new/images/bg.png'); background-size: cover; max-width:100%;" data-stellar-background-ratio="0.5">
 				<div class="container-fluid">
 					<div class="container">
 						<div class="row no-gutters slider-text js-fullheight justify-content-center align-items-center">
@@ -85,10 +84,7 @@ use yii\bootstrap4\NavBar;
 					</div>
 				</div>
 			</section>
-
-			
-			
-			<section >
+	<section >
 				<div class="container-fluid">
 					<div class="container">   
 					<?= Breadcrumbs::widget([
@@ -97,6 +93,12 @@ use yii\bootstrap4\NavBar;
 					</div>
 				</div>
 			</section>
+		<div class="container">
+			
+
+			
+			
+			
 			
 			
 			
@@ -106,7 +108,7 @@ use yii\bootstrap4\NavBar;
 			
 			<?= Alert::widget() ?>
 			<?= $content ?>
-	
+		</div>
 
 
 
