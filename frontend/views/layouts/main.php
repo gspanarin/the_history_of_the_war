@@ -71,7 +71,7 @@ use yii\bootstrap4\NavBar;
     <!-- END nav -->
 	
 	
-	<main role="main" class="flex-shrink-0">
+	
 		<div class="container">
 			<section class="hero-wrap hero-wrap-2" style="background-image: url('/assets_new/images/bg.png'); background-size: cover; width:100%;" data-stellar-background-ratio="0.5">
 				<div class="overlay"></div>
@@ -109,7 +109,7 @@ use yii\bootstrap4\NavBar;
 			<?= Alert::widget() ?>
 			<?= $content ?>
 		</div>
-	</main>
+
 
 
 <footer class="footer mt-auto py-3 text-muted">
