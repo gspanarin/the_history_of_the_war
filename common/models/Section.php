@@ -95,9 +95,9 @@ class Section extends \yii\db\ActiveRecord implements \dixonstarter\togglecolumn
         if ($id != null)
             $params['id'] = $id;
                 
-        $query = Section::find()->where($params)->orderBy(['pid' => SORT_ASC, 'sort' => SORT_ASC])->all();
+        $query = Section::find()->where($params)->orderBy(['sort' => SORT_ASC])->all();
         $list = [];
-		dd($query);
+		//dd($query);
         $tree = Section::getTree($query, null);
         for($i = 0; $i < count($tree); $i++)
             $list[$tree[$i]['id']] = $tree[$i]['title'];
