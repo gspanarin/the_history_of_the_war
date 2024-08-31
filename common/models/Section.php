@@ -106,7 +106,7 @@ class Section extends \yii\db\ActiveRecord implements \dixonstarter\togglecolumn
     }
     
     
-    static function getTree($items, $pid = 0, $level = 0){
+    static function getTree($items, $pid = null, $level = 0){
         $list = [];
         for ($i = 0; $i < count($items); $i++){
             if ($items[$i]->pid == $pid){
