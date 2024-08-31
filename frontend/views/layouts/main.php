@@ -73,21 +73,20 @@ use yii\bootstrap4\NavBar;
 	
 	
 		<div class="container">
-			<section class="hero-wrap hero-wrap-2" style="background-image: url('/assets_new/images/bg.png'); background-size: cover; width:100%;" data-stellar-background-ratio="0.5">
-				<div class="overlay"></div>
+			<section class="hero-wrap hero-wrap-2" style="background-image: url('/assets_new/images/bg.png'); background-size: cover; max-width:100%;" data-stellar-background-ratio="0.5">
 				<div class="container-fluid">
 					<div class="container">
-						<div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+						<div class="row no-gutters slider-text js-fullheight justify-content-center align-items-center">
 							<div class="col-md-9 ftco-animate pb-5 text-center">
 								<p class="font-weight-light text-white text-uppercase">проєкт</p>
 								<h1 class="mb-0 bread">Архівування документів про війну</h1>
-								<p class="subheading  text-white text-uppercase">Ініціатор – ВГО Українська бібліотечна асоціація</p>
+								<p class="subheading mt-5 text-white ">Ініціатор проєкту – ВГО Українська бібліотечна асоціація</p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-			
+
 			
 			
 			<section >
