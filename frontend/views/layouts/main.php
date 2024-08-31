@@ -71,11 +71,10 @@ use yii\bootstrap4\NavBar;
     <!-- END nav -->
 	
 	
-	
-		<div class="container">
+
 			<section class="hero-wrap hero-wrap-2" style="background-image: url('/assets_new/images/bg.png'); background-size: cover; max-width:100%;" data-stellar-background-ratio="0.5">
 				<div class="container-fluid">
-	
+					<div class="container">
 						<div class="row no-gutters slider-text js-fullheight justify-content-center align-items-center">
 							<div class="col-md-9 ftco-animate pb-5 text-center">
 								<p class="font-weight-light text-white text-uppercase">проєкт</p>
@@ -83,7 +82,7 @@ use yii\bootstrap4\NavBar;
 								<p class="subheading mt-5 text-white ">Ініціатор проєкту – ВГО Українська бібліотечна асоціація</p>
 							</div>
 						</div>
-					
+					</div>
 				</div>
 			</section>
 
@@ -107,7 +106,7 @@ use yii\bootstrap4\NavBar;
 			
 			<?= Alert::widget() ?>
 			<?= $content ?>
-		</div>
+	
 
 
 
