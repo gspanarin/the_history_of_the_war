@@ -5,7 +5,8 @@ $section_number = 1;
 use yii\helpers\Html;
 
 
-$this->title = Html::encode(Yii::$app->name);
+$this->params['title'] = $this->title = Html::encode(Yii::$app->name);
+$this->params['subtitle'] = Html::encode('проєкт');
 ?>
 <div class="site-index">
     <div class="body-content">

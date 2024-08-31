@@ -13,6 +13,10 @@ $this->title = $model->getTitle() . ' (id: ' . $model->id . ')';
 $this->params['breadcrumbs'][] = ['label' => 'Статті', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+
+$this->params['title'] = $model->getTitle();
+$this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
+
 ?>
 <div class="article-view">
 

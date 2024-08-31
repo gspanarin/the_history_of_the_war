@@ -15,7 +15,7 @@ use yii\bootstrap4\NavBar;
 <!DOCTYPE html>
 <html lang="uk">
   <head>
-    <title>Проєкт «Архівування документів про війну»</title>
+    <title><?= Html::encode($this->params['title']) ?></title>
 	<meta name="description" content="Архівування документів про війну Харківська державна наукова бібліотека імені В.Г Короленка">
 	<meta name="author" content="ХДНБ ім. В. Г. Короленка">
     <meta charset="utf-8">
@@ -60,10 +60,10 @@ use yii\bootstrap4\NavBar;
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 	        	<li class="nav-item active"><a href="/" class="nav-link">Головна</a></li>
-	        	<li class="nav-item"><a href="/" class="nav-link">Про проєкт</a></li>
-	        	<li class="nav-item"><a href="/" class="nav-link">Колекції</a></li>
-	        	<li class="nav-item"><a href="/" class="nav-link">Користівачам</a></li>
-	          <li class="nav-item"><a href="/" class="nav-link">Контакти</a></li>
+	        	<li class="nav-item"><a href="/site/about" class="nav-link">Про проєкт</a></li>
+	        	<li class="nav-item"><a href="/site/collections" class="nav-link">Колекції</a></li>
+	        	<li class="nav-item"><a href="/site/for_users" class="nav-link">Користівачам</a></li>
+	          <li class="nav-item"><a href="/site/contact" class="nav-link">Контакти</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -76,8 +76,8 @@ use yii\bootstrap4\NavBar;
 					<div class="container">
 						<div class="row no-gutters slider-text js-fullheight justify-content-center align-items-center">
 							<div class="col-md-9 ftco-animate pb-5 text-center">
-								<p class="font-weight-light text-white text-uppercase">проєкт</p>
-								<h1 class="mb-0 bread">Архівування документів про війну</h1>
+								<p class="font-weight-light text-white text-uppercase"><?= Html::encode($this->params['subtitle']) ?></p>
+								<h1 class="mb-0 bread"><?= Html::encode($this->params['title']) ?></h1>
 								<p class="subheading mt-5 text-white ">Ініціатор проєкту – ВГО Українська бібліотечна асоціація</p>
 							</div>
 						</div>

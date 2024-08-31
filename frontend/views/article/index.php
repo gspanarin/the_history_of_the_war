@@ -22,6 +22,10 @@ if (isset($current_section))
 $this->params['breadcrumbs'][] = $this->title;
 
 
+$this->params['title'] = $current_section->title;
+$this->params['subtitle'] = Html::encode(Html::encode(Yii::$app->name));
+
+
 ?>
 
 <div class="article-index">
