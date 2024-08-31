@@ -98,7 +98,7 @@ class Section extends \yii\db\ActiveRecord implements \dixonstarter\togglecolumn
         $query = Section::find()->where($params)->orderBy(['pid' => SORT_ASC, 'sort' => SORT_ASC])->all();
         $list = [];
 
-        $tree = Section::getTree($query);
+        $tree = Section::getTree($query, null);
         for($i = 0; $i < count($tree); $i++)
             $list[$tree[$i]['id']] = $tree[$i]['title'];
 
@@ -106,10 +106,10 @@ class Section extends \yii\db\ActiveRecord implements \dixonstarter\togglecolumn
     }
     
     
-    static function getTree($items, $pid = null, $level = 0){
+    static function getTree($items, $pid = 1, $level = 0){
         $list = [];
         for ($i = 0; $i < count($items); $i++){
-            if ($items[$i]->pid === $pid){
+            if ($items[$i]->pid === $pid || (empty($items[$i]->pid) && $pid === null)){
                 $list[] = [
                     'id' => $items[$i]->id,
                     'title' => str_repeat(' -- ', $level) . $items[$i]->title
