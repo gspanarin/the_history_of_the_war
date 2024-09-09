@@ -45,7 +45,7 @@ class ArticleController extends Controller{
             'totalCount' => $dataProvider->getTotalCount(),
             'defaultPageSize' => Yii::$app->params['frontend.article.pagination_pagesize']
                 ]);
-        
+		
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

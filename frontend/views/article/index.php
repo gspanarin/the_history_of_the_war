@@ -17,15 +17,14 @@ use yii\widgets\ListView;
 
 $this->title = 'Статті';
 $this->params['breadcrumbs'][] = ['label' => 'Усі статті', 'url' => ['index']];
-if (isset($current_section))
+if (isset($current_section)){
     $this->params['breadcrumbs'][] = ['label' => 'Розділ "' . $current_section->title . '"', 'url' => ['index', 'section_id' => $current_section->id]];
-$this->params['breadcrumbs'][] = $this->title;
+	$this->params['title'] = $current_section->title;
+}else{
+	$this->params['breadcrumbs'][] = $this->params['title'] = $this->title;
+}
 
-
-$this->params['title'] = $current_section->title;
 $this->params['subtitle'] = Html::encode(Html::encode(Yii::$app->name));
-
-
 ?>
 
 <div class="article-index">

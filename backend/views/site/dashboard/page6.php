@@ -20,7 +20,7 @@
                     foreach ($chartData['popular_articles'] as $article):?>
                         <tr>
                             <td><?= $num++ ?>.</td>
-							<td><a href="/article/view?id=<?= $article->id ?>"><?= $article->title ?> </a>
+							<td><a href="/official/article/view?id=<?= $article->id ?>"><?= $article->title ?> </a>
                             <td><?= $article->view ?></td>
                         </tr>
                     <?php endforeach;?>
