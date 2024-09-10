@@ -90,5 +90,5 @@ class ArticleController extends Controller{
         if ($file)
             return \Yii::$app->response->sendFile($file->file_path);
     }
-    
+ 
 }

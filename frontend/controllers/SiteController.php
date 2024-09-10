@@ -268,4 +268,18 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+	
+		
+	public function actionForMembers(){
+		return $this->render('for_members');
+	}
+	
+	public function actionCollections(){
+		return $this->render('collections');
+	}
+	
+	public function actionForUsers(){
+		return $this->render('for_users');
+	}
+	
 }
