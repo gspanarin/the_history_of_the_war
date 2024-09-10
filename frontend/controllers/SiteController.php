@@ -282,4 +282,8 @@ class SiteController extends Controller
 		return $this->render('for_users');
 	}
 	
+	public function actionLegalPolicy(){
+		return $this->render('legal_policy');
+	}
+	
 }

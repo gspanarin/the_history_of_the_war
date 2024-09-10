@@ -123,50 +123,46 @@ use yii\bootstrap4\NavBar;
                 <div class="col-lg">
 					<div class="ftco-footer-widget mb-4">
 						<h2 class="ftco-heading-2">Розділи</h2>
-						<ul class="list-unstyled">
-							<li><a href="#" class="py-2 d-block">Державна політика</a></li>
-							<li><a href="#" class="py-2 d-block">Докази російської агресії</a></li>
-							<li><a href="#" class="py-2 d-block">Докази українського спротиву</a></li>
-							<li><a href="#" class="py-2 d-block">...</a></li>
-						</ul>
-						<ul class="list-unstyled">
-							<li><a href="#" class="py-2 p-2 border rounded">Путівник</a></li>
-						</ul>
+<ul class="list-unstyled">
+         <li><a href="#" class="py-2 d-block">Державна політика   </a></li>
+         <li><a href="#" class="py-2 d-block">Докази російської агресії   </a></li>
+         <li><a href="#" class="py-2 d-block">Докази українського спротиву   </a></li>
+         <li><a href="#" class="py-2 d-block">Волонтерський рух в Україні   </a></li>
+         <li><a href="#" class="py-2 d-block">Міжнародна підтримка</a></li>
+         <li><a href="#" class="py-2 d-block">Культура під час війни  </a></li> 
+</ul>
 					</div>
 				</div>
                 <div class="col-lg">
 					<div class="ftco-footer-widget mb-4 ">
 					    <h2 class="ftco-heading-2">Інформація</h2>
-							<ul class="list-unstyled">
-								<li><a href="#" class="py-2 d-block">Учасникам проєкту</a></li>
-								<li><a href="#" class="py-2 d-block">Користувачам</a></li>
-								<li><a href="#" class="py-2 d-block">Як стати/як долучитися</a></li>
-								<li><a href="#" class="py-2 d-block">...</a></li>
-							</ul>
+<ul class="list-unstyled">
+                <li><a href="/site/collections" class="py-2 d-block">Путівник</a></li>
+                <li><a href="/site/for-members" class="py-2 d-block">Учасникам проєкту</a></li>
+                <li><a href="/site/for-users" class="py-2 d-block">Користувачам</a></li>
+                <li><a href="/site/legal-policy" class="py-2 d-block">Правова політика</a></li>
+</ul>
 					</div>
 				</div>
                 <div class="col-lg">
 					<div class="ftco-footer-widget mb-4">
 						<h2 class="ftco-heading-2 logo">Про архів</h2>
-						<p>Проєкт започаткований Українською бібліотечною асоціацією у березні 2022 р. З липня 2023 р.  його координацію здійснюють фахівці Харківської державної наукової бібліотеки ім. В. Г. Короленка.</p>
-						<p><a href="about.php" class="text-white"><u>Докладніше ... </u></a></p>
+ <p>Проєкт «Архівування документів про війну», ініційований ВГО Українська бібліотечна асоціація (УБА) у відповідь на повномасштабне вторгнення військ РФ, об'єднав зусилля бібліотекарів з усієї України з метою створення цифрового архіву, що відображає події російсько-української війни. </p>
+<p><a href="/site/about" class="text-white"><u>Докладніше ... </u></a></p>
 					</div>
 				</div>
                 <div class="col-lg">
 					<div class="ftco-footer-widget mb-4">
 						<h2 class="ftco-heading-2"><span class="font-weight-light">Є питання? </span><br>Ми на зв'язку!</h2>
-						<div class="block-23 mb-3">
-							<ul>
-								<!--<li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-								<li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>-->
-								<li><a href="#"><span class="icon icon-envelope"></span><span class="text">mail@mail.com</span>???</a></li>
-							</ul>
-						</div>
-						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-						</ul>
+<div class="block-23 mb-3">
+<div class="tagcloud"><a href="mailto:warinukrainearchive2022@gmail.com" class="tag-cloud-link text-white">warinukrainearchive2022@gmail.com</a></div>
+</div>
+
+<!--<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+</ul>-->
 					</div>
 				</div>
             </div>
