@@ -76,17 +76,18 @@ use yii\bootstrap4\NavBar;
         </div>
     </section>  
       
- <!-- ----------------тут вставить свою форму поиска. Фильтры будут ниже в _sup_footer.php------------------->          
+ <!-- ----------------тут вставить свою форму поиска. Фильтры будут ниже в _sup_footer.php------------------->   
+ <?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') {?>
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-4 ftco-animate">
                     <div class="text-center ftco-animate">
                         <!- начало вставки формы поиска--->
-                        <form action="#" class="search-form">
+                        <form action="/article" class="search-form">
                             <div class="form-group">
                                 <span class="icon ion-ios-search"></span>
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" name="qwery" class="form-control" placeholder="Search...">
                             </div>
                         </form>
                         <!- конец формы поиска--->
@@ -95,7 +96,7 @@ use yii\bootstrap4\NavBar;
             </div>
         </div>
     </section>  
-      
+<?php } ?>
     <!--breadcrumb-->  
     <section >
         <div class="container-fluid">
