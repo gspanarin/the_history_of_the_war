@@ -8161,8 +8161,8 @@ body {
     font-family: "Roboto", sans-serif;
 /*    background-color: #EDEDED;*/
     font-size: 18px;
-    line-height: 1.8;
-    font-weight: 500;
+    line-height: 1.4;
+    font-weight: 400;
     color: #161A1D;
 }
 
@@ -9931,6 +9931,9 @@ textarea.form-control {
  .slider-text .bread {
   font-size: 2em;
     }    
+    
+    .p-5 {
+  padding: 0 !important; }
 }
 
 
