@@ -9,6 +9,20 @@ $this->params['title'] = $this->title = Html::encode(Yii::$app->name);
 $this->params['subtitle'] = Html::encode('проєкт');
 ?>
 
+<style>
+.btn-cont {
+	width: 100%;
+	height: 30px;
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+</style>
+
 <div class="container">
 	<div class="site-index">
 		<div class="body-content">
@@ -32,10 +46,13 @@ $this->params['subtitle'] = Html::encode('проєкт');
 	<div class="col-lg-4">
 		<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative h-250 bg-lighter">
 			<div class="col p-4 d-flex flex-column position-static">
-				<h2 class="card-title"><a href="#" class="colorlink"><?= $section->title ?></a></h2>
+				<h2 class="card-title"><a href="/article?section_id=<?= $section->id ?>" class="colorlink"><?= $section->title ?></a></h2>
 				<p class="card-title mb-4 lead">Кількість статей у розділі: <span class="badge badge-primary"><?= $section->article_count?></span></p>
 				<p class="card-text mb-4 ">&nbsp;</p>
-				<button type="button" class="btn btn-lg  btn-outline-secondary mt-2  font-weight-bold ">Перейти</button>
+				
+				<div class="btn-cont">
+					<button type="button" class="btn btn-lg  btn-outline-secondary mt-2  font-weight-bold button">Перейти</button>
+				</div>
 			</div>
 		</div>
 	</div>

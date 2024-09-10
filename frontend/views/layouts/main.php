@@ -87,7 +87,7 @@ use yii\bootstrap4\NavBar;
                         <form action="/article" class="search-form">
                             <div class="form-group">
                                 <span class="icon ion-ios-search"></span>
-                                <input type="text" name="qwery" class="form-control" placeholder="Search...">
+                                <input type="text" name="qwery" class="form-control" placeholder="Шукати...">
                             </div>
                         </form>
                         <!- конец формы поиска--->
@@ -110,7 +110,7 @@ use yii\bootstrap4\NavBar;
     <!--end breadcrumb-->       
 
  <!-- будем делать тут дополнительную информацию -->        
-    <section class=" ftco-section bg-light ">
+    <section class=" ftco-section">
         <div class="container ">
             <?= $content ?>
             <?= Alert::widget() ?>
