@@ -11,8 +11,9 @@ $this->title = 'Reset password';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-reset-password">
-    <h1><?= Html::encode($this->title) ?></h1>
-
+    <div class="row heading-section justify-content-left p-4">
+		<h1><?= Html::encode($this->title) ?></h1>
+	</div>
     <p>Please choose your new password:</p>
 
     <div class="row">

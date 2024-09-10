@@ -16,8 +16,9 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 
 ?>
 <div class="site-contact">
-    <h1><?= Html::encode($this->title) ?></h1>
-
+	<div class="row heading-section justify-content-left p-4">
+		<h1><?= Html::encode($this->title) ?></h1>
+	</div>
     <p>
         If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
     </p>

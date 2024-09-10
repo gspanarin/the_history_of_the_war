@@ -11,8 +11,9 @@ $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-signup">
-    <h1><?= Html::encode($this->title) ?></h1>
-
+	<div class="row heading-section justify-content-left p-4">
+		<h1><?= Html::encode($this->title) ?></h1>
+	</div>
     <p>Please fill out the following fields to signup:</p>
 
     <div class="row">

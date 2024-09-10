@@ -12,7 +12,7 @@ $this->params['subtitle'] = Html::encode('проєкт');
 <style>
 .btn-cont {
 	width: 100%;
-	height: 30px;
+	//height: 30px;
 	position: absolute;
 	bottom: 20px;
 	left: 0;
@@ -50,7 +50,7 @@ $this->params['subtitle'] = Html::encode('проєкт');
 				<p class="card-title mb-4 lead">Кількість статей у розділі: <span class="badge badge-primary"><?= $section->article_count?></span></p>
 				<p class="card-text mb-4 ">&nbsp;</p>
 				
-				<div class="btn-cont">
+				<div class="btn-cont ">
 					<button type="button" class="btn btn-lg  btn-outline-secondary mt-2  font-weight-bold button">Перейти</button>
 				</div>
 			</div>
