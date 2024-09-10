@@ -3,6 +3,7 @@
 /** @var \yii\web\View $this */
 /** @var string $content */
 
+//use yii;
 use common\widgets\Alert;
 use frontend\assets\AppAsset;
 use yii\bootstrap4\Breadcrumbs;
@@ -65,8 +66,11 @@ use yii\bootstrap4\NavBar;
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
                     <div class="col-lg-10 heading-section  ftco-animate text-center  mb-1">
-                        <h1>Архівування документів про війну</h1> <!--ТОЛЬКО для главной страниці-->
+                        <?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') {?>
+						<h1>Архівування документів про війну</h1> <!--ТОЛЬКО для главной страниці-->
+						<?php }else{?>
                         <p class="h1">Архівування документів про війну</p> <!-- для всех остальных-->
+						<?php } ?>
                     </div>
             </div>
         </div>
