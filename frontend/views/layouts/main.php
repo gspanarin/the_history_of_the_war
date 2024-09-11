@@ -87,7 +87,7 @@ use yii\bootstrap4\NavBar;
 						<form action="/article" class="search-form">
 							<div class="input-group">
 								<input type="text" name="qwery" class="form-control border-primary" placeholder="Введіть запит">
-								<div class="input-group-append"><button class="btn btn-primary " type="button" >Пошук</button></div>
+								<div class="input-group-append"><button class="btn btn-primary " type="submit" >Пошук</button></div>
 							</div>
 						</form>
                         <!- конец формы поиска--->
