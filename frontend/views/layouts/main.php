@@ -67,9 +67,9 @@ use yii\bootstrap4\NavBar;
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
                     <div class="col-lg-10 heading-section  ftco-animate text-center  mb-1">
                         <?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') {?>
-						<h1>Архівування документів про війну</h1> <!--ТОЛЬКО для главной страниці-->
+						<h1>Цифровий архів документів про російсько-українську війну</h1> <!--ТОЛЬКО для главной страниці-->
 						<?php }else{?>
-                        <p class="h1">Архівування документів про війну</p> <!-- для всех остальных-->
+                        <p class="h1">Цифровий архів документів про російсько-українську війну</p> <!-- для всех остальных-->
 						<?php } ?>
                     </div>
             </div>
@@ -84,12 +84,12 @@ use yii\bootstrap4\NavBar;
                 <div class="col-md-4 ftco-animate">
                     <div class="text-center ftco-animate">
                         <!- начало вставки формы поиска--->
-                        <form action="/article" class="search-form">
-                            <div class="form-group">
-                                <span class="icon ion-ios-search"></span>
-                                <input type="text" name="qwery" class="form-control" placeholder="Шукати...">
-                            </div>
-                        </form>
+						<form action="/article" class="search-form">
+							<div class="input-group">
+								<input type="text" name="qwery" class="form-control border-primary" placeholder="Введіть запит">
+								<div class="input-group-append"><button class="btn btn-primary " type="button" >Пошук</button></div>
+							</div>
+						</form>
                         <!- конец формы поиска--->
                     </div>     
                 </div>    
@@ -97,6 +97,7 @@ use yii\bootstrap4\NavBar;
         </div>
     </section>  
 <?php } ?>
+
     <!--breadcrumb-->  
     <section >
         <div class="container-fluid">

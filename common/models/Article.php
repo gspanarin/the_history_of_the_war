@@ -241,6 +241,12 @@ class Article extends \yii\db\ActiveRecord{
         return (isset($metadata->title[0]) ? $metadata->title[0] : '');
     }
     
+	public function getDateEvent(){
+        $metadata = json_decode($this->metadata);
+        
+        return (isset($metadata->date_event[0]) ? $metadata->date_event[0] : '');
+    }
+	
     public function getText_preview(){
         $metadata = json_decode($this->metadata);
         $text = (isset($metadata->description[0]) ? $metadata->description[0] : '');
