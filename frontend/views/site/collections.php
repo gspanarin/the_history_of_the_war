@@ -11,7 +11,7 @@ $this->params['title'] = $this->title;
 $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 
 ?>
-<div class="site-about">
+<div class="site-collections">
 	
 	<style>
 		.tree, .tree ul {
