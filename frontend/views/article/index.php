@@ -34,9 +34,7 @@ if (isset($current_section)){
     <div class="heading-section justify-content-left"><h1 class="display-5"><?= Html::encode($this->title) ?></h1></div>
 	
 	<h2 class="badge badge-dark  mb-3 mt-3">Підкатегорії: </h2>
-	
-	
-	
+
 	<div class="tagcloud ">
     <ul class="list-inline">
 	<?php foreach($sections as $section): ?>
@@ -45,48 +43,46 @@ if (isset($current_section)){
     </ul>
     </div>
 	
-	
 	<section class="ftco-section ftco-degree-bg">
 	<div class="container">
 		<div class="row">
 			<?= ($dataProvider->totalCount ? 'Всього знайдено статей: ' . $dataProvider->totalCount . '<br>' : '') ?>
+
+		</div> 
+	</section>
+	
+	
+	
+	<section class="ftco-section ftco-degree-bg">
+	<div class="container">
 		<div class="row mb-2">
-		<div class="row mb-2">
-	<!-- =========================================================================-->	  
-		  
-		  
-		  
-		  
-		  
-	<?php foreach ($dataProvider->getModels() as $model){ 
+<?php foreach ($dataProvider->getModels() as $model){ 
 		$icon = $model->getIcon();
 		$icon_img = 'cover.png';
 		if ($icon){
 			$icon_img = 'data:image/jpeg;charset=utf-8;base64,' . $icon;
 		}
-	?>	  
-		  
-	<div class="col-md-4 d-flex  ftco-animate">
-		<div class="blog-entry align-self-stretch d-md-flex shadow-sm border rounded p-2">
-			<a href="#" class="block-20" style="background-image: url('<?= $icon_img ?>');"></a>
-
-			<div class="text d-block pl-md-4">
-			<kbd class="badge badge-light mb-3 mt-3"><?= $model->dateEvent ?></kbd>
-			<h3 class="heading"><a href="#"><?= Html::encode($model->title) ?></a></h3>
-			<p><a href="/article/view?id=<?= $model->id ?>" class="btn  btn-primary btn-outline-primary  py-2 px-3 stretched-link ">Перейти</a></p>
-			</div>  
-		</div>   
-	</div>
-		  
-	<?php } ?>	  
-		  
-		  
-  
-
-		    
-	</div>        
+	?>	 
+			
+			
+			<div class="col-md-4 d-flex  ftco-animate">
+				<div class="blog-entry align-self-stretch d-md-flex shadow-sm border rounded p-2">
+					<a href="/article/view?id=<?= $model->id ?>" class="block-20" style="background-image: url('<?= $icon_img ?>');"></a><!--посилання!!! -->
+					<div class="text d-block pl-md-4">
+					<kbd class="badge badge-light mb-3 mt-3"><?= $model->dateEvent ?></kbd>
+					<p class="heading"><a href="/article/view?id=<?= $model->id ?>"><?= Html::encode($model->title) ?></a></p>
+					<p><a href="/article/view?id=<?= $model->id ?>" class="btn  btn-outline-info  py-2 px-3 ">Перейти</a></p>
+					</div>  
+				</div> 
+			</div>
+			
+			
+<?php } ?>	
+		</div>        
 	</div> 
 	</section>
+	
+	
 	</div> 
 	</div> 
 </div>
