@@ -84,7 +84,7 @@ use yii\bootstrap4\NavBar;
 			<form action="/article" class="search-form  ftco-animate col-lg-4">
 				<div class="input-group">
 				<input type="text" name="query_str" class="form-control" placeholder="Введіть запит">
-				<div class="input-group-append"><button class="btn btn-info " type="button" >Пошук</button></div>
+				<div class="input-group-append"><button class="btn btn-info " type="submit" >Пошук</button></div>
 				</div>
 			</form>
 			<!-- форма пошуку end-->
@@ -148,7 +148,7 @@ use yii\bootstrap4\NavBar;
 					    <h2 class="ftco-heading-2">Інформація</h2>
 <ul class="list-unstyled">
                 <li><a href="/site/collections" class="py-2 d-block">Путівник</a></li>
-                <li><a href="/site/for-members" class="py-2 d-block">Учасникам проєкту</a></li>
+                <!--<li><a href="/site/for-members" class="py-2 d-block">Учасникам проєкту</a></li>-->
                 <li><a href="/site/for-users" class="py-2 d-block">Користувачам</a></li>
                 <li><a href="/site/legal-policy" class="py-2 d-block">Правова політика</a></li>
 </ul>
