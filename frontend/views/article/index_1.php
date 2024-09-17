@@ -28,24 +28,21 @@ if (isset($current_section)){
 ?>
 
 <div class="article-index">
+	<div class="row heading-section justify-content-left p-4">
+		<h1><?= Html::encode($this->title) ?></h1>
+	</div>
 	
-	<div class="row p-3">
-		<div class="col-12">
-    <div class="heading-section justify-content-left"><h1 class="display-5"><?= Html::encode($this->title) ?></h1></div>
-	
-	<h2 class="badge badge-dark  mb-3 mt-3">Підкатегорії: </h2>
-	
-	
-	
-	<div class="tagcloud ">
-    <ul class="list-inline">
-	<?php foreach($sections as $section): ?>
-		<li><a href="/article/?section_id=<?= $section->id ?>"><?= $section->title ?> <span class="badge badge-primary"><?= $section->getArticle_count() ?></span></a></li>
-	<?php endforeach; ?>
-    </ul>
-    </div>
-	
-	
+	<div class="row heading-section justify-content-left p-4">
+		<h2 class="badge badge-dark  mb-4">Підкатегорії: </h2> 
+		<div class="tagcloud">
+			<ul class="list-inline">
+				<?php foreach($sections as $section): ?>
+				<li class="d-inline-block list-inline-item"><a href="/article/?section_id=<?= $section->id ?>"><?= $section->title ?><span class="badge badge-info"><?= $section->getArticle_count() ?></span></a></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</div>
+
 	<section class="ftco-section ftco-degree-bg">
 	<div class="container">
 		<div class="row">
@@ -87,8 +84,6 @@ if (isset($current_section)){
 	</div>        
 	</div> 
 	</section>
-	</div> 
-	</div> 
 </div>
 
 <?= LinkPager::widget([
