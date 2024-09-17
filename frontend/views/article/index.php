@@ -51,21 +51,16 @@ if (isset($current_section)){
 		</div> 
 	</section>
 	
-	
-	
 	<section class="ftco-section ftco-degree-bg">
-	<!--<div class="container">-->
 		<div class="row mb-2">
 <?php foreach ($dataProvider->getModels() as $model){ 
-		$icon = $model->getIcon();
-		$icon_img = 'cover.png';
-		if ($icon){
-			$icon_img = 'data:image/jpeg;charset=utf-8;base64,' . $icon;
-		}
-	?>	 
-			
-			
-			<div class="col-md-4 d-flex  ftco-animate">
+	$icon = $model->getIcon();
+	$icon_img = 'cover.png';
+	if ($icon){
+		$icon_img = 'data:image/jpeg;charset=utf-8;base64,' . $icon;
+	}
+?>	 
+			<div class="col-md-6 d-flex  ftco-animate">
 				<div class="blog-entry align-self-stretch d-md-flex shadow-sm border rounded p-2">
 					<a href="/article/view?id=<?= $model->id ?>" class="block-20" style="background-image: url('<?= $icon_img ?>');"></a><!--посилання!!! -->
 					<div class="text d-block pl-md-4">
@@ -75,14 +70,10 @@ if (isset($current_section)){
 					</div>  
 				</div> 
 			</div>
-			
-			
 <?php } ?>	
 		</div>        
-	<!--</div> -->
 	</section>
-	
-	
+
 	</div> 
 	</div> 
 </div>
