@@ -32,10 +32,18 @@ class ArticleController extends Controller{
 			unset($queryParams['section_id']);
 		}
 		foreach ($queryParams as $key => $value){
-			$search_params['ArticleSearch'][$key] = $value;
+			switch ($key) {
+				case 'page':
+				case 'per-page':
+					$search_params[$key] = $value;
+					break;
+				default:
+					$search_params['ArticleSearch'][$key] = $value;
+					break;
+			}
+			
 		}
 
-        //dd($search_params);
         //if (count($sections_ids) > 0){
         //    $queryParams = array_merge($queryParams, ['ArticleSearch' => ['section_array' => $sections_ids]]);
 		//}
@@ -43,9 +51,9 @@ class ArticleController extends Controller{
         $dataProvider = $searchModel->search($search_params);
         $dataProvider->pagination = new Pagination([
             'totalCount' => $dataProvider->getTotalCount(),
-            'defaultPageSize' => Yii::$app->params['frontend.article.pagination_pagesize']
-                ]);
-		
+			//'defaultPageSize' => Yii::$app->params['frontend.article.pagination_pagesize']
+			]);
+				
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -54,6 +62,51 @@ class ArticleController extends Controller{
         ]);
     }
 
+	
+	public function actionSection($section_id = null){
+		
+        $searchModel = new ArticleSearch();
+        $queryParams = $this->request->queryParams;
+		$search_params = [];
+        $sections = [];
+        $sections_ids[] = $section_id;
+        if (isset($queryParams['section_id'])){
+            $sections = Section::find()->where(['pid' => $section_id])->all();
+			foreach ($sections as $section)
+				$sections_ids[] = $section->id;
+			$search_params['ArticleSearch']['section_array'] = $sections_ids;
+			unset($queryParams['section_id']);
+		}
+		foreach ($queryParams as $key => $value){
+			switch ($key) {
+				case 'page':
+				case 'per-page':
+					$search_params[$key] = $value;
+					break;
+				default:
+					$search_params['ArticleSearch'][$key] = $value;
+					break;
+			}
+			
+		}
+
+        //if (count($sections_ids) > 0){
+        //    $queryParams = array_merge($queryParams, ['ArticleSearch' => ['section_array' => $sections_ids]]);
+		//}
+        $current_section = Section::findOne(['id' => $section_id]);
+        $dataProvider = $searchModel->search($search_params);
+        $dataProvider->pagination = new Pagination([
+            'totalCount' => $dataProvider->getTotalCount(),
+			//'defaultPageSize' => Yii::$app->params['frontend.article.pagination_pagesize']
+			]);
+				
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'sections' => $sections,
+            'current_section' => $current_section
+        ]);
+    }
     
     public function actionView($id){
 		$model = $this->findModel($id);

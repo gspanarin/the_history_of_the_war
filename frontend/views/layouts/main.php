@@ -11,6 +11,7 @@ use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -43,62 +44,69 @@ use yii\bootstrap4\NavBar;
 <body>
 <?php $this->beginBody() ?>
     <!-- ----------------это все меняем------------------->          
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container">  <a class="navbar-brand" href="/"><img src="/assets_new/images/logo.svg" width="28" alt=""/> <span>Цифровий&nbsp;архів</span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="oi oi-menu"></span> Меню</button>
-            
-    <!-- ----------------надо прописать ссылки для меню------------------->    
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item <?= (Yii::$app->controller->action->id == 'about' ? ' active ':'') ?>"><a href="/site/about" class="nav-link">Про архів</a></li>
-                    <li class="nav-item <?= (Yii::$app->controller->action->id == 'for-members' ? ' active ':'') ?>"><a href="/site/for-members" class="nav-link">Учасникам проєкту</a></li>
-                    <li class="nav-item <?= (Yii::$app->controller->action->id == 'collections' ? ' active ':'') ?>"><a href="/site/collections" class="nav-link">Путівник</a></li>
-                    <li class="nav-item <?= (Yii::$app->controller->action->id == 'for-users' ? ' active ':'') ?>"><a href="/site/for-users" class="nav-link">Користувачам</a></li>
-                    <li class="nav-item <?= (Yii::$app->controller->action->id == 'contact' ? ' active ':'') ?>"><a href="/site/contact" class="nav-link">Контакти</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav> 
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+		<div class="container">  <a class="navbar-brand" href="https://korolenko.kharkov.com/"><img src="/assets_new/images/logo-lib.svg" width="30" alt=""/> <span>ХДНБ<br><span>ім. В.Г.Короленка</span></span></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="oi oi-menu"></span> Меню</button>
+
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item <?= (Yii::$app->controller->action->id == 'index' && Yii::$app->controller->id == 'site' ? ' active ':'') ?>"><a href="/" class="nav-link">Головна</a></li>
+					<li class="nav-item <?= (Yii::$app->controller->action->id == 'about' ? ' active ':'') ?>"><a href="/site/about" class="nav-link">Про архів</a></li>
+					<li class="nav-item <?= (Yii::$app->controller->action->id == 'collections' ? ' active ':'') ?>" ><a href="/site/collections" class="nav-link">Путівник</a></li>
+					<li class="nav-item <?= (Yii::$app->controller->action->id == 'for-users' ? ' active ':'') ?>"><a href="/site/contact" class="nav-link">Користувачам</a></li>
+					<li class="nav-item <?= (Yii::$app->controller->action->id == 'contact' ? ' active ':'') ?>"><a href="/site/contact" class="nav-link">Контакти</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
       
  <!-- ----------------2 варианта вывода заголовка: для индекса Н1 и для остальных страниц ------------------->    
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets_new/images/bg.png'); background-size: cover; max-width:100%;" data-stellar-background-ratio="0.5">
-        <div class="container-fluid">
-            <div class="container">
-                <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-                    <div class="col-lg-10 heading-section  ftco-animate text-center  mb-1">
-                        <?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') {?>
-						<h1>Цифровий архів документів про російсько-українську війну</h1> <!--ТОЛЬКО для главной страниці-->
-						<?php }else{?>
-                        <p class="h1">Цифровий архів документів про російсько-українську війну</p> <!-- для всех остальных-->
-						<?php } ?>
-                    </div>
-            </div>
-        </div>
-    </section>  
+ 
       
- <!-- ----------------тут вставить свою форму поиска. Фильтры будут ниже в _sup_footer.php------------------->   
- <?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') {?>
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-4 ftco-animate">
-                    <div class="text-center ftco-animate">
-                        <!- начало вставки формы поиска--->
-						<form action="/article" class="search-form">
-							<div class="input-group">
-								<input type="text" name="qwery" class="form-control border-primary" placeholder="Введіть запит">
-								<div class="input-group-append"><button class="btn btn-primary " type="submit" >Пошук</button></div>
-							</div>
-						</form>
-                        <!- конец формы поиска--->
-                    </div>     
-                </div>    
-            </div>
-        </div>
-    </section>  
-<?php } ?>
+ 
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/assets_new/images/bg.png'); background-size: cover; max-width:100%;  " data-stellar-background-ratio="0.5">
+	<div class="container container-fluid">
+		<div class="row no-gutters slider-text align-items-center justify-content-center">
+			<div class="col-lg-10 heading-section text-center  mt-4"  >
+				<p class="font-weight-light text-white text-uppercase mt-5">Тестова версія</p>
+				<?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') {?>
+				<h1>Цифровий архів документів про російсько-українську війну</h1> <!--ТОЛЬКО для главной страниці-->
+				<?php }else{?>
+				<p class="h1">Цифровий архів документів про російсько-українську війну</p> <!-- для всех остальных-->
+				<?php } ?>
+				<!--формулювання уточнити у бібліотекарів-->
+				<p class="subheading  text-white ">Ініційовано ВГО Українська бібліотечна асоціація. Реалізується бібліотеками України.</p>
+			</div>
 
-    <!--breadcrumb-->  
+			<!-- форма пошуку start - із цими стилями використовувати лише на головній сторінці--->
+			<?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') {?>
+			<form action="/article" class="search-form  ftco-animate col-lg-4">
+				<div class="input-group">
+				<input type="text" name="query_str" class="form-control" placeholder="Введіть запит">
+				<div class="input-group-append"><button class="btn btn-info " type="button" >Пошук</button></div>
+				</div>
+			</form>
+			<!-- форма пошуку end-->
+			<?php } ?>
+		</div>
+	</div>
+</section>
+ 
+      
+
+<?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') {?>	
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-5">
+        <div><p><strong>«Цифровий архів документів про російсько-українську війну»</strong> — це колекція документів з верифікованих відкритих інтернет-джерел (фото, відео - та текстові матеріали). Ресурс створено з метою збереження історичної пам'яті та доступності інформації для широкого кола користувачів.</p>
+        <p>Ініційовано ВГО Українська бібліотечна асоціація. Реалізується бібліотеками України. Координатор ― Харківська державна наукова бібліотека ім. В.Г. Короленка. Грантова підтримка Українського культурного фонду.</p>
+        </div>
+        </div>
+    </div>
+</div>
+<?php }else{?>
+	<!--breadcrumb-->  
     <section >
         <div class="container-fluid">
             <div class="container"> 
@@ -108,8 +116,9 @@ use yii\bootstrap4\NavBar;
             </div>
         </div>
     </section>
-    <!--end breadcrumb-->       
-
+    <!--end breadcrumb--> 
+<?php } ?>	
+	
  <!-- будем делать тут дополнительную информацию -->        
     <section class=" ftco-section">
         <div class="container ">

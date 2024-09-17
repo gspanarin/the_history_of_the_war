@@ -45,9 +45,10 @@ if (isset($current_section)){
 
 	<section class="ftco-section ftco-degree-bg">
 	<div class="container">
-	  <div class="row mb-2">
-
-		  
+		<div class="row">
+			<?= ($dataProvider->totalCount ? 'Всього знайдено статей: ' . $dataProvider->totalCount . '<br>' : '') ?>
+		<div class="row mb-2">
+		<div class="row mb-2">
 	<!-- =========================================================================-->	  
 		  
 		  

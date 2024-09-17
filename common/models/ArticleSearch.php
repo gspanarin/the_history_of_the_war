@@ -15,7 +15,7 @@ class ArticleSearch extends Article{
 	public $term_name = '';
 	public $term_value = '';
 	public $title = '';
-	public $qwery = '';
+	public $query_str = '';
     /**
      * {@inheritdoc}
      */
@@ -23,7 +23,7 @@ class ArticleSearch extends Article{
     {
         return [
             [['id', 'user_id', 'section_id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['metadata', 'section_array', 'term_name', 'term_value', 'title', 'qwery'], 'safe'],
+            [['metadata', 'section_array', 'term_name', 'term_value', 'title', 'query_str'], 'safe'],
         ];
     }
 
@@ -93,10 +93,9 @@ class ArticleSearch extends Article{
 			$query->andWhere(['LIKE', 'dictionary.value', $this->title ]);
 		}
 		
-		if ($this->qwery != ''){
+		if ($this->query_str != ''){
 			$query->leftJoin ('dictionary', 'dictionary.article_id = article.id');
-			//$query->andWhere(['dictionary.term_name' => 'title']);
-			$query->andWhere(['LIKE', 'dictionary.value', $this->qwery ]);
+			$query->andWhere(['LIKE', 'dictionary.value', $this->query_str ]);
 		}
 		
         /*$tags = [];
