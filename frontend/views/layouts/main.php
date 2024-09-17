@@ -120,12 +120,12 @@ use yii\bootstrap4\NavBar;
 <?php } ?>	
 	
  <!-- будем делать тут дополнительную информацию -->        
-    <section class=" ftco-section">
-        <div class="container ">
-            <?= $content ?>
-            <?= Alert::widget() ?>
-        </div>
-    </section>	                    
+
+	<div class="container ">
+		<?= $content ?>
+		<?= Alert::widget() ?>
+	</div>
+                    
 <!-- ФУТЕР. в идеале все лучше делать require, чтобы потом при редактировании было удобней-->           
     <footer class="ftco-footer ftco-section">
         <div class="container">
