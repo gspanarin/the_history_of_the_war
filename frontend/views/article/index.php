@@ -60,7 +60,7 @@ if (isset($current_section)){
 		$icon_img = 'data:image/jpeg;charset=utf-8;base64,' . $icon;
 	}
 ?>	 
-			<div class="col-md-6 d-flex  ftco-animate">
+			<div class="col-md-4 d-flex  ftco-animate">
 				<div class="blog-entry align-self-stretch d-md-flex shadow-sm border rounded p-2">
 					<a href="/article/view?id=<?= $model->id ?>" class="block-20" style="background-image: url('<?= $icon_img ?>');"></a><!--посилання!!! -->
 					<div class="text d-block pl-md-4">
