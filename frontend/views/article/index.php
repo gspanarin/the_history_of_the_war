@@ -54,7 +54,7 @@ if (isset($current_section)){
 	
 	
 	<section class="ftco-section ftco-degree-bg">
-	<div class="container">
+	<!--<div class="container">-->
 		<div class="row mb-2">
 <?php foreach ($dataProvider->getModels() as $model){ 
 		$icon = $model->getIcon();
@@ -79,7 +79,7 @@ if (isset($current_section)){
 			
 <?php } ?>	
 		</div>        
-	</div> 
+	<!--</div> -->
 	</section>
 	
 	
