@@ -16,6 +16,12 @@ class ArticleSearch extends Article{
 	public $term_value = '';
 	public $title = '';
 	public $query_str = '';
+	public $subject = '';
+	public $source = '';
+	public $publisher = '';
+	public $creator = '';
+	
+	
     /**
      * {@inheritdoc}
      */
@@ -23,10 +29,13 @@ class ArticleSearch extends Article{
     {
         return [
             [['id', 'user_id', 'section_id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['metadata', 'section_array', 'term_name', 'term_value', 'title', 'query_str'], 'safe'],
+            [['metadata', 'section_array', 'term_name', 'term_value', 'title', 'query_str', 'subject', 'source', 'publisher', 'creator'	], 'safe'],
         ];
     }
 
+	
+
+	
     /**
      * {@inheritdoc}
      */
@@ -98,6 +107,20 @@ class ArticleSearch extends Article{
 			$query->andWhere(['LIKE', 'dictionary.value', $this->query_str ]);
 		}
 		
+		if ($this->creator != ''){
+			$query->leftJoin ('dictionary', 'dictionary.article_id = article.id');
+			$query->andWhere(['dictionary.term_name' => 'creator']);
+			$query->andWhere(['LIKE', 'dictionary.value', $this->creator ]);
+		}
+		
+		if ($this->publisher != ''){
+			$query->leftJoin ('dictionary', 'dictionary.article_id = article.id');
+			$query->andWhere(['dictionary.term_name' => 'publisher']);
+			$query->andWhere(['LIKE', 'dictionary.value', $this->publisher ]);
+		}
+		
+		
+		//dd($query);
         /*$tags = [];
 		if (isset($params['ArticleSearch'])){
 		foreach($params['ArticleSearch'] as $key => $value)

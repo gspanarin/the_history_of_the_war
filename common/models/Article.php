@@ -247,11 +247,29 @@ class Article extends \yii\db\ActiveRecord{
         return (isset($metadata->date_event[0]) ? $metadata->date_event[0] : '');
     }
 	
+	public function getDateArchived(){
+		$metadata = json_decode($this->metadata);
+		
+        return (isset($metadata->date_archived[0]) ? $metadata->date_archived[0] : ''); 
+	}
+	
     public function getText_preview(){
         $metadata = json_decode($this->metadata);
         $text = (isset($metadata->description[0]) ? $metadata->description[0] : '');
         
         return (strlen($text) > 200 ? mb_substr($text, 0, 200) . '...' : $text);
+    }
+	
+	public function getDescripton(){
+        $metadata = json_decode($this->metadata);
+
+        return (isset($metadata->description[0]) ? $metadata->description[0] : '');
+    }
+	
+	public function getUrl(){
+        $metadata = json_decode($this->metadata);
+
+        return (isset($metadata->source[0]) ? $metadata->source[0] : '');
     }
     
     /*public function getSource(){
@@ -348,7 +366,7 @@ class Article extends \yii\db\ActiveRecord{
         return true;
     }
 	
-	public function getDate_archived(){
+	//public function getDate_archived(){
 		//Заготовка. Треба доробити
 		//Повертає данні конкретного значення із поля з json
 		//у прикладі - дата архівування
@@ -361,7 +379,9 @@ class Article extends \yii\db\ActiveRecord{
 			id < 400
 */
 
-		$metadata = json_decode($this->metadata);
-        return (isset($metadata->date_archived[0]) ? $metadata->date_archived[0] : ''); 
-	}
+		
+	//}
+	
+	
+
 }

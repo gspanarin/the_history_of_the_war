@@ -4663,11 +4663,11 @@ input[type="button"].btn-block {
     border-color: #1b1e21; }
 
 .close {
-  float: right;
+  #float: right;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
-  color: #000;
+  color: #EE4B2B;
   text-shadow: 0 1px 0 #fff;
   opacity: .5; }
   .close:hover {
@@ -9022,7 +9022,7 @@ font-family: "Roboto", sans-serif;
         background: transparent;
         display: none; } }
 
-.form-control {
+.header-search-form {
   height: 52px !important;
   background: transparent !important;
   color: #fff !important;
@@ -9032,12 +9032,12 @@ font-family: "Roboto", sans-serif;
   box-shadow: none !important;
   border: 1px solid #fff !important; }
 
-  .form-control:focus, .form-control:active {
+  .header-search-form:focus, .header-search-form:active {
     border-color: #fff;
     background: rgba(0,0,0,0.5) !important;;
 }
 
-textarea.form-control {
+textarea.header-search-form {
   height: inherit !important; }
 
 .ftco-animate {

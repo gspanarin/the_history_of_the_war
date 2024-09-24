@@ -15,6 +15,9 @@ use common\models\File;
 
 use yii\data\Pagination;
 
+use common\components\helpers\UrlManager;
+
+
 class ArticleController extends Controller{
 
 
@@ -43,7 +46,37 @@ class ArticleController extends Controller{
 			}
 			
 		}
+		$queryParams = [];
+		if (!empty($search_params['ArticleSearch'])){
+			foreach ($search_params['ArticleSearch'] as $key => $value){
+				if ($key != null && $key != '' && $value != null && $value != ''){
+					if ($key == 'section_array'){
+						$queryParams[] = [
+							'label' => 'Розділ',
+							'term' => 'section_id',
+							'value' => Section::find()->select('title')->where(['id' => $this->request->queryParams['section_id']])->scalar()  ,
+							
+			
+							
+							'delete_url' => UrlManager::Url('/article', ['section_id' => null])
+						];	
+					}else{
+						$queryParams[] = [
+							'label' => Tag::getTagLabelByName($key),
+							'term' => $key,
+							'value' => $value,
+							'delete_url' => UrlManager::Url('/article', [$key => null])
+						];	
+					}
+					
+				}
+				
+			}
+			
+		}
+		
 
+		//dd($queryParams);
         //if (count($sections_ids) > 0){
         //    $queryParams = array_merge($queryParams, ['ArticleSearch' => ['section_array' => $sections_ids]]);
 		//}
@@ -53,12 +86,16 @@ class ArticleController extends Controller{
             'totalCount' => $dataProvider->getTotalCount(),
 			//'defaultPageSize' => Yii::$app->params['frontend.article.pagination_pagesize']
 			]);
-				
+		
+		$searchForm = new \frontend\models\ArticleSearchForm();
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'sections' => $sections,
-            'current_section' => $current_section
+            'current_section' => $current_section,
+			'request_params' => $queryParams,
+			'search_form' => $searchForm,
         ]);
     }
 

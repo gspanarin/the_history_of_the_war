@@ -10,7 +10,9 @@ use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+use common\models\Section;
 
+$sections = Section::find()->where(['pid' => 1])->all();
 
 ?>
 <?php $this->beginPage() ?>
@@ -71,19 +73,19 @@ use yii\bootstrap4\NavBar;
 			<div class="col-lg-10 heading-section text-center  mt-4"  >
 				<p class="font-weight-light text-white text-uppercase mt-5">Тестова версія</p>
 				<?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') {?>
-				<h1>Цифровий архів документів про російсько-українську війну</h1> <!--ТОЛЬКО для главной страниці-->
+				<h1>Цифровий архів документів<br> про російсько-українську війну</h1> <!--ТОЛЬКО для главной страниці-->
 				<?php }else{?>
-				<p class="h1">Цифровий архів документів про російсько-українську війну</p> <!-- для всех остальных-->
+				<p class="h1">Цифровий архів документів<br> про російсько-українську війну</p> <!-- для всех остальных-->
 				<?php } ?>
 				<!--формулювання уточнити у бібліотекарів-->
-				<p class="subheading  text-white ">Ініційовано ВГО Українська бібліотечна асоціація. Реалізується бібліотеками України.</p>
+				<!--<p class="subheading  text-white ">Ініційовано ВГО Українська бібліотечна асоціація. Реалізується бібліотеками України.</p>-->
 			</div>
 
 			<!-- форма пошуку start - із цими стилями використовувати лише на головній сторінці--->
 			<?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') {?>
 			<form action="/article" class="search-form  ftco-animate col-lg-4">
 				<div class="input-group">
-				<input type="text" name="query_str" class="form-control" placeholder="Введіть запит">
+				<input type="text" name="query_str" class="header-search-form" placeholder="Введіть запит">
 				<div class="input-group-append"><button class="btn btn-info " type="submit" >Пошук</button></div>
 				</div>
 			</form>
@@ -98,10 +100,15 @@ use yii\bootstrap4\NavBar;
 <?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') {?>	
 <div class="container">
     <div class="row">
-        <div class="col-12 mt-5">
-        <div><p><strong>«Цифровий архів документів про російсько-українську війну»</strong> — це колекція документів з верифікованих відкритих інтернет-джерел (фото, відео - та текстові матеріали). Ресурс створено з метою збереження історичної пам'яті та доступності інформації для широкого кола користувачів.</p>
-        <p>Ініційовано ВГО Українська бібліотечна асоціація. Реалізується бібліотеками України. Координатор ― Харківська державна наукова бібліотека ім. В.Г. Короленка. Грантова підтримка Українського культурного фонду.</p>
+        <div class="col-lg-8 mt-5">
+            <p><strong>«Цифровий архів документів про російсько-українську війну»</strong> — це колекція документів з верифікованих відкритих інтернет-джерел (фото, відео - та текстові матеріали). Ресурс створено з метою збереження історичної пам'яті та доступності інформації для широкого кола користувачів.</p>
+            <p>Ініційовано ВГО Українська бібліотечна асоціація. Реалізується бібліотеками України. Координатор ― Харківська державна наукова бібліотека ім. В.Г. Короленка. Грантова підтримка Українського культурного фонду.</p>
         </div>
+        <div class="col-lg-4  mt-5">
+            <div class="row">
+                <div class="col-lg-6"><a href="https://ucf.in.ua/" target="_blank"><img src="assets_new/images/logo_UKF.png"  class="img-fluid img-thumbnail"></a></div>
+                <div class="col-lg-6"><a href="https://ula.org.ua/" target="_blank"><img src="assets_new/images/logo_UBA.png" class="img-fluid img-thumbnail"></a></div>   
+            </div>
         </div>
     </div>
 </div>
@@ -133,14 +140,11 @@ use yii\bootstrap4\NavBar;
                 <div class="col-lg">
 					<div class="ftco-footer-widget mb-4">
 						<h2 class="ftco-heading-2">Розділи</h2>
-<ul class="list-unstyled">
-         <li><a href="#" class="py-2 d-block">Державна політика   </a></li>
-         <li><a href="#" class="py-2 d-block">Докази російської агресії   </a></li>
-         <li><a href="#" class="py-2 d-block">Докази українського спротиву   </a></li>
-         <li><a href="#" class="py-2 d-block">Волонтерський рух в Україні   </a></li>
-         <li><a href="#" class="py-2 d-block">Міжнародна підтримка</a></li>
-         <li><a href="#" class="py-2 d-block">Культура під час війни  </a></li> 
-</ul>
+						<ul class="list-unstyled">
+						<?php foreach ($sections as $section): ?>	
+							<li><a href="/article?section_id=<?= $section->id ?>" class="py-2 d-block"><?= $section->title ?></a></li>
+						<?php endforeach; ?>
+						</ul>
 					</div>
 				</div>
                 <div class="col-lg">
@@ -157,7 +161,7 @@ use yii\bootstrap4\NavBar;
                 <div class="col-lg">
 					<div class="ftco-footer-widget mb-4">
 						<h2 class="ftco-heading-2 logo">Про архів</h2>
- <p>Проєкт «Архівування документів про війну» об'єднав зусилля бібліотекарів з усієї України з метою створення цифрового архіву, що відображає події російсько-української війни. </p>
+ <p>Колекція документів з верифікованих відкритих інтернет-джерел (фото, відео - та текстові матеріали)</p>
 <p><a href="/site/about" class="text-white"><u>Докладніше ... </u></a></p>
 					</div>
 				</div>

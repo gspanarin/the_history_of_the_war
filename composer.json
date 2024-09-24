@@ -28,7 +28,6 @@
         "yii2assets/yii2-pdfjs": ">=1.0",
         "wbraganca/yii2-videojs-widget": "~1.0",
         "smalot/pdfparser": "^2.10"
-        
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

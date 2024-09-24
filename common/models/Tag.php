@@ -112,4 +112,11 @@ class Tag extends \yii\db\ActiveRecord{
         
         return ($result !== null ? $result->id : null );
     }
+	
+	public static function getTagLabelByName($tag){
+        $result = Tag::find()->where(['term_name' => $tag])->select('label')->one();
+		
+        return ($result !== null ? $result->label : null );
+    }
+	
 }
