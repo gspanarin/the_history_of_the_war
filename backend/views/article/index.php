@@ -75,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Дата архівації',
 				'format' => 'raw',
                 'value' => function ($model) {
-                   return $model->date_archived;
+                   return $model->dateArchived;
                 },
             ],  
 			[
