@@ -27,7 +27,7 @@ return [
 				'username' => env('COMMON.EMAIL.USERNAME'),
 				'password' => env('COMMON.EMAIL.PASSWORD'),
 				'port' => env('COMMON.EMAIL.PORT'),
-				//'encryption' => 'ssl',
+				'encryption' => false,
 			],
 			'useFileTransport' => false,
         ],

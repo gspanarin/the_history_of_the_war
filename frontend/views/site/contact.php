@@ -8,7 +8,7 @@ use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
 use yii\captcha\Captcha;
 
-$this->title = "Зворотній зв'язок";
+$this->title = "Зворотний зв'язок";
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		<h1><?= Html::encode($this->title) ?></h1>
 	</div>
     <p>
-		Якщо у вас є пропозиції, або запитання, будь ласка, заповніть форму нижче та наділшіть їх нам. Дякуємо за зворотній зв'язок!
+		Якщо у вас є пропозиції або запитання, будь ласка, заповніть форму нижче та надішліть їх нам. Дякуємо за зворотний зв'язок!
     </p>
 
     <div class="row">
