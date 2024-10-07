@@ -79,7 +79,7 @@ if (isset($current_section)){
 				</div>
 
 				<div class="form-group col-lg-6">
-					<label for="subject">За видавецем</label>
+					<label for="subject">За видавцем</label>
 					<input type="text" class="form-control" name="publisher" id="publisher" placeholder="назва організації-видавця статті">
 				</div>
 
