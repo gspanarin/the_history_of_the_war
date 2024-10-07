@@ -58,7 +58,7 @@ class ContactForm extends Model
             ->setTextBody(
 					'<br><b>E-mail відправника:</b> ' . $this->email . 
 					"<br><b>Ім'я відправника:</b> " . $this->name . 
-					'<br><b>Тема повідомлення:</b> ' . $this->subject
+					'<br><b>Тема повідомлення:</b> ' . $this->subject .
 					'<br><b>Текст повідомлення:</b> ' . $this->body
 					)
             ->send();
