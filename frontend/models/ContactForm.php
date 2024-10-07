@@ -56,10 +56,10 @@ class ContactForm extends Model
             ->setReplyTo([$this->email => $this->name])
             ->setSubject($this->subject)
             ->setTextBody(
-					'<br><b>E-mail відправника:</b> ' . $this->email . 
-					"<br><b>Ім'я відправника:</b> " . $this->name . 
-					'<br><b>Тема повідомлення:</b> ' . $this->subject .
-					'<br><b>Текст повідомлення:</b> ' . $this->body
+					'E-mail відправника: ' . $this->email . "\r\n".
+					"Ім'я відправника: " . $this->name .  "\r\n".
+					'Тема повідомлення: ' . $this->subject . "\r\n".
+					'Текст повідомлення: ' . $this->body
 					)
             ->send();
     }
