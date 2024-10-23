@@ -275,7 +275,9 @@ class SiteController extends Controller
 	}
 	
 	public function actionCollections(){
-		return $this->render('collections');
+		$sections = Section::getSectionsTree();
+		//dd($sections);
+		return $this->render('collections', compact('sections'));
 	}
 	
 	public function actionForUsers(){

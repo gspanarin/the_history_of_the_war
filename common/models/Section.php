@@ -98,7 +98,7 @@ class Section extends \yii\db\ActiveRecord implements \dixonstarter\togglecolumn
         $query = Section::find()->where($params)->orderBy(['sort' => SORT_ASC])->all();
         $list = [];
 		
-        $tree = Section::getTree($query, 0);
+        $tree = Section::getSectionsListItems($query, 0);
         for($i = 0; $i < count($tree); $i++)
             $list[$tree[$i]['id']] = $tree[$i]['title'];
 
@@ -106,7 +106,7 @@ class Section extends \yii\db\ActiveRecord implements \dixonstarter\togglecolumn
     }
     
     
-    static function getTree($items, $pid = 1, $level = 0){
+    static function getSectionsListItems($items, $pid = 1, $level = 0){
         $list = [];
         for ($i = 0; $i < count($items); $i++){
             if ($items[$i]->pid == $pid ){
@@ -115,13 +115,48 @@ class Section extends \yii\db\ActiveRecord implements \dixonstarter\togglecolumn
                     'title' => str_repeat(' -- ', $level) . $items[$i]->title
                     ];
                 $new_level = $level + 1;
-                $list = array_merge($list, Section::getTree($items, $items[$i]->id, $new_level));
+                $list = array_merge($list, Section::getSectionsListItems($items, $items[$i]->id, $new_level));
             }
         }
         
         return $list;
     }
 
+	
+	static function getSectionsTree($id = null){
+        $params['status'] = 1;
+        if ($id != null)
+            $params['id'] = $id;
+                
+        $query = Section::find()->where($params)->orderBy(['sort' => SORT_ASC])->all();
+        $list = [];
+		
+        $tree = Section::getSectionsTreeItems($query, 0);
+        for($i = 0; $i < count($tree); $i++)
+            $list[$tree[$i]['id']] = $tree[$i]['title'];
+
+        return $tree;
+    }
+    
+    
+    static function getSectionsTreeItems($items, $pid = 1, $level = 0){
+        $list = [];
+        for ($i = 0; $i < count($items); $i++){
+            if ($items[$i]->pid == $pid ){
+				$new_level = $level + 1;
+                $list[] = [
+                    'id' => $items[$i]->id,
+                    'title' => $items[$i]->title, 
+					'items' => Section::getSectionsTreeItems($items, $items[$i]->id, $new_level)
+                    ];
+                
+                //$list = array_merge($list, Section::getSectionsTreeItems($items, $items[$i]->id, $new_level));
+            }
+        }
+        
+        return $list;
+    }
+	
     public function getSortButton(){
         $next = $this->getLastSortValue();
         $sort = '';

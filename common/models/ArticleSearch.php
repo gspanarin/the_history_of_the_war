@@ -119,6 +119,12 @@ class ArticleSearch extends Article{
 			$query->andWhere(['LIKE', 'dictionary.value', $this->publisher ]);
 		}
 		
+		if ($this->subject != ''){
+			$query->leftJoin ('dictionary', 'dictionary.article_id = article.id');
+			$query->andWhere(['dictionary.term_name' => 'subject']);
+			$query->andWhere(['LIKE', 'dictionary.value', $this->subject ]);
+		}
+		
 		
 		//dd($query);
         /*$tags = [];

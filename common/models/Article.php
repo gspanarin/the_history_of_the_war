@@ -260,10 +260,28 @@ class Article extends \yii\db\ActiveRecord{
         return (strlen($text) > 200 ? mb_substr($text, 0, 200) . '...' : $text);
     }
 	
-	public function getDescripton(){
+	public function getDescription(){
         $metadata = json_decode($this->metadata);
 
         return (isset($metadata->description[0]) ? $metadata->description[0] : '');
+    }
+	
+	public function getSubject(){
+        $metadata = json_decode($this->metadata);
+
+        return (isset($metadata->subject) ? $metadata->subject : []);
+    }
+	
+	public function getSubject_military_unit(){
+        $metadata = json_decode($this->metadata);
+
+        return (isset($metadata->subject_military_unit) ? $metadata->subject_military_unit : []);
+    }
+	
+	public function getSubject_organization(){
+        $metadata = json_decode($this->metadata);
+
+        return (isset($metadata->subject_organization) ? $metadata->subject_organization : []);
     }
 	
 	public function getUrl(){
@@ -272,6 +290,14 @@ class Article extends \yii\db\ActiveRecord{
         return (isset($metadata->source[0]) ? $metadata->source[0] : '');
     }
     
+	public function getProvenance(){
+        $metadata = json_decode($this->metadata);
+
+        return (isset($metadata->provenance[0]) ? $metadata->provenance[0] : '');
+    }
+	
+	
+	
     /*public function getSource(){
         $metadata = json_decode($this->metadata);
         return (isset($metadata->source[0]) ? $metadata->source[0] : '');
@@ -382,6 +408,39 @@ class Article extends \yii\db\ActiveRecord{
 		
 	//}
 	
+	/**
+	 * Перевіряє, чи є ця новина новою. Перевірка за датою
+	 * @return boolean 
+	 */
+	public function getIsNewArticle(){
+		$ts1 = $this->created_at;
+		$ts2 = time();     
+		$seconds_diff = $ts2 - $ts1;                            
+		$time = ($seconds_diff/ (60 * 60 * 24));
+
+		return ($time > 7 ? false : true);
+	}
+	
+	
+	public function getSectionsPath($section_id = null){
+		$arr = [];
+		$current_section = Section::FindOne($section_id ? $section_id : $this->section_id);
+		if ($current_section->pid != 0){
+			$arr[] = $current_section;
+			return array_merge ($this->getSectionsPath($current_section->pid), $arr);
+		}
+		
+		return $arr;
+	}
+	
+	
+	public function getBreadcrumbTitle(){
+		$metadata = json_decode($this->metadata);
+		$title = (isset($metadata->title[0]) ? $metadata->title[0] : '');
+		$title = ( mb_strlen($title) > 50 ? mb_substr($title,0, 45) . '...' : $title);
+		
+		return $title;
+	}
 	
 
 }
