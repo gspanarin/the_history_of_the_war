@@ -31,8 +31,10 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 
 			<div class="tagcloud pt-3"><a href="/article?section_id=<?= $model->section_id ?>" class="tag-cloud-link"><?= $model->section->title ?></a></div>
 
-			<p class="lead pt-3"><span class="icon-calendar"></span> Дата публікації: <strong><?= $model->dateEvent ?></strong></p>
-
+			<p class="lead pt-3"><span class="icon-calendar"></span> Дата публікації: <strong><?= $model->dateEvent ?></strong>
+			<br>Ідентифікатор статті: <strong><?= $model->id ?>
+			</p>
+	
 			<p class="pt-2"><?= $model->section->title ?></p>   
 
 			<?php 
