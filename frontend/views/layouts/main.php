@@ -132,7 +132,44 @@ $sections = Section::find()->where(['pid' => 1])->all();
 		<?= $content ?>
 		<?= Alert::widget() ?>
 	</div>
-                    
+              
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') {?>	
+<section class="services-section ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center pb-3">
+                 <div class="heading-section text-center ftco-animate">
+                    <h2 class="m-4">Онлайн-ресурси про війну</h2>
+                  </div>
+                </div>
+
+        <div class="row no-gutters d-flex ftco-animate">
+                
+            <div class="col-md-6 col-lg-3 d-flex align-self-stretch p-2">
+                    <div class="media block-6 d-block text-center">
+                      <div><a href="https://www.libr.dp.ua/xronika.html" target="_blank"><img src="assets_new/images/bdxroniku-v.jpg"  class="img-fluid img-thumbnail figure-img"></a></div>
+                      <div class="media-body">
+                        <h4 class="heading mb-3"><a href="https://www.libr.dp.ua/xronika.html" target="_blank">Бібліотеки Дніпропетровщини: хроніки війни</a></h4>
+                        <p><small>Хроніка злочинів. Бібліотечні події.  Факти. Онлайн-медіа база даних.</small></p>
+                      </div>
+                    </div>    
+            </div>
+        </div>
+    </div>
+</section>    
+ <?php } ?>	
+ 
+ 
+ 
+ 
+ 
 <!-- ФУТЕР. в идеале все лучше делать require, чтобы потом при редактировании было удобней-->           
     <footer class="ftco-footer ftco-section">
         <div class="container">

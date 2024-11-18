@@ -27,7 +27,8 @@
         "yiisoft/yii2-jui": "~2.0.0",
         "yii2assets/yii2-pdfjs": ">=1.0",
         "wbraganca/yii2-videojs-widget": "~1.0",
-        "smalot/pdfparser": "^2.10"
+        "smalot/pdfparser": "^2.10",
+        "cpierce/pdf2text": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -45,6 +46,9 @@
         "process-timeout": 1800,
         "fxp-asset": {
             "enabled": false
+        },
+        "platform": {
+            "php": "7.4"
         }
     },
     "repositories": [

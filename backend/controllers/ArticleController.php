@@ -273,4 +273,22 @@ class ArticleController extends BaseController{
         ]);
     }
     
+	
+	
+
+	
+	public function actionExtractedText($fileId){
+		
+		$file = File::findOne($fileId);
+
+		$pdf = 'C:\www\storage\storage1' . $file->file_path;
+		$pdf = "C:\Users\panarin\Desktop\загружено.pdf";
+		
+		
+		$pdf2text = new \Pdf2text\Pdf2text($pdf);
+		$output = $pdf2text->decode();
+		dd($output);
+		
+		return 'hi!';
+	}
 }

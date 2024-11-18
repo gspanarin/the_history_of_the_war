@@ -288,4 +288,7 @@ class SiteController extends Controller
 		return $this->render('legal_policy');
 	}
 	
+	public function actionResourcesAboutWar(){
+		return $this->render('resources_about_war');
+	}
 }

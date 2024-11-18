@@ -43,9 +43,8 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-                 
-                 'page/<alias:\w+>.html'=>'page/view-by-alias',
+            'rules' => [ 
+                '/page/<alias\w+>.html' => 'page/view-by-alias',
             ],
         ],
         'urlManagerFrontEnd' => [
