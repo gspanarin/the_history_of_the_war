@@ -118,6 +118,7 @@ $sections = Section::find()->where(['pid' => 1])->all();
         <div class="container-fluid">
             <div class="container"> 
                 <?= Breadcrumbs::widget([
+					'homeLink' => ['label' => 'Головна', 'url' => '/'],
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>
             </div>

@@ -31,14 +31,24 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             //'status',
             //'type',
+			'title',
             [
                 'attribute' => 'alias',
+				'label' => 'Внутрішній сайт',
                 'format' => 'raw',
                 'value' => function($model){
-                    return Html::a($model->alias, Url::to($model->alias . '.html'));
+                    return Html::a($model->alias, Url::to('page/' . $model->alias . '.html'));
                 }
             ],
-            'title',
+			[
+                'attribute' => 'alias',
+				'label' => 'Читацький сайт',
+                'format' => 'raw',
+                'value' => function($model){
+                    return Html::a($model->alias, Url::to('/page/' . $model->alias . '.html'));
+                }
+            ],
+            
             //'body:ntext',
             //'created_at',
             //'updated_at',

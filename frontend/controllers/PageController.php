@@ -1,31 +1,16 @@
 <?php
 
-namespace backend\controllers;
+namespace frontend\controllers;
 
 use common\models\Page;
 use common\models\PageSearch;
 use yii\filters\VerbFilter;
-use backend\controllers\BaseController;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
-class PageController extends BaseController
+class PageController extends Controller
 {
-    /**
-     * @inheritDoc
-     */
-    public function behaviors()
-    {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
-    }
+
 
     /**
      * Lists all Page models.
@@ -43,82 +28,22 @@ class PageController extends BaseController
         ]);
     }
 
-    /**
-     * Displays a single Page model.
-     * @param int $id Ідентифікатор сторінки
-     * @return string
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+	
+    public function actionViewByAlias($alias){
+		$page = Page::find()->where(['alias' => $alias])->one();
+		
+		
+		
+		if ($page){
+			return $this->render('view', [
+				'model' => $page
+			]);
+		} else {
+			throw new NotFoundHttpException('Сторінка н знайдена');
+		}
+        
     }
-
-    public function actionViewByAlias($alias)
-    {
-        return $this->render('view', [
-            'model' => Page::find()->where(['alias' => $alias])->one()//$this->findModel($id),
-        ]);
-    }
-    
-    /**
-     * Creates a new Page model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return string|\yii\web\Response
-     */
-    public function actionCreate()
-    {
-        $model = new Page();
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Updates an existing Page model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id Ідентифікатор сторінки
-     * @return string|\yii\web\Response
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Deletes an existing Page model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id Ідентифікатор сторінки
-     * @return \yii\web\Response
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
+   
     /**
      * Finds the Page model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

@@ -82,7 +82,11 @@ class SiteController extends Controller{
     
     private function getDataForChart(){
         
-		$popular_articles = Article::find()->where(['>', 'view', 0])->orderBy('view DESC')->limit(20)->all();
+		$popular_articles = Article::find()
+				->where(['>', 'view', 0])
+				->orderBy('view DESC')
+				->limit(20)
+				->all();
 		
         //=========================================================================
         //          Статистика створення записів за останній тиждень
@@ -104,13 +108,13 @@ class SiteController extends Controller{
         //$date_to = strtotime("-1 week");
    
         $articles = Article::find()
-        ->select([
-            'from_unixtime(created_at, "%Y-%m-%d") as date',
-            'count(id) as c_article'
-        ])
-        ->where(['between', 'created_at', $date_from, $date_to ])
-        ->groupBy('date') // group the result to ensure aggregation function works
-        ->asArray()->all();
+				->select([
+					'from_unixtime(created_at, "%Y-%m-%d") as date',
+					'count(id) as c_article'
+				])
+				->where(['between', 'created_at', $date_from, $date_to ])
+				->groupBy('date') // group the result to ensure aggregation function works
+				->asArray()->all();
         
         $date_count = [];
         foreach ($articles as $item)
@@ -236,7 +240,7 @@ class SiteController extends Controller{
                 ->groupBy('user_id') 
                 ->leftJoin('user', '`user`.`id` = `article`.`user_id`')
                 ->orderBy('count DESC')
-                ->limit(20)
+                //->limit(20)
                 ->asArray()->all();
         
         return [
