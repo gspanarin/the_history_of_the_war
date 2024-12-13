@@ -59,6 +59,7 @@ use common\models\User;
                         ['label' => 'Організації', 'url' => ['/organization']],
                         ['label' => 'Користувачі', 'url' => ['/user']],
                         ['label' => 'Сторінки/інструкції', 'url' => ['/page']],
+						['label' => 'Партнерські проекти', 'url' => ['/partnership-project']],
                         ['label' => 'Налаштування полів', 'url' => ['/tag']],
                         ['label' => 'Налаштування значень полів', 'url' => ['/authority']],
                         ['label' => 'Розділи', 'url' => ['/section']]  ,
