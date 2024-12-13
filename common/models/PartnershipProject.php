@@ -63,7 +63,7 @@ class PartnershipProject extends \yii\db\ActiveRecord{
             [['title', 'operator', 'url'], 'required'],
             [['title', 'operator', 'duration', 'icon', 'url'], 'string', 'max' => 256],
 			[['description'], 'string'],
-			[['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg, bmp'],
+			[['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg, bmp'],
 			[['imageFile'], 'safe']
         ];
     }

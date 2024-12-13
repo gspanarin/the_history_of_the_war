@@ -13,7 +13,10 @@ use yii\web\JsExpression;
 <div class="partnership-project-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
+	<div class="form-group">
+        <?= Html::submitButton('Зберегти', ['class' => 'btn btn-success']) ?>
+    </div>
+	
     <?= $form->field($model, 'status')->dropDownList(
         PartnershipProject::getStatusList(),
         ['prompt' => ' ... Оберіть статус ... ',
@@ -22,7 +25,8 @@ use yii\web\JsExpression;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-	<?= $form->field($model, 'icon')->fileInput() ?>
+	<?= $form->field($model, 'icon')->hiddenInput() ?>
+	<?= $form->field($model, 'imageFile')->fileInput() ?>
 
 	<?php
 	$icon = $model->getIcon();
@@ -41,7 +45,7 @@ use yii\web\JsExpression;
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Зберегти', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

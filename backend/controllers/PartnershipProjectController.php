@@ -66,12 +66,18 @@ class PartnershipProjectController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
-    {
+    public function actionCreate(){
         $model = new PartnershipProject();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+        if ($this->request->isPost && $model->load($this->request->post())) {
+			$model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+			if (!is_null($model->imageFile)){
+				if (!$model->upload()) {
+					throw new NotFoundHttpException('Невдалось завантажити файл');
+				}
+			}
+			$model->imageFile = null;
+            if ( $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -93,14 +99,14 @@ class PartnershipProjectController extends Controller
     public function actionUpdate($id){
         $model = $this->findModel($id);
 
-
         if ($this->request->isPost && $model->load($this->request->post())) {
-			$model->imageFile = UploadedFile::getInstance($model, 'icon');
-			if (!$model->upload()) {
-				throw new NotFoundHttpException('Невдалось завантажити файл');
+			$model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+			if (!is_null($model->imageFile)){
+				if (!$model->upload()) {
+					throw new NotFoundHttpException('Невдалось завантажити файл');
+				}
 			}
 			$model->imageFile = null;
-			
 			if ($model->save()) {
 				return $this->redirect(['view', 'id' => $model->id]);
 			}
