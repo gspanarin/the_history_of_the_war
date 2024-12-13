@@ -95,12 +95,13 @@ class PartnershipProjectController extends Controller
 
 
         if ($this->request->isPost && $model->load($this->request->post())) {
-			$model->imageFile = UploadedFile::getInstance($model, 'icon');
-			if (!$model->upload()) {
-				throw new NotFoundHttpException('Невдалось завантажити файл');
+			if ($model->icon){
+				$model->imageFile = UploadedFile::getInstance($model, 'icon');
+				if (!$model->upload()) {
+					throw new NotFoundHttpException('Невдалось завантажити файл');
+				}
+				$model->imageFile = null;
 			}
-			$model->imageFile = null;
-			
 			if ($model->save()) {
 				return $this->redirect(['view', 'id' => $model->id]);
 			}

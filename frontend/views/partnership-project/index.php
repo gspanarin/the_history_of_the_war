@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					<p class="heading"><?= Html::img('data:image/jpeg;charset=utf-8;base64,' . $icon, ['width' => '100%', 'height' => 'auto']); ?></p>
 					<h4 class="heading mb-3"><?= Html::encode($model->title) ?></h4>
 					<div>
+					<p><?= $model->operator ?></p>
 					<p><?= $model->duration ?></p>
 					<p><?= $model->description ?></p>
 					<p><span>Посилання</span>: <?= Html::a($model->url, $model->url, ['class' => 'profile-link'])?></p>
