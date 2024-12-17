@@ -148,4 +148,22 @@ class PartnershipProjectController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+	
+
+	/**
+	 * Функція виконує зміну статусу на протилежний. Використовується у відображенні списку Партнерськихз програм для зміни статусу без необхіодності входу у редагування запису
+	 * @param type $id 
+	 * @return type
+	 */
+	public function actionChangeStatus($id){
+		$model = $this->findModel($id);
+		if ($model->status == 1){
+			$model->status = 0;
+		} else {
+			$model->status = 1;
+		}
+		$model->save();
+		
+		return $this->redirect(['index']);
+	}
 }

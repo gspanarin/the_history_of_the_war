@@ -31,8 +31,12 @@ $this->params['breadcrumbs'][] = $this->title;
 			[
 				'attribute' => 'status',
 				'filter' => PartnershipProject::getStatusList(),
+				'format' => 'raw',
 				'value' => function($model){
-                    return $model->getStatusTitle();
+                    return 
+						Html::a($model->getStatusTitle(), ['change-status', 'id' => $model->id])
+					
+						;
                 }
 			],
             'title',

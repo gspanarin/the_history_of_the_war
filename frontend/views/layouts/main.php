@@ -49,12 +49,12 @@ $sections = Section::find()->where(['pid' => 1])->all();
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">  <a class="navbar-brand" href="https://korolenko.kharkov.com/"><img src="/assets_new/images/logo-lib.svg" width="30" alt=""/> <span>ХДНБ<br><span>ім. В.Г.Короленка</span></span></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="oi oi-menu"></span> Меню</button>
-
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item <?= (Yii::$app->controller->action->id == 'index' && Yii::$app->controller->id == 'site' ? ' active ':'') ?>"><a href="/" class="nav-link">Головна</a></li>
 					<li class="nav-item <?= (Yii::$app->controller->action->id == 'about' ? ' active ':'') ?>"><a href="/site/about" class="nav-link">Про архів</a></li>
-					<li class="nav-item <?= (Yii::$app->controller->action->id == 'collections' ? ' active ':'') ?>" ><a href="/site/collections" class="nav-link">Путівник</a></li>
+					<li class="nav-item <?= (Yii::$app->controller->action->id == 'collections' ? ' active ':'') ?>" ><a href="/site/collections" class="nav-link">Путівник</a></li>					
+					<li class="nav-item <?= (Yii::$app->controller->id == 'partnership-project' ? ' active ':'') ?>" ><a href="/partnership-project" class="nav-link">Інші проєкти</a></li>
 					<li class="nav-item <?= (Yii::$app->controller->action->id == 'for-users' ? ' active ':'') ?>"><a href="/site/for-users" class="nav-link">Користувачам</a></li>
 					<li class="nav-item <?= (Yii::$app->controller->action->id == 'contact' ? ' active ':'') ?>"><a href="/site/contact" class="nav-link">Контакти</a></li>
 				</ul>
@@ -147,10 +147,10 @@ $sections = Section::find()->where(['pid' => 1])->all();
     <div class="container">
         <div class="row justify-content-center pb-3">
                  <div class="heading-section text-center ftco-animate">
-                    <h2 class="m-4">Онлайн-ресурси про війну</h2>
+                    <a href="/partnership-project"><h2 class="m-4">Онлайн-ресурси про війну</h2></a>
                   </div>
                 </div>
-
+<!--
         <div class="row no-gutters d-flex ftco-animate">
                 
             <div class="col-md-6 col-lg-3 d-flex align-self-stretch p-2">
@@ -163,6 +163,7 @@ $sections = Section::find()->where(['pid' => 1])->all();
                     </div>    
             </div>
         </div>
+-->
     </div>
 </section>    
  <?php } ?>	

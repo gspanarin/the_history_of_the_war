@@ -39,7 +39,7 @@ class PartnershipProjectController extends Controller
      */
     public function actionIndex()
     {
-        $models = PartnershipProject::find()->all();
+        $models = PartnershipProject::find()->where(['status' => 1])->all();
 		return $this->render('index', compact('models',));
 
 		
