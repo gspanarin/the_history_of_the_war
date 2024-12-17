@@ -194,6 +194,8 @@ $sections = Section::find()->where(['pid' => 1])->all();
                 <!--<li><a href="/site/for-members" class="py-2 d-block">Учасникам проєкту</a></li>-->
                 <li><a href="/site/for-users" class="py-2 d-block">Користувачам</a></li>
                 <li><a href="/site/legal-policy" class="py-2 d-block">Правова політика</a></li>
+				<li><a href="/partnership-project" class="py-2 d-block">Інші проекти</a></li>
+				
 </ul>
 					</div>
 				</div>
