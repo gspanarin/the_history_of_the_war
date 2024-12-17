@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var common\models\PartnershipProjectSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Партнерські проекти';
+$this->title = 'Інші проєкти';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="partnership-project-index">
@@ -27,8 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		?>	 
 			<div class="col-md-4 d-flex  ftco-animate">
 				<div class="blog-entry align-self-stretch d-md-flex shadow-sm border rounded p-2">
-					
-					<div class="text d-block pl-md-4">
+					<div class="text d-block">
 					<p class="heading"><?= Html::img('data:image/jpeg;charset=utf-8;base64,' . $icon, ['width' => '100%', 'height' => 'auto']); ?></p>
 					<h4 class="heading mb-3"><?= Html::encode($model->title) ?></h4>
 					<div>
