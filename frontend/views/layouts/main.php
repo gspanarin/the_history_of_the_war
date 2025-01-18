@@ -173,7 +173,7 @@ $sections = Section::find()->where(['pid' => 1])->all();
  
  
 <!-- ФУТЕР. в идеале все лучше делать require, чтобы потом при редактировании было удобней-->           
-    <footer class="ftco-footer ftco-section">
+	<footer class="ftco-footer ftco-section">
         <div class="container">
             <div class="row mb-5"><!--  ml-md-5-->
                 <div class="col-lg">
@@ -189,35 +189,34 @@ $sections = Section::find()->where(['pid' => 1])->all();
                 <div class="col-lg">
 					<div class="ftco-footer-widget mb-4 ">
 					    <h2 class="ftco-heading-2">Інформація</h2>
-<ul class="list-unstyled">
-                <li><a href="/site/collections" class="py-2 d-block">Путівник</a></li>
-                <!--<li><a href="/site/for-members" class="py-2 d-block">Учасникам проєкту</a></li>-->
-                <li><a href="/site/for-users" class="py-2 d-block">Користувачам</a></li>
-                <li><a href="/site/legal-policy" class="py-2 d-block">Правова політика</a></li>
-				<li><a href="/partnership-project" class="py-2 d-block">Інші проекти</a></li>
-				
-</ul>
+						<ul class="list-unstyled">
+							<li><a href="/site/collections" class="py-2 d-block">Путівник</a></li>
+							<!--<li><a href="/site/for-members" class="py-2 d-block">Учасникам проєкту</a></li>-->
+							<li><a href="/site/for-users" class="py-2 d-block">Користувачам</a></li>
+							<li><a href="/site/legal-policy" class="py-2 d-block">Правова політика</a></li>
+							<li><a href="/partnership-project" class="py-2 d-block">Інші проекти</a></li>
+						</ul>
 					</div>
 				</div>
                 <div class="col-lg">
 					<div class="ftco-footer-widget mb-4">
 						<h2 class="ftco-heading-2 logo">Про архів</h2>
- <p>Колекція документів з верифікованих відкритих інтернет-джерел (фото, відео - та текстові матеріали)</p>
-<p><a href="/site/about" class="text-white"><u>Докладніше ... </u></a></p>
+						<p>Колекція документів з верифікованих відкритих інтернет-джерел (фото, відео - та текстові матеріали)</p>
+						<p><a href="/site/about" class="text-white"><u>Докладніше ... </u></a></p>
 					</div>
 				</div>
                 <div class="col-lg">
 					<div class="ftco-footer-widget mb-4">
 						<h2 class="ftco-heading-2"><span class="font-weight-light">Є питання? </span><br>Ми на зв'язку!</h2>
-<div class="block-23 mb-3">
-<div class="tagcloud"><a href="mailto:warinukrainearchive2022@gmail.com" class="tag-cloud-link text-white">warinukrainearchive2022@gmail.com</a></div>
-</div>
-
-<!--<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-</ul>-->
+						<div class="block-23 mb-3">
+							<div class="tagcloud"><a href="mailto:warinukrainearchive2022@gmail.com" class="tag-cloud-link text-white">warinukrainearchive2022@gmail.com</a></div>
+						</div>
+						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+							<!--<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>-->
+							<li><a href="https://forms.gle/VufuEeVGSL71zXfa7" target="_blank" class="py-2 d-block">Інформаційне партнерство</a></li>
+						</ul>
 					</div>
 				</div>
             </div>
