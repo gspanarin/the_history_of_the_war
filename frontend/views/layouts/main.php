@@ -211,7 +211,7 @@ $sections = Section::find()->where(['pid' => 1])->all();
 						<div class="block-23 mb-3">
 							<div class="tagcloud"><a href="mailto:warinukrainearchive2022@gmail.com" class="tag-cloud-link text-white">warinukrainearchive2022@gmail.com</a></div>
 						</div>
-						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+						<ul class="list-unstyled float-md-left float-lft">
 							<!--<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
 							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
 							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>-->
