@@ -4,6 +4,23 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use common\models\User;
 use common\models\Section;
+use yii\helpers\Url;
+
+$icon = $model->getIcon();
+$icon_img = 'cover.png';
+
+//<meta property='og:type' content="article" />.
+
+$this->registerMetaTag(['name' => 'og:type','content' => 'article']);
+$this->registerMetaTag(['name' => 'og:url', 'content' => Url::home(true) . 'article/view?id=' . $model->id]);
+$this->registerMetaTag(['name' => 'og:site_name ', 'content' => 'Архівування документів про війну']);
+$this->registerMetaTag(['name' => 'og:description', 'content' => Html::encode($model->description)]);
+$this->registerMetaTag(['name' => 'og:title', 'content' => Html::encode($model->title)]);
+if ($icon){
+	$this->registerMetaTag(['name' => 'og:image', 'content' => 'data:image/jpeg;charset=utf-8;base64,' . $icon]);
+}
+$this->registerMetaTag(['name' => 'og:locale', 'content' => 'uk_UA']);
+
 
 $this->title = $model->BreadcrumbTitle;
 $this->params['breadcrumbs'][] = ['label' => 'Статті', 'url' => ['index']];
@@ -38,8 +55,7 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 			<p class="pt-2"><?= $model->section->title ?></p>   
 
 			<?php 
-			$icon = $model->getIcon();
-			$icon_img = 'cover.png';
+			
 			if ($icon){
 				$icon_img = 'data:image/jpeg;charset=utf-8;base64,' . $icon;
 			}

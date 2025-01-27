@@ -47,6 +47,7 @@ return [
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
 				'article/section/<id:\d+>/' => 'article/section',
 				'/page/<alias\w+>.html' => 'page/view-by-alias',
+				'sitemap.xml' => 'site/sitemap'
             ],
         ],
     ],

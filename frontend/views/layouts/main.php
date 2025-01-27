@@ -42,6 +42,7 @@ $sections = Section::find()->where(['pid' => 1])->all();
     <link rel="stylesheet" href="/assets_new/css/style.css">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>

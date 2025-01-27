@@ -16,7 +16,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use common\models\Section;
-
+use common\models\Article;
 
 /**
  * Site controller
@@ -290,5 +290,27 @@ class SiteController extends Controller
 	
 	public function actionResourcesAboutWar(){
 		return $this->render('resources_about_war');
+	}
+	
+	public function actionSitemap(){
+		$pages = [
+			['url' => '', 'lastmod' =>  date('Y-m-d')],
+			['url' => 'for-members', 'lastmod' =>  date('Y-m-d')],
+			['url' => 'collections', 'lastmod' =>  date('Y-m-d')],
+			['url' => 'for-users', 'lastmod' =>  date('Y-m-d')],
+			['url' => 'legal-polic', 'lastmod' =>  date('Y-m-d')],
+			['url' => 'resources-about-war', 'lastmod' =>  date('Y-m-d')],
+			['url' => 'partnership-project', 'lastmod' =>  date('Y-m-d')],
+		];
+		
+		$articles = Article::find()->select(['id', 'created_at'])->all();
+		for($i = 0; $i < count($articles); $i++){
+			$pages[] = ['url' => 'article/view?id=' . $articles[$i]->id, 'lastmod' => date('Y-m-d', $articles[$i]->created_at)];
+		}
+		
+		\Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+		\Yii::$app->response->headers->add('Content-Type', 'text/xml');
+
+		return $this->renderPartial('sitemap', [ 'pages' => $pages]);
 	}
 }
