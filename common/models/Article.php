@@ -6,7 +6,7 @@ use Yii;
 use yii\db\ActiveRecord;
 use \yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
-
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "article".
@@ -266,6 +266,12 @@ class Article extends \yii\db\ActiveRecord{
         return (isset($metadata->description[0]) ? $metadata->description[0] : '');
     }
 	
+	public function getCreator(){
+        $metadata = json_decode($this->metadata);
+
+        return (isset($metadata->creator) ? $metadata->creator : []);
+    }
+	
 	public function getSubject(){
         $metadata = json_decode($this->metadata);
 
@@ -296,7 +302,11 @@ class Article extends \yii\db\ActiveRecord{
         return (isset($metadata->provenance[0]) ? $metadata->provenance[0] : '');
     }
 	
-	
+	public function getDatePublication(){
+		$metadata = json_decode($this->metadata);
+
+        return (isset($metadata->date_publication[0]) ? $metadata->date_publication[0] : '');
+	}
 	
     /*public function getSource(){
         $metadata = json_decode($this->metadata);
@@ -363,6 +373,7 @@ class Article extends \yii\db\ActiveRecord{
         }
     }
     
+		
     public function DeleteIcon(){
         unlink(Yii::$app->params['storage_path'] . date('Y', $this->created_at) . '/' . date('m', $this->created_at) . '/' . $this->id . '/icon.jpg');        
     }
@@ -443,4 +454,43 @@ class Article extends \yii\db\ActiveRecord{
 	}
 	
 
+	public function getJSONLD(){
+		/*{
+			"@context": "http://schema.org",
+			"@type": "Book",
+			"author": {
+				"@type": "Person",
+				"name": "Имя автора"
+			},
+		"datePublished": "Дата публикации",
+		"isbn": "ISBN номер",
+		"name": "Название книги"
+		}*/
+
+		//$jsonld = new \stdClass();
+		$author = [];
+		foreach ($this->creator as $person){
+			$author[] = [
+				"@type" => "Person",
+				"name" => $person
+			];
+		}
+		$jsonld = [	
+			"@context" => "http://schema.org",
+			"@type" => "NewsArticle",
+			"url" => Url::home(true)  . "article/view?id=" . $this->id,
+			"name" => $this->title,
+			"datePublished" => $this->datepublication ,
+			"author" => $author,
+			"primaryImageOfPage" => [
+				"@id" => Url::home(true)  . "article/view?id=" . $this->id . '#cover_icon'
+			],
+		];
+		
+		return json_encode($jsonld);
+	}
 }
+
+
+
+	
