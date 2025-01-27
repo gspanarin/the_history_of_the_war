@@ -104,14 +104,16 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 			if (count($model->subject_organization) > 0){
 				echo $this->render('tag_list', [
 					'title' => 'Організація, установа',
-					'items' => $model->subject_organization
+					'items' => $model->subject_organization,
+					'schema' => 'itemprop="legalName" itemscope itemtype="http://schema.org/Organization"'
 				]) ;
 			}
 			
 			if (count($model->subject_military_unit) > 0){
 				echo $this->render('tag_list', [
 					'title' => 'Військовий підрозділ',
-					'items' => $model->subject_military_unit
+					'items' => $model->subject_military_unit,
+					'schema' => 'itemprop="legalName" itemscope itemtype="http://schema.org/Organization"'
 				]) ;
 			}
 			?>
