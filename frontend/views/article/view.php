@@ -35,7 +35,7 @@ $this->params['title'] = $model->getTitle();
 $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 
 ?>
-<div class="article-view" itemscope itemtype="https://schema.org/Book">
+<div class="article-view" itemscope itemtype="https://schema.org/NewsArticle">
 
 	<div class="row p-3">
 		<div class="col-12">
@@ -52,7 +52,7 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 			<br>Ідентифікатор статті: <strong><?= $model->id ?>
 			</p>
 	
-			<p class="pt-2"><?= $model->section->title ?></p>   
+			<p class="pt-2"><span itemprop = "articleSection"><?= $model->section->title ?></span></p>   
 
 			<?php 
 			
@@ -60,7 +60,7 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 				$icon_img = 'data:image/jpeg;charset=utf-8;base64,' . $icon;
 			}
 			?>
-			<p><img src="<?= $icon_img ?>" class="img-thumbnail" alt="" id="cover_icon"/></p>  
+			<p><img src="<?= $icon_img ?>" class="img-thumbnail" alt="" id="cover_icon" itemprop="primaryImageOfPage"/></p>  
 
         
 		</div>    
@@ -70,7 +70,7 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 		<!-- у якому порядку виводити ці параметри - уточнити та переставити-->
 
 		<ul class="list-inline">
-			<li class="mt-3"><span class="icon-wallpaper"></span> Анотація: <?= $model->description ?></li>
+			<li class="mt-3"><span class="icon-wallpaper"></span> Анотація: <span itemprop="about"><?= $model->description ?></span></li>
 			
 			<?php
 			$file_tml = '';
@@ -89,14 +89,15 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 				echo $this->render('tag_list', [
 					'title' => 'Автори/Упорядники/Кореспонденти',
 					'items' => $model->creator,
-					'schema' => 'itemprop="author" itemscope itemtype="http://schema.org/Person"',
+					'schema' => 'itemprop="creator" itemscope itemtype="http://schema.org/Person"',
 				]) ;
 			}
 			
 			if (count($model->subject) > 0){
 				echo $this->render('tag_list', [
 					'title' => 'Ключові слова',
-					'items' => $model->subject
+					'items' => $model->subject,
+					'schema' => 'itemprop="keywords"'
 				]) ;
 			}
 			
@@ -122,7 +123,7 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
     
 	<div class="row  p-4">    
 		<ul class="list-inline">
-			<li><span class="icon-calendar-check-o"></span> Матеріал архівовано: <strong><?= $model->DateArchived?></strong></li>    
+			<li><span class="icon-calendar-check-o"></span> Матеріал архівовано: <strong><span itemprop="archivedAt"><?= $model->DateArchived?></span></strong></li>    
 			<li></span> Установа-архіватор: <strong><?= $model->provenance?></strong></li>   
 		</ul>    
 	</div>  

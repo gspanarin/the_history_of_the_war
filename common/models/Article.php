@@ -485,6 +485,7 @@ class Article extends \yii\db\ActiveRecord{
 			"primaryImageOfPage" => [
 				"@id" => Url::home(true)  . "article/view?id=" . $this->id . '#cover_icon'
 			],
+			"about" => $this->description
 		];
 		
 		return json_encode($jsonld);
