@@ -157,6 +157,8 @@ class ArticleController extends Controller{
             ];
 		}
         
+		//dd($model->JSONLD);
+		
         return $this->render('view', [
             'model' => $model,
             'fields' => $fields,

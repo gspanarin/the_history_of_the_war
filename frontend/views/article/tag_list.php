@@ -4,7 +4,7 @@
 			<p>
 				<?php 
 				foreach($items as $item){
-					echo '<a href="#" class="reply">' . $item . '</a> ';
+					echo '<a href="#" class="reply" ' . (isset($schema) ? $schema : '') . ' >' . $item . '</a> ';
 				} 
 				?>
 			</p>

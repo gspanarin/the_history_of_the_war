@@ -9,7 +9,7 @@ use yii\helpers\Url;
 $icon = $model->getIcon();
 $icon_img = 'cover.png';
 
-//<meta property='og:type' content="article" />.
+$this->registerJs($model->jsonld, \yii\web\View::POS_HEAD);
 
 $this->registerMetaTag(['name' => 'og:type','content' => 'article']);
 $this->registerMetaTag(['name' => 'og:url', 'content' => Url::home(true) . 'article/view?id=' . $model->id]);
@@ -35,7 +35,7 @@ $this->params['title'] = $model->getTitle();
 $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 
 ?>
-<div class="article-view">
+<div class="article-view" itemscope itemtype="https://schema.org/Book">
 
 	<div class="row p-3">
 		<div class="col-12">
@@ -44,7 +44,7 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 			<?php if ($model->IsNewArticle) { ?>
 			<p><span class="badge badge-primary">Нова стаття</span></p>
 			<?php } ?>
-			<div class="heading-section justify-content-left"><h1 class="display-5"><?= $model->title ?></h1></div>       
+			<div class="heading-section justify-content-left"><h1 class="display-5" itemprop="name"><?= $model->title ?></h1></div>       
 
 			<div class="tagcloud pt-3"><a href="/article?section_id=<?= $model->section_id ?>" class="tag-cloud-link"><?= $model->section->title ?></a></div>
 
@@ -60,7 +60,7 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 				$icon_img = 'data:image/jpeg;charset=utf-8;base64,' . $icon;
 			}
 			?>
-			<p><img src="<?= $icon_img ?>" class="img-thumbnail" alt=""/></p>  
+			<p><img src="<?= $icon_img ?>" class="img-thumbnail" alt="" id="cover_icon"/></p>  
 
         
 		</div>    
@@ -85,6 +85,14 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 		
 		<ul class="comment-list">
 			<?php
+			if (count($model->creator) > 0){
+				echo $this->render('tag_list', [
+					'title' => 'Автори/Упорядники/Кореспонденти',
+					'items' => $model->creator,
+					'schema' => 'itemprop="author" itemscope itemtype="http://schema.org/Person"',
+				]) ;
+			}
+			
 			if (count($model->subject) > 0){
 				echo $this->render('tag_list', [
 					'title' => 'Ключові слова',
