@@ -89,7 +89,8 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 				echo $this->render('tag_list', [
 					'title' => 'Автори/Упорядники/Кореспонденти',
 					'items' => $model->creator,
-					'schema' => 'itemprop="creator" itemscope itemtype="http://schema.org/Person"',
+					'schema' => 'itemprop="creator"',
+					'schema_type' => 'itemscope itemtype="http://schema.org/Person"',
 				]) ;
 			}
 			
@@ -105,7 +106,8 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 				echo $this->render('tag_list', [
 					'title' => 'Організація, установа',
 					'items' => $model->subject_organization,
-					'schema' => 'itemprop="legalName" itemscope itemtype="http://schema.org/Organization"'
+					'schema' => 'itemprop="legalName"',
+					'schema_type' => 'itemscope itemtype="http://schema.org/Organization"',
 				]) ;
 			}
 			
@@ -113,7 +115,8 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 				echo $this->render('tag_list', [
 					'title' => 'Військовий підрозділ',
 					'items' => $model->subject_military_unit,
-					'schema' => 'itemprop="legalName" itemscope itemtype="http://schema.org/Organization"'
+					'schema' => 'itemprop="legalName"',
+					'schema_type' => 'itemscope itemtype="http://schema.org/Organization"',
 				]) ;
 			}
 			?>
