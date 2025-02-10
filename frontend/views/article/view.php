@@ -129,7 +129,7 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 	<div class="row  p-4">    
 		<ul class="list-inline">
 			<li><span class="icon-calendar-check-o"></span> Матеріал архівовано: <strong><span itemprop="archivedAt"><?= $model->DateArchived?></span></strong></li>    
-			<li></span> Установа-архіватор: <strong><?= $model->provenance?></strong></li>   
+			<li></span> Архіватор: <strong><?= $model->provenance?></strong></li>   
 		</ul>    
 	</div>  
 
