@@ -1,4 +1,2 @@
 User-agent: *
-Disallow:
-
-Sitemap: http://digitalarchivewar.korolenko.kharkov.com/sitemap.xml
+Disallow: /

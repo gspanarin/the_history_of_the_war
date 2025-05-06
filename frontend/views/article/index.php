@@ -70,23 +70,31 @@ if (isset($current_section)){
 
 				<div class="form-group col-lg-6">
 					<label for="subject">За ключовими словами</label>
-					<input type="text" class="form-control" name="subject" id="subject" placeholder="ключові слова">
+					<input type="text" class="form-control" name="subject" id="subject" placeholder="ключові слова" value="<?= $filter['subject'] ?>">
 				</div>
 
 				<div class="form-group col-lg-6">
 					<label for="subject">За джерелом публікації статті</label>
-					<input type="text" class="form-control" name="source" id="source" placeholder="URL-адреса джерела">
+					<input type="text" class="form-control" name="source" id="source" placeholder="URL-адреса джерела" value="<?= $filter['source'] ?>">
 				</div>
 
 				<div class="form-group col-lg-6">
 					<label for="subject">За видавцем</label>
-					<input type="text" class="form-control" name="publisher" id="publisher" placeholder="назва організації-видавця статті">
+					<input type="text" class="form-control" name="publisher" id="publisher" placeholder="назва організації-видавця статті" value="<?= $filter['publisher'] ?>">
 				</div>
 
 				<div class="form-group col-lg-6">
 					<label for="subject">Автор, редактор статті</label>
-					<input type="text" class="form-control" name="creator" id="creator" placeholder="ПІБ автора">
+					<input type="text" class="form-control" name="creator" id="creator" placeholder="ПІБ автора" value="<?= $filter['creator'] ?>">
 				</div>
+                    
+                                <div class="form-group col-lg-6">
+					<label for="subject">Дата події</label>
+                                        <input type="text" class="form-control" name="date_event" id="date_event" placeholder="РРРР-ММ-ДД" value="<?= $filter['date_event'] ?>">
+				</div>
+                    
+                    
+                    
 	
 		</div>
 		<button type="submit" class="btn btn-primary">Знайти</button>

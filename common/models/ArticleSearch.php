@@ -20,7 +20,7 @@ class ArticleSearch extends Article{
 	public $source = '';
 	public $publisher = '';
 	public $creator = '';
-	
+	public $date_event = '';
 	
     /**
      * {@inheritdoc}
@@ -29,7 +29,7 @@ class ArticleSearch extends Article{
     {
         return [
             [['id', 'user_id', 'section_id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['metadata', 'section_array', 'term_name', 'term_value', 'title', 'query_str', 'subject', 'source', 'publisher', 'creator'	], 'safe'],
+            [['metadata', 'section_array', 'term_name', 'term_value', 'title', 'query_str', 'subject', 'source', 'publisher', 'creator', 'date_event'], 'safe'],
         ];
     }
 
@@ -125,7 +125,14 @@ class ArticleSearch extends Article{
 			$query->andWhere(['LIKE', 'dictionary.value', $this->subject ]);
 		}
 		
-		
+		if ($this->date_event != ''){
+			$query->leftJoin ('dictionary', 'dictionary.article_id = article.id');
+			$query->andWhere(['dictionary.term_name' => 'date_event']);
+			$query->andWhere(['LIKE', 'dictionary.value', $this->date_event ]);
+		}
+                
+                
+                
 		//dd($query);
         /*$tags = [];
 		if (isset($params['ArticleSearch'])){

@@ -22,6 +22,7 @@ class ArticleController extends Controller{
 
 
     public function actionIndex($section_id = null){
+        $filter = [];
         $searchModel = new ArticleSearch();
         $queryParams = $this->request->queryParams;
 		$search_params = [];
@@ -85,22 +86,23 @@ class ArticleController extends Controller{
         $dataProvider->pagination = new Pagination([
             'totalCount' => $dataProvider->getTotalCount(),
 			//'defaultPageSize' => Yii::$app->params['frontend.article.pagination_pagesize']
-			]);
+        ]);
 		
-		$searchForm = new \frontend\models\ArticleSearchForm();
+        $searchForm = new \frontend\models\ArticleSearchForm();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'sections' => $sections,
             'current_section' => $current_section,
-			'request_params' => $queryParams,
-			'search_form' => $searchForm,
+            'request_params' => $queryParams,
+            'search_form' => $searchForm,
+            'filter' => $search_params['ArticleSearch'],
         ]);
     }
 
 	
-	public function actionSection($section_id = null){
+    public function actionSection($section_id = null){
 		
         $searchModel = new ArticleSearch();
         $queryParams = $this->request->queryParams;
@@ -141,7 +143,7 @@ class ArticleController extends Controller{
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'sections' => $sections,
-            'current_section' => $current_section
+            'current_section' => $current_section,
         ]);
     }
     
