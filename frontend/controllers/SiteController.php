@@ -17,7 +17,7 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use common\models\Section;
 use common\models\Article;
-
+use common\models\Feedback;
 /**
  * Site controller
  */
@@ -130,16 +130,19 @@ class SiteController extends Controller
      *
      * @return mixed
      */
+    
+    
     public function actionContact()
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
                 Yii::$app->session->setFlash('success', 'Дякуємо, що звернулися до нас. Ми відповімо вам якомога швидше.');
             } else {
                 Yii::$app->session->setFlash('error', 'Під час відправлення вашого повідомлення сталася помилка.');
             }
-
+            
             return $this->refresh();
         }
 

@@ -4,7 +4,7 @@ namespace frontend\models;
 
 use Yii;
 use yii\base\Model;
-
+use common\models\Feedback;
 /**
  * ContactForm is the model behind the contact form.
  */
@@ -50,17 +50,26 @@ class ContactForm extends Model
      */
     public function sendEmail($email)
     {
-        return Yii::$app->mailer->compose()
+        
+        
+        $feedback = new Feedback();
+        $feedback->name = $this->name;
+        $feedback->email = $this->email;
+        $feedback->subject = $this->subject;
+        $feedback->body = $this->body;
+        return $feedback->save();
+        
+        /*return Yii::$app->mailer->compose()
             ->setTo($email)
             ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
             ->setReplyTo([$this->email => $this->name])
             ->setSubject($this->subject)
             ->setTextBody(
-					'E-mail відправника: ' . $this->email . "\r\n".
-					"Ім'я відправника: " . $this->name .  "\r\n".
-					'Тема повідомлення: ' . $this->subject . "\r\n".
-					'Текст повідомлення: ' . $this->body
-					)
-            ->send();
+                'E-mail відправника: ' . $this->email . "\r\n".
+                "Ім'я відправника: " . $this->name .  "\r\n".
+                'Тема повідомлення: ' . $this->subject . "\r\n".
+                'Текст повідомлення: ' . $this->body
+                )
+            ->send();*/
     }
 }

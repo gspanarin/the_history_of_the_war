@@ -46,9 +46,9 @@ use common\models\User;
                         ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank'],
                         ['label' => 'RBAC', 'url' => ['/rbac']],
                         ['label' => 'Файли до статей', 'url' => ['/file']],
-						['label' => 'Терміни опису', 'url' => ['/dictionary']],
-						
-						];
+                        ['label' => 'Терміни опису', 'url' => ['/dictionary']],
+			['label' => 'Відгуки', 'url' => ['/feedback']],			
+                    ];
 					
 					
                 }

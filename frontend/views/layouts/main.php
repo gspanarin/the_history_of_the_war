@@ -57,7 +57,10 @@ $sections = Section::find()->where(['pid' => 1])->all();
 					<li class="nav-item <?= (Yii::$app->controller->action->id == 'collections' ? ' active ':'') ?>" ><a href="/site/collections" class="nav-link">Путівник</a></li>					
 					<li class="nav-item <?= (Yii::$app->controller->action->id == 'for-users' ? ' active ':'') ?>"><a href="/site/for-users" class="nav-link">Користувачам</a></li>
 					<li class="nav-item <?= (Yii::$app->controller->id == 'partnership-project' ? ' active ':'') ?>" ><a href="/partnership-project" class="nav-link">Інші проєкти</a></li>
-					<li class="nav-item <?= (Yii::$app->controller->action->id == 'contact' ? ' active ':'') ?>"><a href="/site/contact" class="nav-link">Контакти</a></li>
+					<!--
+                                        <li class="nav-item <?= (Yii::$app->controller->id == 'feedback' ? ' active ':'') ?>"><a href="/feedback/send" class="nav-link">Контакти</a></li>
+                                        -->
+                                        <li class="nav-item <?= (Yii::$app->controller->action->id == 'contact' ? ' active ':'') ?>"><a href="/site/contact" class="nav-link">Контакти</a></li>
 				</ul>
 			</div>
 		</div>
