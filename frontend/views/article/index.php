@@ -70,27 +70,27 @@ if (isset($current_section)){
 
 				<div class="form-group col-lg-6">
 					<label for="subject">За ключовими словами</label>
-					<input type="text" class="form-control" name="subject" id="subject" placeholder="ключові слова" value="<?= $filter['subject'] ?>">
+					<input type="text" class="form-control" name="subject" id="subject" placeholder="ключові слова" value="<?= isset($filter['subject']) ? $filter['subject'] : '' ?>">
 				</div>
 
 				<div class="form-group col-lg-6">
 					<label for="subject">За джерелом публікації статті</label>
-					<input type="text" class="form-control" name="source" id="source" placeholder="URL-адреса джерела" value="<?= $filter['source'] ?>">
+					<input type="text" class="form-control" name="source" id="source" placeholder="URL-адреса джерела" value="<?= isset($filter['source']) ? $filter['source'] : '' ?>">
 				</div>
 
 				<div class="form-group col-lg-6">
 					<label for="subject">За видавцем</label>
-					<input type="text" class="form-control" name="publisher" id="publisher" placeholder="назва організації-видавця статті" value="<?= $filter['publisher'] ?>">
+					<input type="text" class="form-control" name="publisher" id="publisher" placeholder="назва організації-видавця статті" value="<?= isset($filter['publisher']) ? $filter['publisher'] : '' ?>">
 				</div>
 
 				<div class="form-group col-lg-6">
 					<label for="subject">Автор, редактор статті</label>
-					<input type="text" class="form-control" name="creator" id="creator" placeholder="ПІБ автора" value="<?= $filter['creator'] ?>">
+					<input type="text" class="form-control" name="creator" id="creator" placeholder="ПІБ автора" value="<?= isset($filter['creator']) ? $filter['creator'] : '' ?>">
 				</div>
                     
                                 <div class="form-group col-lg-6">
 					<label for="subject">Дата події</label>
-                                        <input type="text" class="form-control" name="date_event" id="date_event" placeholder="РРРР-ММ-ДД" value="<?= $filter['date_event'] ?>">
+                                        <input type="text" class="form-control" name="date_event" id="date_event" placeholder="РРРР-ММ-ДД" value="<?= isset($filter['date_event']) ? $filter['date_event'] : '' ?>">
 				</div>
                     
                     
