@@ -14,7 +14,7 @@ $this->registerJs($model->jsonld, \yii\web\View::POS_HEAD);
 $this->registerMetaTag(['name' => 'og:type','content' => 'article']);
 $this->registerMetaTag(['name' => 'og:url', 'content' => Url::home(true) . 'article/view?id=' . $model->id]);
 $this->registerMetaTag(['name' => 'og:site_name ', 'content' => 'Архівування документів про війну']);
-$this->registerMetaTag(['name' => 'og:description', 'content' => Html::encode($model->description)]);
+$this->registerMetaTag(['name' => 'og:description', 'content' => Html::encode($model->description[0])]);
 $this->registerMetaTag(['name' => 'og:title', 'content' => Html::encode($model->title)]);
 if ($icon){
 	$this->registerMetaTag(['name' => 'og:image', 'content' => 'data:image/jpeg;charset=utf-8;base64,' . $icon]);
@@ -68,9 +68,8 @@ $this->params['subtitle'] = Html::encode( Html::encode(Yii::$app->name ));
 
 	<section class="services-section ftco-section rowjustify-content-left p-2 ">
 		<!-- у якому порядку виводити ці параметри - уточнити та переставити-->
-
 		<ul class="list-inline">
-			<li class="mt-3"><span class="icon-wallpaper"></span> Анотація: <span itemprop="about"><?= $model->description ?></span></li>
+                    <li class="mt-3"><span class="icon-wallpaper"></span> Анотація: <span itemprop="about"><?php foreach ($model->description as $item){ echo $item . '<br>'; } ?></span></li>
 			
 			<?php
 			$file_tml = '';

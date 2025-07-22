@@ -263,7 +263,7 @@ class Article extends \yii\db\ActiveRecord{
 	public function getDescription(){
         $metadata = json_decode($this->metadata);
 
-        return (isset($metadata->description[0]) ? $metadata->description[0] : '');
+        return (isset($metadata->description) ? $metadata->description : '');
     }
 	
 	public function getCreator(){
