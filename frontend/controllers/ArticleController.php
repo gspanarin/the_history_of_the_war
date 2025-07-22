@@ -30,62 +30,58 @@ class ArticleController extends Controller{
         $sections_ids[] = $section_id;
         if (isset($queryParams['section_id'])){
             $sections = Section::find()->where(['pid' => $section_id])->all();
-			foreach ($sections as $section)
-				$sections_ids[] = $section->id;
-			$search_params['ArticleSearch']['section_array'] = $sections_ids;
-			unset($queryParams['section_id']);
-		}
-		foreach ($queryParams as $key => $value){
-			switch ($key) {
-				case 'page':
-				case 'per-page':
-					$search_params[$key] = $value;
-					break;
-				default:
-					$search_params['ArticleSearch'][$key] = $value;
-					break;
-			}
-			
-		}
-		$queryParams = [];
-		if (!empty($search_params['ArticleSearch'])){
-			foreach ($search_params['ArticleSearch'] as $key => $value){
-				if ($key != null && $key != '' && $value != null && $value != ''){
-					if ($key == 'section_array'){
-						$queryParams[] = [
-							'label' => 'Розділ',
-							'term' => 'section_id',
-							'value' => Section::find()->select('title')->where(['id' => $this->request->queryParams['section_id']])->scalar()  ,
-							
-			
-							
-							'delete_url' => UrlManager::Url('/article', ['section_id' => null])
-						];	
-					}else{
-						$queryParams[] = [
-							'label' => Tag::getTagLabelByName($key),
-							'term' => $key,
-							'value' => $value,
-							'delete_url' => UrlManager::Url('/article', [$key => null])
-						];	
-					}
-					
-				}
-				
-			}
-			
-		}
+            foreach ($sections as $section){
+                $sections_ids[] = $section->id;
+            }
+            $search_params['ArticleSearch']['section_array'] = $sections_ids;
+            unset($queryParams['section_id']);
+        }
+        foreach ($queryParams as $key => $value){
+            switch ($key) {
+                case 'page':
+                case 'per-page':
+                    $search_params[$key] = $value;
+                    break;
+                default:
+                    $search_params['ArticleSearch'][$key] = $value;
+                    break;
+            }
+        }
+        $queryParams = [];
+        if (!empty($search_params['ArticleSearch'])){
+            foreach ($search_params['ArticleSearch'] as $key => $value){
+                if ($key != null && $key != '' && $value != null && $value != ''){
+                    if ($key == 'section_array'){
+                        $queryParams[] = [
+                            'label' => 'Розділ',
+                            'term' => 'section_id',
+                            'value' => Section::find()->select('title')->where(['id' => $this->request->queryParams['section_id']])->scalar()  ,
+                            'delete_url' => UrlManager::Url('/article', ['section_id' => null])
+                        ];	
+                    }else{
+                        $queryParams[] = [
+                            'label' => Tag::getTagLabelByName($key),
+                            'term' => $key,
+                            'value' => $value,
+                            'delete_url' => UrlManager::Url('/article', [$key => null])
+                        ];	
+                    }
+                }
+            }
+        }else{
+            $search_params['ArticleSearch'] = [];
+        }
 		
 
-		//dd($queryParams);
+        //dd($queryParams);
         //if (count($sections_ids) > 0){
         //    $queryParams = array_merge($queryParams, ['ArticleSearch' => ['section_array' => $sections_ids]]);
-		//}
+        //}
         $current_section = Section::findOne(['id' => $section_id]);
         $dataProvider = $searchModel->search($search_params);
         $dataProvider->pagination = new Pagination([
             'totalCount' => $dataProvider->getTotalCount(),
-			//'defaultPageSize' => Yii::$app->params['frontend.article.pagination_pagesize']
+            //'defaultPageSize' => Yii::$app->params['frontend.article.pagination_pagesize']
         ]);
 		
         $searchForm = new \frontend\models\ArticleSearchForm();
